@@ -274,6 +274,8 @@ npm watch
 </div>
 
 ## Veja também
-- &nbsp; **[TreeTagger](https://spacy.io/models/pt)** - Spacey portuguese tagger
+- &nbsp; **[Spacy/pt](https://spacy.io/models/pt)** - Spacy portuguese tagger
+- &nbsp; **[LXTagger](http://lxcenter.di.fc.ul.pt/tools/en/LXTaggerEN.html)** - University of Lisbon
+- &nbsp; **[portuguese-pos-tagging](https://github.com/brenomatos/portuguese-pos-tagging)** - Keras-based POS tagger
 
 MIT

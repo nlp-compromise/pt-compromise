@@ -1,6 +1,6 @@
-export default
+export default [
   'segunda-feira',//Monday
-'terça-feira',//Tuesday
+  'terça-feira',//Tuesday
   'quarta-feira',//Wednesday
   'quinta-feira',//Thursday
   'sexta-feira',//Friday

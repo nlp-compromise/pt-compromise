@@ -6,14 +6,10 @@ import prepositions from './prepositions.js'
 
 // verbs
 import infinitives from './verbs/infinitives.js'
-// import verbs from './verbs/verbs.js'
-// import modals from './verbs/modals.js'
-// import auxiliary from './verbs/auxiliary.js'
 
 // nouns
-import female from './nouns/female-nouns.js'
-import male from './nouns/male-nouns.js'
-import neuter from './nouns/neuter-nouns.js'
+// import female from './nouns/female-nouns.js'
+// import male from './nouns/male-nouns.js'
 import nouns from './nouns/nouns.js'
 import pronouns from './nouns/pronouns.js'
 
@@ -58,14 +54,8 @@ const data = [
   [lastNames, 'LastName'],
   [people, 'Person'],
 
-  [verbs, 'Verb'],
-  [modals, 'Modal'],
   [infinitives, 'Infinitive'],
-  // [auxiliary, 'Auxiliary'],
 
-  [male, 'MaleNoun'],
-  [female, 'FemaleNoun'],
-  [neuter, 'NeuterNoun'],
   [nouns, 'Noun'],
 
   [prepositions, 'Preposition'],
