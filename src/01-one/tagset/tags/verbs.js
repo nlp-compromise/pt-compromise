@@ -73,6 +73,10 @@ export default {
     is: 'Verb',
     not: ['Imperative']
   },
+  Imperfect: {
+    is: 'PastTense',
+    not: ['Imperative']
+  },
 
 
   // 

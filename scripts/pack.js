@@ -31,56 +31,56 @@ const steps = [
       return packed
     },
   },
-  // {
-  //   label: 'models',
-  //   path: './src/01-one/lexicon/methods/_data.js',
-  //   compress: function () {
-  //     let packed = {}
-  //     console.log('plurals')
-  //     let plurals = learn(models.plurals)
-  //     plurals = compress(plurals)
-  //     packed.nouns = {
-  //       plurals
-  //     }
-  //     console.log('adjectives')
-  //     packed.adjectives = {
-  //       f: [],
-  //       mp: [],
-  //       fp: [],
-  //     }
-  //     models.adjectives.forEach(a => {
-  //       packed.adjectives.f.push([a[0], a[1]])
-  //       packed.adjectives.mp.push([a[0], a[2]])
-  //       packed.adjectives.fp.push([a[0], a[3]])
-  //     })
-  //     Object.keys(packed.adjectives).forEach(k => {
-  //       packed.adjectives[k] = compress(learn(packed.adjectives[k]))
-  //     })
-  //     console.log('verbs')
-  //     Object.keys(models.verbs).forEach(k => {
-  //       packed[k] = {}
-  //       Object.keys(models.verbs[k]).forEach(form => {
-  //         let pairs = models.verbs[k][form]
-  //         console.log('-', k, form)
-  //         packed[k][form] = learn(pairs)
-  //         packed[k][form] = compress(packed[k][form])
-  //       })
-  //     })
-  //     console.log('gerunds')
-  //     let gerunds = learn(models.gerunds)
-  //     gerunds = compress(gerunds)
-  //     packed.gerunds = {
-  //       gerunds
-  //     }
-  //     console.log('perfecto')
-  //     let perfecto = learn(models.perfecto)
-  //     perfecto = compress(perfecto)
-  //     packed.perfecto = {
-  //       perfecto
-  //     }
-  //     return packed
-  //   },
-  // }
+  {
+    label: 'models',
+    path: './src/01-one/lexicon/methods/_data.js',
+    compress: function () {
+      let packed = {}
+      // console.log('plurals')
+      // let plurals = learn(models.plurals)
+      // plurals = compress(plurals)
+      // packed.nouns = {
+      //   plurals
+      // }
+      console.log('adjectives')
+      packed.adjectives = {
+        f: [],
+        mp: [],
+        fp: [],
+      }
+      models.adjectives.forEach(a => {
+        packed.adjectives.f.push([a[0], a[1]])
+        packed.adjectives.mp.push([a[0], a[2]])
+        packed.adjectives.fp.push([a[0], a[3]])
+      })
+      Object.keys(packed.adjectives).forEach(k => {
+        packed.adjectives[k] = compress(learn(packed.adjectives[k]))
+      })
+      console.log('verbs')
+      Object.keys(models.verbs).forEach(k => {
+        packed[k] = {}
+        Object.keys(models.verbs[k]).forEach(form => {
+          let pairs = models.verbs[k][form]
+          console.log('-', k, form)
+          packed[k][form] = learn(pairs)
+          packed[k][form] = compress(packed[k][form])
+        })
+      })
+      console.log('gerunds')
+      let gerunds = learn(models.gerunds)
+      gerunds = compress(gerunds)
+      packed.gerunds = {
+        gerunds
+      }
+      console.log('participle')
+      let perfecto = learn(models.pastParticiple)
+      perfecto = compress(perfecto)
+      packed.perfecto = {
+        perfecto
+      }
+      return packed
+    },
+  }
 ]
 
 // run through all our steps

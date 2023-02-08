@@ -1,13 +1,15 @@
-import verbs from './verb/index.js'
-import gerund from './gerund.js'
+import verbs from './verbs/index.js'
+import gerunds from './gerund.js'
 import pastParticiple from './past-participle.js'
 import adjectives from './adjectives.js'
 // import plurals from './plurals.js'
 
 export default {
   verbs,
-  gerund,
+  gerunds,
   pastParticiple,
   adjectives,
   // plurals
 }
+
+console.log(Object.keys(verbs.conditional))
