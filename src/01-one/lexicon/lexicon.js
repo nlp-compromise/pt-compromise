@@ -3,7 +3,18 @@ import { unpack } from 'efrt'
 import methods from './methods/index.js'
 import misc from './misc.js'
 
-const { toPresent, toPast, toFuture, toConditional, toGerund, toPerfecto, toImperative, toSubjunctive } = methods.verb
+const {
+  toPresentTense,
+  toPastTense,
+  toFutureTense,
+  toConditional,
+  toImperative,
+  toImperativeNeg,
+  toImperfect,
+  toPluperfect,
+  toGerund,
+  toPastParticiple
+} = methods.verb
 let lexicon = misc
 
 
@@ -34,29 +45,34 @@ Object.keys(lexData).forEach(tag => {
     // add conjugations for our verbs
     if (tag === 'Infinitive') {
       // add present tense
-      // let obj = toPresent(w)
-      // addWords(obj, 'PresentTense', lexicon)
-      // // add past tense
-      // obj = toPast(w)
-      // addWords(obj, 'PastTense', lexicon)
-      // // add future tense
-      // obj = toFuture(w)
-      // addWords(obj, 'FutureTense', lexicon)
-      // // add conditional
-      // obj = toConditional(w)
-      // addWords(obj, 'Conditional', lexicon)
-      // // add gerund
-      // let str = toGerund(w)
-      // lexicon[str] = lexicon[str] || 'Gerund'
-      // // add perfecto
-      // str = toPerfecto(w)
-      // lexicon[str] = lexicon[str] || 'Perfecto'
-      // // add imperative
-      // obj = toImperative(w)
-      // addWords(obj, 'Imperative', lexicon)
-      // // add toSubjunctive
-      // obj = toSubjunctive(w)
-      // addWords(obj, 'Subjunctive', lexicon)
+      let obj = toPresentTense(w)
+      addWords(obj, 'PresentTense', lexicon)
+      // add past tense
+      obj = toPastTense(w)
+      addWords(obj, 'PastTense', lexicon)
+      // add future tense
+      obj = toFutureTense(w)
+      addWords(obj, 'FutureTense', lexicon)
+      // add conditional
+      obj = toConditional(w)
+      addWords(obj, 'Conditional', lexicon)
+      // add imperative
+      obj = toImperative(w)
+      addWords(obj, 'Imperative', lexicon)
+      obj = toImperativeNeg(w)
+      addWords(obj, 'Imperative', lexicon)
+      // add Imperfect
+      obj = toImperfect(w)
+      addWords(obj, 'Imperfect', lexicon)
+      // add toPluperfect
+      obj = toPluperfect(w)
+      addWords(obj, 'Pluperfect', lexicon)
+      // add gerund
+      let str = toGerund(w)
+      lexicon[str] = lexicon[str] || 'Gerund'
+      // add PastParticiple
+      str = toPastParticiple(w)
+      lexicon[str] = lexicon[str] || 'PastParticiple'
     }
     if (tag === 'Adjective') {
       // let f = methods.adjective.toFemale(w)

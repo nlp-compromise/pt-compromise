@@ -73,10 +73,10 @@ const steps = [
         gerunds
       }
       console.log('participle')
-      let perfecto = learn(models.pastParticiple)
-      perfecto = compress(perfecto)
-      packed.perfecto = {
-        perfecto
+      let pastParticiple = learn(models.pastParticiple)
+      pastParticiple = compress(pastParticiple)
+      packed.pastParticiple = {
+        pastParticiple
       }
       return packed
     },
