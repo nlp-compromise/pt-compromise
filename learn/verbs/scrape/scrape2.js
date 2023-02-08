@@ -12,21 +12,16 @@ const doit = async function (page, word) {
   let url = `https://www.conju` + '' + `gacao.co${''}m.br/verbo-${safer}/`
   await page.goto(url)
   await page.waitForTimeout(1500) // wait for 1 seconds
-  let data = { word }
-  let table = await page.locator('#conjugacao')
-  let types = await table.locator('.tempo-conjugacao')
+  let data = { word, arr: [] }
+  let table = await page.locator('.info-v')
+  let types = await table.locator('.f')
   const count = await types.count()
   for (let i = 0; i < count; ++i) {
-    let row = await types.nth(i)
-    let type = await row.locator('h4').textContent()
-    data[type] = []
-
-    let kinds = await row.locator('.f')
-    const allKinds = await kinds.count()
-    for (let k = 0; k < allKinds; k += 1) {
-      let res = await kinds.nth(k).textContent()
-      data[type].push(res)
+    if (i >= 2) {
+      break
     }
+    let w = await types.nth(i).textContent()
+    data.arr.push(w)
   }
   console.log(data)
   let str = '\n' + JSON.stringify(data) + ',\n'
