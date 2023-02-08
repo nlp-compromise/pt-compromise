@@ -36,9 +36,9 @@
 <img height="85px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
 
-`pt-compromise` es un port de [compromise](https://github.com/nlp-compromise/compromise) en español
+`pt-compromise` é uma porta de [compromise](https://github.com/nlp-compromise/compromise) em português
 
-El objetivo de este proyecto es proporcionar un etiquetador de POS pequeño, básico y basado en reglas. 
+O objetivo deste projeto é fornecer um identificador de PDV pequeno, básico e baseado em regras.
 
 <p><i ><sub>
   (this project is a small, basic, rule-based POS tagger!)
@@ -275,7 +275,7 @@ npm watch
 
 ## Veja também
 - &nbsp; **[Spacy/pt](https://spacy.io/models/pt)** - Spacy portuguese tagger
-- &nbsp; **[LXTagger](http://lxcenter.di.fc.ul.pt/tools/en/LXTaggerEN.html)** - University of Lisbon
+- &nbsp; **[LXTagger](http://lxcenter.di.fc.ul.pt/tools/en/LXTaggerEN.html)** - Java/cli script from University of Lisbon
 - &nbsp; **[portuguese-pos-tagging](https://github.com/brenomatos/portuguese-pos-tagging)** - Keras-based POS tagger
 
 MIT

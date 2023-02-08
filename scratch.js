@@ -7,7 +7,7 @@ import nlp from './src/index.js'
 console.log(Object.keys(nlp.world().model.one.lexicon).length.toLocaleString())
 
 let arr = [
-  'temos falado',
+  'temos falado ago. no no',
   'apalavrarmos',
   'Ouviram do Ipiranga as margens plácidas',
 ]
