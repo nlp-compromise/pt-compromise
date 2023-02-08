@@ -60,7 +60,6 @@ export default [
   ['jovem', 'jovem', 'jovens', 'jovens'],//young
   ['frio', 'fria', 'frios', 'frias'],//cold
   ['quente', 'quente', 'quentes', 'quentes'],//warm
-
   ['calmo', 'calma', 'calmos', 'calmas'],
   ['simpático', 'simpática', 'simpáticos', 'simpáticas'],
   ['bonito', 'bonita', 'bonitos', 'bonitas'],

@@ -60,8 +60,8 @@ const data = [
 
   [prepositions, 'Preposition'],
   [pronouns, 'Pronoun'],
-  [cardinal, 'TextCardinal'],
-  [ordinal, 'TextOrdinal'],
+  [cardinal, 'Cardinal'],
+  [ordinal, 'Ordinal'],
 ]
 
 let lex = {}
@@ -75,5 +75,5 @@ for (let i = 0; i < data.length; i++) {
     lex[list[o]] = data[i][1]
   }
 }
-// console.log(lex.schule)
+// console.log(lex['ho chi minh'])
 export default lex

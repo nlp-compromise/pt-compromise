@@ -3,17 +3,17 @@ export default [
   'ou',//or
   'mas',//but
   'que',//that
-  'Então',//therefor
-  'Nem',//nor
-  'Logo',//thus
-  'Mesmo',//although
-  'Porque',//because
-  'Pois',//because
-  'Porém',//however
-  'Onde',//where
-  'Se',//if
-  'Como',//as
-  'Embora',//although
+  'então',//therefor
+  'nem',//nor
+  'logo',//thus
+  'mesmo',//although
+  'porque',//because
+  'pois',//because
+  'porém',//however
+  'onde',//where
+  'se',//if
+  'como',//as
+  'embora',//although
   // '',//
 
 

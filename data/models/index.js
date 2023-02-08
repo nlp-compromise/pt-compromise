@@ -11,5 +11,3 @@ export default {
   adjectives,
   // plurals
 }
-
-console.log(Object.keys(verbs.conditional))

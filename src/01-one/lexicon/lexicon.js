@@ -3,20 +3,9 @@ import { unpack } from 'efrt'
 import methods from './methods/index.js'
 import misc from './misc.js'
 
-const {
-  toPresentTense,
-  toPastTense,
-  toFutureTense,
-  toConditional,
-  toImperative,
-  toImperativeNeg,
-  toImperfect,
-  toPluperfect,
-  toGerund,
-  toPastParticiple
-} = methods.verb
+const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
+  toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple } = methods.verb
 let lexicon = misc
-
 
 const tagMap = {
   first: 'FirstPerson',
@@ -75,10 +64,12 @@ Object.keys(lexData).forEach(tag => {
       lexicon[str] = lexicon[str] || 'PastParticiple'
     }
     if (tag === 'Adjective') {
-      // let f = methods.adjective.toFemale(w)
-      // lexicon[f] = lexicon[f] || ['Adjective', 'FemaleAdjective', 'SingularAdjective']
-      // let fs = methods.adjective.toFemalePlural(w)
-      // lexicon[fs] = lexicon[fs] || ['Adjective', 'FemaleAdjective', 'PluralAdjective']
+      let s = methods.adjective.toPlural(w)
+      lexicon[s] = lexicon[s] || ['Adjective', 'MaleAdjective', 'PluralAdjective']
+      let f = methods.adjective.toFemale(w)
+      lexicon[f] = lexicon[f] || ['Adjective', 'FemaleAdjective', 'SingularAdjective']
+      let fs = methods.adjective.toFemalePlural(w)
+      lexicon[fs] = lexicon[fs] || ['Adjective', 'FemaleAdjective', 'PluralAdjective']
     }
     if (tag === 'Cardinal') {
       lexicon[w] = ['Cardinal', 'TextValue']
@@ -88,6 +79,6 @@ Object.keys(lexData).forEach(tag => {
     }
   })
 })
-// console.log(lexicon['ganado'])
+// console.log(lexicon['ho chi minh'])
 
 export default lexicon
