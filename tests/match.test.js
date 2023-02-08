@@ -25,7 +25,7 @@ test('match:', function (t) {
     // ['cantávamos', '#PastTense'],//"we were singing"
     // ['cantaríamos', '#ConditionalVerb'],
     // ['ele havia falado', '#Pronoun #Auxiliary #Verb'],//he had spoken
-    // ['temos falado', '#Pronoun #Verb'],//we have been speaking
+    ['temos falado', '#Pronoun #Verb'],//we have been speaking
 
     // lexicon
     ['limpo', '#Adjective'],
