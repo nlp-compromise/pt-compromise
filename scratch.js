@@ -7,6 +7,7 @@ nlp.verbose('tagger')
 
 
 let arr = [
+  'estamos',
   'Ouviram do Ipiranga as margens plácidas',
 ]
 let txt = arr[0]
