@@ -104,7 +104,7 @@ let arr = [
   [89, 'oitenta e nove'],
   [90, 'noventa'],
   [91, 'noventa e um'],
-  [92, 'noventa e dois/duas'],
+  [92, 'noventa e dois'],
   [92, 'noventa e duas'],
   [93, 'noventa e três'],
   [94, 'noventa e quatro'],
@@ -141,7 +141,7 @@ let arr = [
   [2400, 'dois mil e quatrocentos'],
   [2004, 'dois mil e quatro'],
   [5009, 'cinco mil e nove'],
-  // [6, 'meia']//slang
+  [6, 'meia'],//slang
   [1001, 'mil e um'],
   [1020, 'mil e vinte'],
   [1200, 'mil e duzentos'],
@@ -159,7 +159,7 @@ let arr = [
   [500, 'quinhentos'],
   [40, 'quarenta'],
   [600, 'seiscentos'],
-  // [50, 'cinqüenta'],
+  [50, 'cinqüenta'],
   [700, 'setecentos'],
   [60, 'sessenta'],
   [800, 'oitocentos'],
@@ -180,21 +180,20 @@ let arr = [
 ]
 test('number-tag:', function (t) {
   arr.forEach(a => {
-    let [n, str] = a
-    t.equal(nlp(str).has('^#Value+$'), true, here + '[tag] ' + str)
+    t.equal(nlp(a[1]).has('^#Value+$'), true, here + '[tag] ' + a[1])
   })
   t.end()
 })
 
-// test('number-parse:', function (t) {
-//   arr.forEach(a => {
-//     let [want, str] = a
-//     let doc = nlp(str)
-//     let n = doc.numbers().get()[0]
-//     t.equal(n, want, here + '[toNumber] ' + str)
-//   })
-//   t.end()
-// })
+test('number-parse:', function (t) {
+  arr.forEach(a => {
+    let [want, str] = a
+    let doc = nlp(str)
+    let n = doc.numbers().get()[0]
+    t.equal(n, want, here + '[toNumber] ' + str)
+  })
+  t.end()
+})
 
 // test('number-create:', function (t) {
 //   arr.forEach(a => {
