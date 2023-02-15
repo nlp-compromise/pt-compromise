@@ -30,12 +30,14 @@ data.ones.concat(data.tens, data.teens, data.multiples).forEach(a => {
 
 // extras
 Object.assign(toNumber, {
+  zero: 0,
   uma: 1,
   duas: 2,
   dezasseis: 16,
   dezessete: 17,
   dezenove: 19,
   cinqüenta: 50,
+  qüinquagésimo: 50,
   meia: 6,
 })
 export { toNumber, toCardinal, multiples }

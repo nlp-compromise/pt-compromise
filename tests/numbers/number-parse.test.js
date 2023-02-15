@@ -142,6 +142,7 @@ let arr = [
   [2004, 'dois mil e quatro'],
   [5009, 'cinco mil e nove'],
   [6, 'meia'],//slang
+  [0, 'zero'],
   [1001, 'mil e um'],
   [1020, 'mil e vinte'],
   [1200, 'mil e duzentos'],

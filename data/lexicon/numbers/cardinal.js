@@ -1,4 +1,5 @@
 export default [
+  'zero',//zero
   'um',//one
   'dois',//two
   'duas',//two

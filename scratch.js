@@ -2,6 +2,6 @@ import nlp from './src/index.js'
 nlp.verbose('tagger')
 
 let str = ``
-str = `cento e vinte e um`
+str = `ducentésimas`
 let doc = nlp(str).debug()
 console.log(doc.numbers().get())

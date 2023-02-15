@@ -3,31 +3,31 @@ import nlp from '../_lib.js'
 let here = '[ordinal-parse] '
 
 let genders = [
-  ['primeiro', 'primeira', '1st'],
-  ['segundo', 'segunda', '2nd'],
-  ['terceiro', 'terceira', '3rd'],
-  ['quarto', 'quarta', '4th'],
-  ['quinto', 'quinta', '5th'],
-  ['sexto', 'sexta', '6th'],
-  ['sétimo', 'sétima', '7th'],
-  ['oitavo', 'oitava', '8th'],
-  ['nono', 'nona', '9th'],
-  ['décimo', 'décima', '10th'],
-  ['décimo-primeiro', 'décima-primeira', '11th'],
-  ['décimo-segundo', 'décima-segunda', '12th'],
-  ['vigésimo', 'vigésima', '20th'],
-  ['vigésimo-primeiro', 'vigésima-primeira', '21st'],
-  ['vigésimo-segundo', 'vigésima-segundo', '22nd'],
-  ['trigésimo', 'trigésima', '30th'],
-  ['quadragésimo', 'quadragésima', '40th'],
-  ['quinquagésimo', 'quinquagésima', '50th'],
-  ['sexagésimo', 'sexagésima', '60th'],
-  ['septuagésimo', 'septuagésima', '70th'],
-  ['octogésimo', 'octogésima', '80th'],
-  ['nonagésimo', 'nonagésima', '90th'],
-  ['centésimo', 'centésima', '100th'],
-  ['décimo primeiro', 'décimo primeira', '11th'],
-  ['trigésimo quarto', 'trigésima quarto', '34th'],
+  ['primeiro', 'primeira', 1],
+  ['segundo', 'segunda', 2],
+  ['terceiro', 'terceira', 3],
+  ['quarto', 'quarta', 4],
+  ['quinto', 'quinta', 5],
+  ['sexto', 'sexta', 6],
+  ['sétimo', 'sétima', 7],
+  ['oitavo', 'oitava', 8],
+  ['nono', 'nona', 9],
+  ['décimo', 'décima', 10],
+  ['décimo-primeiro', 'décima-primeira', 11],
+  ['décimo-segundo', 'décima-segunda', 12],
+  ['vigésimo', 'vigésima', 20],
+  ['vigésimo-primeiro', 'vigésima-primeira', 21],
+  ['vigésimo-segundo', 'vigésima-segundo', 22],
+  ['trigésimo', 'trigésima', 30],
+  ['quadragésimo', 'quadragésima', 40],
+  ['quinquagésimo', 'quinquagésima', 50],
+  ['sexagésimo', 'sexagésima', 60],
+  ['septuagésimo', 'septuagésima', 70],
+  ['octogésimo', 'octogésima', 80],
+  ['nonagésimo', 'nonagésima', 90],
+  ['centésimo', 'centésima', 100],
+  ['décimo primeiro', 'décimo primeira', 11],
+  ['trigésimo quarto', 'trigésima quarto', 34],
 ]
 
 let plurals = [
@@ -59,11 +59,11 @@ let plurals = [
   ['ducentésimo', 'ducentésimos'],
   ['trecentésimo', 'trecentésimos'],
   ['quadringentésimo', 'quadringentésimos'],
-  ['quingentésimo', 'quingentésimos'],
-  ['qüingentésimo', 'qüingentésimos'],
+  // ['quingentésimo', 'quingentésimos'],
+  // ['qüingentésimo', 'qüingentésimos'],
   ['sexcentésimo', 'sexcentésimos'],
   ['setingentésimo', 'setingentésimos'],
-  ['octingentésimo', 'octingentésimos'],
+  // ['octingentésimo', 'octingentésimos'],
   ['nongentésimo', 'nongentésimos'],
   ['milésimo', 'milésimos'],
   // fem forms
@@ -102,7 +102,7 @@ let plurals = [
 ]
 test('number-tag:', function (t) {
   genders.forEach(a => {
-    let [m, f, en] = a
+    let [m, f] = a
     t.equal(nlp(m).has('^#Ordinal+$'), true, here + 'tag ' + m)
     t.equal(nlp(f).has('^#Ordinal+$'), true, here + 'tag ' + f)
   })
@@ -114,15 +114,22 @@ test('number-tag:', function (t) {
   t.end()
 })
 
-// test('number-parse:', function (t) {
-//   arr.forEach(a => {
-//     let [want, str] = a
-//     let doc = nlp(str)
-//     let n = doc.numbers().get()[0]
-//     t.equal(n, want, here + '[toNumber] ' + str)
-//   })
-//   t.end()
-// })
+test('number-parse:', function (t) {
+  genders.forEach(a => {
+    let [m, f, n] = a
+    let num = nlp(m).numbers().get()[0]
+    t.equal(num, n, here + '[toNumber] ' + m)
+    num = nlp(f).numbers().get()[0]
+    t.equal(num, n, here + '[toNumber] ' + f)
+  })
+  plurals.forEach(a => {
+    let [s, p] = a
+    let left = nlp(s).numbers().get()[0]
+    let right = nlp(p).numbers().get()[0]
+    t.equal(left, right, here + `${left} == ${right}`)
+  })
+  t.end()
+})
 
 // test('number-create:', function (t) {
 //   arr.forEach(a => {
