@@ -135,7 +135,7 @@ let arr = [
   [701, 'setecentos e um'],
   [811, 'oitocentos e onze'],
   [940, 'novecentos e quarenta'],
-  [1234, 'mil duzentos e quatro'],
+  [1204, 'mil duzentos e quatro'],
   [2058, 'dois mil cinquenta e oito'],
   [1200, 'mil e duzentos'],
   [2400, 'dois mil e quatrocentos'],

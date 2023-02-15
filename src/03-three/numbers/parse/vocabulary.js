@@ -4,12 +4,15 @@ let toNumber = {}
 let toCardinal = {}
 let multiples = {
   'cem': 100,
+  'cento': 100,
   'centésimo': 100,
   'mil': 1000,
   'milésimo': 1000,
   'milhão': 1000000,
+  'milhões': 1000000,
   'milionésimo': 1000000,
   'bilhão': 1000000000,
+  'bilhões': 1000000000,
   'bilionésimo': 1000000000,
 }
 
@@ -32,6 +35,7 @@ Object.assign(toNumber, {
   dezasseis: 16,
   dezessete: 17,
   dezenove: 19,
+  cinqüenta: 50,
   meia: 6,
 })
 export { toNumber, toCardinal, multiples }
