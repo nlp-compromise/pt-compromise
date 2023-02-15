@@ -1,6 +1,7 @@
 export default [
   'um',//one
   'dois',//two
+  'duas',//two
   'três',//three
   'quatro',//four
   'cinco',//five
@@ -9,15 +10,17 @@ export default [
   'oito',//eight
   'nove',//nine
   'dez',//ten
-
   'onze',//11 
   'doze',//12 
   'treze',//13 
   'catorze',//14 
   'quinze',//15 
+  'dezasseis',//16 
   'dezesseis',//16 
+  'dezassete',//17 
   'dezessete',//17 
   'dezoito',//18 
+  'dezanove',//19 
   'dezenove',//19 
   'vinte',//20 
   'trinta',//30 
@@ -37,7 +40,18 @@ export default [
   'setecentos',//700 
   'oitocentos',//800 
   'novecentos',//900 
+  'duzentas',//200 
+  'trezentas',//300 
+  'quatrocentas',//400 
+  'quinhentas',//500 
+  'seiscentas',//600 
+  'setecentas',//700 
+  'oitocentas',//800 
+  'novecentas',//900 
   'mil',//1000 
   'meia',//slang 6
   'cinqüenta',
+  'milhão',
+  'milhões',
+  'bilhão',
 ]

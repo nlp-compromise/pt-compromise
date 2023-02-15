@@ -103,13 +103,13 @@ let plurals = [
 test('number-tag:', function (t) {
   genders.forEach(a => {
     let [m, f, en] = a
-    t.equal(nlp(m).has('#Ordinal'), true, here + 'tag ' + m)
-    t.equal(nlp(f).has('#Ordinal'), true, here + 'tag ' + f)
+    t.equal(nlp(m).has('^#Ordinal+$'), true, here + 'tag ' + m)
+    t.equal(nlp(f).has('^#Ordinal+$'), true, here + 'tag ' + f)
   })
   plurals.forEach(a => {
     let [s, p] = a
-    t.equal(nlp(s).has('#Ordinal'), true, here + 'tag ' + s)
-    t.equal(nlp(p).has('#Ordinal'), true, here + 'tag ' + p)
+    t.equal(nlp(s).has('^#Ordinal+$'), true, here + 'tag ' + s)
+    t.equal(nlp(p).has('^#Ordinal+$'), true, here + 'tag ' + p)
   })
   t.end()
 })

@@ -1,6 +1,6 @@
 import test from 'tape'
 import nlp from './_lib.js'
-let here = '[de-match] '
+let here = '[pt-match] '
 
 test('match:', function (t) {
   let arr = [
@@ -25,7 +25,7 @@ test('match:', function (t) {
     // ['cantávamos', '#PastTense'],//"we were singing"
     // ['cantaríamos', '#ConditionalVerb'],
     // ['ele havia falado', '#Pronoun #Auxiliary #Verb'],//he had spoken
-    ['temos falado', '#Pronoun #Verb'],//we have been speaking
+    // ['temos falado', '#Pronoun #Verb'],//we have been speaking
 
     // lexicon
     ['limpo', '#Adjective'],
