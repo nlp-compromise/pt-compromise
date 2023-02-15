@@ -8,5 +8,7 @@ const postTagger = function (doc) {
   doc.match('#Value e? (uma|um)').tag('Cardinal', 'val-e-uma')
   // uma milhão
   doc.match('(uma|um) #Value').tag('Value', 'uma-milhão')
+  // menos noventa
+  doc.match('menos #Value').tag('Value', 'menos-noventa')
 }
 export default postTagger

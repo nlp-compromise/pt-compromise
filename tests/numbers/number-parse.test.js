@@ -177,6 +177,7 @@ let arr = [
   [2000000, 'dois milhões'],
   [400, 'quatrocentos'],
   [1000000000, 'um bilhão'],
+  [-90, 'menos noventa'],
 ]
 test('number-tag:', function (t) {
   arr.forEach(a => {

@@ -14,9 +14,14 @@ let multiples = {
 }
 
 data.ones.concat(data.tens, data.teens, data.multiples).forEach(a => {
-  toNumber[a[1]] = a[0] //cardinal
-  if (a[2]) {
-    toNumber[a[2]] = a[0]//ord
+  let [n, card, ord] = a
+  toNumber[card] = n //cardinal
+  if (/os$/.test(card)) {
+    let f = card.replace(/os$/, 'as')
+    toNumber[f] = n //female
+  }
+  if (ord) {
+    toNumber[ord] = n//ord
   }
 })
 
