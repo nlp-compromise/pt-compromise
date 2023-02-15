@@ -13,11 +13,11 @@ let genders = [
   ['oitavo', 'oitava', 8],
   ['nono', 'nona', 9],
   ['décimo', 'décima', 10],
-  ['décimo-primeiro', 'décima-primeira', 11],
-  ['décimo-segundo', 'décima-segunda', 12],
+  ['décimo primeiro', 'décima-primeira', 11],
+  ['décimo segundo', 'décima-segunda', 12],
   ['vigésimo', 'vigésima', 20],
-  ['vigésimo-primeiro', 'vigésima-primeira', 21],
-  ['vigésimo-segundo', 'vigésima-segundo', 22],
+  ['vigésimo primeiro', 'vigésima-primeira', 21],
+  ['vigésimo segundo', 'vigésima-segundo', 22],
   ['trigésimo', 'trigésima', 30],
   ['quadragésimo', 'quadragésima', 40],
   ['quinquagésimo', 'quinquagésima', 50],
@@ -128,6 +128,22 @@ test('number-parse:', function (t) {
     let right = nlp(p).numbers().get()[0]
     t.equal(left, right, here + `${left} == ${right}`)
   })
+  t.end()
+})
+
+test('toOrdinal:', function (t) {
+  genders.forEach(a => {
+    let [m, f, n] = a
+    let doc = nlp(String(n))
+    doc.numbers().toText().toOrdinal()
+    t.equal(doc.text(), m, here + '[toOrdinal] ' + n)
+  })
+
+  let doc = nlp('342').numbers().toOrdinal()
+  t.equal(doc.text(), '342°', here + 'num-ord')
+
+  doc = nlp('trezentos e setenta').numbers().toNumber().toOrdinal()
+  t.equal(doc.text(), '370°', here + 'num-ord')
   t.end()
 })
 

@@ -34,8 +34,9 @@ const getMagnitudes = function (num) {
   return have
 }
 
-// do 'mil e duzentos' but 'mil duzentos e quinze'
+// when to put 'and' - these seem very complicated
 const andRules = function (words) {
+  // do 'mil e duzentos' but 'mil duzentos e quinze'
   let index = words.findIndex((w, i) => w === 'mil' && words[i + 1] === 'e')
   if (index !== -1) {
     // we have another 'e' after..
