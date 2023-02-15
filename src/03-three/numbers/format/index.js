@@ -8,7 +8,7 @@ const formatNumber = function (parsed, fmt) {
     return toTextOrdinal(words)
   }
   if (fmt === 'TextCardinal') {
-    return toText(parsed.num).join('')
+    return toText(parsed.num).join(' ')
   }
   // numeric format - 107 -> '107°'
   if (fmt === 'Ordinal') {

@@ -10,17 +10,15 @@ export default {
     [8, 'oito', 'oitavo'],
     [9, 'nove', 'nono'],
     [10, 'dez', 'décimo'],
-  ],
-  teens: [
     [11, 'onze'],
     [12, 'doze'],
     [13, 'treze'],
     [14, 'catorze'],
     [15, 'quinze'],
     [16, 'dezesseis'],//    [16, 'dezasseis'],
-    [17, 'dezassete'],//    [17, 'dezessete'],
+    [17, 'dezessete'],//    [17, 'dezassete'],
     [18, 'dezoito'],
-    [19, 'dezanove'],//    [19, 'dezenove'],
+    [19, 'dezenove'],//    [19, 'dezanove'],
   ],
   tens: [
     [20, 'vinte', 'vigésimo'],
@@ -32,6 +30,8 @@ export default {
     [70, 'setenta', 'septuagésimo'],
     [80, 'oitenta', 'octogésimo'],
     [90, 'noventa', 'nonagésimo'],
+  ],
+  hundreds: [
     [100, 'cem', 'centésimo'],
     [200, 'duzentos', 'ducentésimo'],
     [300, 'trezentos', 'tricentésimo'],

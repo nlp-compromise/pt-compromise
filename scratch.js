@@ -1,7 +1,7 @@
 import nlp from './src/index.js'
-nlp.verbose('tagger')
+// nlp.verbose('tagger')
 
 let str = ``
-str = `ducentésimas`
+str = `-90`
 let doc = nlp(str).debug()
-console.log(doc.numbers().get())
+console.log(doc.numbers().toText().text())

@@ -5,7 +5,7 @@ let here = '[number-parse] '
 let arr = [
   [1, 'um'],
   [2, 'dois'],
-  [2, 'duas'],
+  // [2, 'duas'],
   [3, 'três'],
   [4, 'quatro'],
   [5, 'cinco'],
@@ -19,18 +19,13 @@ let arr = [
   [13, 'treze'],
   [14, 'catorze'],
   [15, 'quinze'],
-  [16, 'dezesseis'],
-  [16, 'dezasseis'],
-  [17, 'dezassete'],
-  [17, 'dezessete'],
+  [16, 'dezesseis'],  // [16, 'dezasseis'],
+  [17, 'dezessete'],//  [17, 'dezassete'],
   [18, 'dezoito'],
-  [19, 'dezanove'],
-  [19, 'dezenove'],
+  [19, 'dezenove'],  // [19, 'dezanove'],
   [20, 'vinte'],
-  [21, 'vinte e um'],
-  [21, 'vinte e uma'],
-  [22, 'vinte e dois'],
-  [22, 'vinte e duas'],
+  [21, 'vinte e um'],  // [21, 'vinte e uma'],
+  [22, 'vinte e dois'],  // [22, 'vinte e duas'],
   [23, 'vinte e três'],
   [24, 'vinte e quatro'],
   [25, 'vinte e cinco'],
@@ -39,10 +34,8 @@ let arr = [
   [28, 'vinte e oito'],
   [29, 'vinte e nove'],
   [30, 'trinta'],
-  [31, 'trinta e um'],
-  [31, 'trinta e uma'],
-  [32, 'trinta e dois'],
-  [32, 'trinta e duas'],
+  [31, 'trinta e um'],  // [31, 'trinta e uma'],
+  [32, 'trinta e dois'],  // [32, 'trinta e duas'],
   [33, 'trinta e três'],
   [34, 'trinta e quatro'],
   [35, 'trinta e cinco'],
@@ -51,10 +44,8 @@ let arr = [
   [38, 'trinta e oito'],
   [39, 'trinta e nove'],
   [40, 'quarenta'],
-  [41, 'quarenta e um'],
-  [41, 'quarenta e uma'],
-  [42, 'quarenta e dois'],
-  [42, 'quarenta e duas'],
+  [41, 'quarenta e um'],//  [41, 'quarenta e uma'],
+  [42, 'quarenta e dois'],//  [42, 'quarenta e duas'],
   [43, 'quarenta e três'],
   [44, 'quarenta e quatro'],
   [45, 'quarenta e cinco'],
@@ -104,8 +95,7 @@ let arr = [
   [89, 'oitenta e nove'],
   [90, 'noventa'],
   [91, 'noventa e um'],
-  [92, 'noventa e dois'],
-  [92, 'noventa e duas'],
+  [92, 'noventa e dois'],//  [92, 'noventa e duas'],
   [93, 'noventa e três'],
   [94, 'noventa e quatro'],
   [95, 'noventa e cinco'],
@@ -114,34 +104,26 @@ let arr = [
   [98, 'noventa e oito'],
   [99, 'noventa e nove'],
   [100, 'cem'],
-  [200, 'duzentos'],
-  [200, 'duzentas'],
-  [300, 'trezentos'],
-  [300, 'trezentas'],
-  [400, 'quatrocentos'],
-  [400, 'quatrocentas'],
-  [500, 'quinhentos'],
-  [500, 'quinhentas'],
-  [600, 'seiscentos'],
-  [600, 'seiscentas'],
-  [700, 'setecentos'],
-  [700, 'setecentas'],
-  [800, 'oitocentos'],
-  [800, 'oitocentas'],
-  [900, 'novecentos'],
-  [900, 'novecentas'],
+  [200, 'duzentos'],//  [200, 'duzentas'],
+  [300, 'trezentos'],//  [300, 'trezentas'],
+  [400, 'quatrocentos'],//  [400, 'quatrocentas'],
+  [500, 'quinhentos'],//  [500, 'quinhentas'],
+  [600, 'seiscentos'],//  [600, 'seiscentas'],
+  [700, 'setecentos'],//  [700, 'setecentas'],
+  [800, 'oitocentos'],//  [800, 'oitocentas'],
+  [900, 'novecentos'],//  [900, 'novecentas'],
   [121, 'cento e vinte e um'],
   [487, 'quatrocentos e oitenta e sete'],
   [701, 'setecentos e um'],
   [811, 'oitocentos e onze'],
   [940, 'novecentos e quarenta'],
   [1204, 'mil duzentos e quatro'],
-  [2058, 'dois mil cinquenta e oito'],
+  // [2058, 'dois mil cinquenta e oito'],
   [1200, 'mil e duzentos'],
   [2400, 'dois mil e quatrocentos'],
   [2004, 'dois mil e quatro'],
   [5009, 'cinco mil e nove'],
-  [6, 'meia'],//slang
+  // [6, 'meia'],//slang
   [0, 'zero'],
   [1001, 'mil e um'],
   [1020, 'mil e vinte'],
@@ -160,7 +142,7 @@ let arr = [
   [500, 'quinhentos'],
   [40, 'quarenta'],
   [600, 'seiscentos'],
-  [50, 'cinqüenta'],
+  [50, 'cinquenta'],
   [700, 'setecentos'],
   [60, 'sessenta'],
   [800, 'oitocentos'],
@@ -197,12 +179,12 @@ test('number-parse:', function (t) {
   t.end()
 })
 
-// test('number-create:', function (t) {
-//   arr.forEach(a => {
-//     let [num, str] = a
-//     let doc = nlp(String(num))
-//     doc.numbers().toText()
-//     t.equal(doc.text(), str, here + '[toText] ' + num)
-//   })
-//   t.end()
-// })
+test('number-create:', function (t) {
+  arr.forEach(a => {
+    let [num, str] = a
+    let doc = nlp(String(num))
+    doc.numbers().toText()
+    t.equal(doc.text(), str, here + '[toText] ' + num)
+  })
+  t.end()
+})

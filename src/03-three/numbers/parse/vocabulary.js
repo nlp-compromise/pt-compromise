@@ -16,7 +16,7 @@ let multiples = {
   'bilionésimo': 1000000000,
 }
 
-data.ones.concat(data.tens, data.teens, data.multiples).forEach(a => {
+data.ones.concat(data.tens, data.hundreds, data.multiples).forEach(a => {
   let [n, card, ord] = a
   toNumber[card] = n //cardinal
   if (/os$/.test(card)) {
@@ -34,8 +34,8 @@ Object.assign(toNumber, {
   uma: 1,
   duas: 2,
   dezasseis: 16,
-  dezessete: 17,
-  dezenove: 19,
+  dezassete: 17,
+  dezanove: 19,
   cinqüenta: 50,
   qüinquagésimo: 50,
   meia: 6,

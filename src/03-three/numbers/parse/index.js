@@ -22,6 +22,10 @@ const fromNumber = function (m) {
     if (suffix === 'e' || suffix === 'er') {
       suffix = ''
     }
+    if (prefix === '-') {
+      prefix = ''
+      num *= -1
+    }
   }
   return {
     hasComma,
