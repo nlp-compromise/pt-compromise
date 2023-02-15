@@ -38,5 +38,6 @@ export default [
   'oitocentos',//800 
   'novecentos',//900 
   'mil',//1000 
-
+  'meia',//slang 6
+  'cinqüenta',
 ]
