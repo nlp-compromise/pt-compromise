@@ -188,3 +188,10 @@ test('number-create:', function (t) {
   })
   t.end()
 })
+
+test('misc:', function (t) {
+  let doc = nlp('cinquenta e cinco dólares')
+  doc.numbers().minus(10)
+  t.equal(doc.text(), 'quarenta e cinco dólares', here + 'minus')
+  t.end()
+})
