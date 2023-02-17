@@ -276,6 +276,7 @@ npm watch
 ## Veja também
 - &nbsp; **[Spacy/pt](https://spacy.io/models/pt)** - Spacy portuguese tagger
 - &nbsp; **[LXTagger](http://lxcenter.di.fc.ul.pt/tools/en/LXTaggerEN.html)** - Java/cli script from University of Lisbon
-- &nbsp; **[portuguese-pos-tagging](https://github.com/brenomatos/portuguese-pos-tagging)** - Keras-based POS tagger
+- &nbsp; **[brenomatos/portuguese-pos-tagging](https://github.com/brenomatos/portuguese-pos-tagging)** - Keras-based POS tagger
+- &nbsp; **[luizppa/portuguese-pos-tagging](https://github.com/luizppa/portuguese-pos-tagging)** - by Luiz Philippe
 
 MIT

@@ -1,0 +1,17 @@
+learn/wikicorpus/results
+
+# Logs
+npm-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+
+# Dependency directories
+node_modules/
+
+mac_morpho
