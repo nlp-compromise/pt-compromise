@@ -783,5 +783,7 @@ export default [
   'indígenas',
   'vivo',
   'infantil',
+  'outro',
+  'mesmo',
 ]
 

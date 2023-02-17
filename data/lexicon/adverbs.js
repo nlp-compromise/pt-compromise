@@ -102,7 +102,7 @@ export default [
   // 'mesmo',
   'mui',
   'muito',
-  'nada',
+  // 'nada',
   // 'não',
   'naturalmente',
   // 'nem',

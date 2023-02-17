@@ -46,7 +46,7 @@ const doOne = function (obj) {
       wrong += 1
       out += red(o.word) + ' '
       // if (o.tag === 'Conjunction') {
-      // bads.push(o.word.toLowerCase())
+      bads.push(o.word.toLowerCase())
       // }
       if (skipWords[o.word]) {
         print = true
@@ -55,9 +55,9 @@ const doOne = function (obj) {
     }
   })
   if (print && wrong > 0) {
-    doc.debug()
-    console.log(out)
-    console.log(obj)
+    // doc.debug()
+    // console.log(out)
+    // console.log(obj)
   } else {
     // console.log('✅')
   }

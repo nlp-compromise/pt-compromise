@@ -25,7 +25,7 @@
     "build": "npm run version && rollup -c --silent",
     "version": "node ./scripts/version.js",
     "pack": "node ./scripts/pack.js",
-    "score": "node ./learn/wikicorpus/test.js",
+    "score": "node ./learn/tagger/test.js",
     "lint": "eslint ./src/**/*",
     "watch": "amble ./scratch.js",
     "stress": "node scripts/stress.js"

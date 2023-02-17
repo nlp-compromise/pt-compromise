@@ -73,30 +73,30 @@ export default [
   'conosco',//	us/with us
 
   // demonstrative
-  // 'Este',
-  // 'Esta',
-  // 'Isto',//	This
-  // 'Estes',
-  // 'Estas',//	These
-  // 'Esse',
-  // 'Essa',
-  // 'Isso',
-  // 'Aquele',
-  // 'Aquela',
-  // 'Aquilo',//	That
-  // 'Esses',
-  // 'Essas',
-  // 'Aqueles',
-  // 'Aquelas',//	Those
+  // 'este',
+  // 'esta',
+  // 'isto',//	this
+  // 'estes',
+  // 'estas',//	these
+  'esse',
+  'essa',
+  'isso',
+  'aquele',
+  'aquela',
+  'aquilo',//	that
+  'esses',
+  'essas',
+  'aqueles',
+  'aquelas',//	those
 
   // relative 
-  // 'Que',//	Who/Whom/Which/That
-  // 'Quem',//	Who/Whom
-  // 'Qual',///Quais	That/Which/Who/Whom
-  // 'Cujo',//
-  // 'Cujos',// (masc.)
-  // 'Cuja',//
-  // 'Cujas',// (fem.)	Whose
-  // 'Onde',//	Where
+  'que',//	who/whom/which/that
+  'quem',//	who/whom
+  'qual',///quais	that/which/who/whom
+  'cujo',//
+  'cujos',// (masc.)
+  'cuja',//
+  'cujas',// (fem.)	whose
+  'onde',//	where
 ]
 

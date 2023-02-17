@@ -712,6 +712,7 @@ export default [
   'pintura',
   'planeta',
   'plano',
+  'pontos',
   'planta',
   // 'poder',
   'poema',
@@ -983,5 +984,6 @@ export default [
   'autores',
   'objetivo',
   'vendas',
+  'nada',
 
 ]

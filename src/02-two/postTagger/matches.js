@@ -30,6 +30,8 @@ const postTagger = function (doc) {
   doc.match('[{haver}] #Verb', 0).tag('Auxiliary', 'haver-verb')
   // Ele quer mostrar
   doc.match('[{querer}] #Verb', 0).tag('Auxiliary', 'querer-verb')
+  // future tense
+  doc.match('[{ser}] #Verb', 0).tag('Auxiliary', 'ser-verb')
   // ==modals==
   doc.match('[{poder}] #Verb', 0).tag('Modal', 'could-verb')
   doc.match('{poder} ter #Noun').tag('#Modal #Auxiliary #Verb', 'could-have-noun')

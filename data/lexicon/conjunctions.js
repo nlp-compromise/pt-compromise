@@ -6,7 +6,7 @@ export default [
   'então',//therefor
   'nem',//nor
   'logo',//thus
-  'mesmo',//although
+  // 'mesmo',//although
   'porque',//because
   'pois',//because
   'porém',//however
