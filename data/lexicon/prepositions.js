@@ -1,6 +1,6 @@
 export default [
   // Simple Prepositions
-  'a', //"to", "at", "in", "on", and used before indirect object
+  // 'a', //"to", "at", "in", "on", and used before indirect object
   'até', //"until"
   'com', //"with"
   'de', //"of", "from", "about", etc.

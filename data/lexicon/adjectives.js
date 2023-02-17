@@ -1,234 +1,33 @@
 export default [
-  'numerosos', //many
-  'médio', //medium
-  'fofo', //mellow
-  'moderno', //modern
-  'motivado', //motivated
-  'comovente', //moving
-  'mudo', //mute
-  'misterioso', //mysterious
-  'estreito', //narrow
-  'natural', //natural
-  'próximo', //near
-  'perto', //near
-  'necessário', //necessary
-  'negligenciável', //negligible
-  'nervoso', //nervous
-  'novo', //new
-  'próximo', //next
-  'gentil', //nice
-  'barulhento', //noisy
-  'nostálgico', //nostalgic
-  'nulo', //null
-  'óbvio', //obvious
-  'ocupado', //occupied
-  'oficial', //official
-  'velho', //old
+
   'aberto', //open
-  'otimista', //optimist
-  'vulgar', //ordinary
-  'original', //original
-  'superpovoado', //overcrowded
-  'próprio', //own
-  'penoso', //painful
-  'passável', //passable
-  'apaixonado', //passionate
-  'paciente', //patient
-  'perfeito', //perfect
-  'perseverante', //persevering
-  'pessimista', //pessimistic
-  'fenomenal', //phenomenal
-  'jogador', //player
-  'agradável', //pleasant
-  'agradável', //pleasant
-  'político', //political
-  'poluído', //polluted
-  'pobre', //poor
-  'popular', //popular
-  'positivo', //positive
-  'possível', //possible
-  'poderoso', //powerful
-  'prático', //practice
-  'preciso', //precise
-  'pretensiosa', //pretentious
-  'privado', //private
-  'prodigioso', //prodigious
-  'interdito', //prohibited
-  'público', //public
-  'pontual', //punctual
-  'raro', //rare
-  'encantado', //ravi
-  'verdade', //real, true	
-  'realista', //realistic
-  'recente', //recent
-  'reciclado', //recycled
-  'regular', //regular
-  'relevante', //relevant
-  'fiável', //reliable
-  'religioso', //religious
-  'notável', //remarkable
-  'afastado', //remote
-  'responsável', //responsible
-  'rico', //rich
-  'maduro', //ripe
-  'romântico', //romantic
-  'podre', //rotten
-  'triste', //sad
-  'salgado', //salted
-  'satisfatório', //satisfactory
-  'satisfaz', //satisfied
-  'segredo', //secret
-  'egoísta', //selfish
-  'sério', //serious
-  'curto', //short
-  'tímido', //shy
-  'doente', //sick
-  'silencioso', //silent
-  'semelhante', //similar
-  'simples', //simple
-  'sincero', //sincere
-  'lento', //slow
-  'pequeno', //small
-  'sorridente', //smiling
-  'sociável', //sociable
-  'sólido', //solid
-  'solitário', //solitaire
-  'espaçoso', //spacious
-  'especial', //special
-  'específico', //specific
-  'picante', //spicy
-  'esplêndido', //splendid
-  'desportivo', //sporty
-  'quadrado', //square
-  'imóvel', //stationary
-  'pegajoso', //sticky
-  'estranho', //strange
-  'forte', //strong
-  'teimoso', //stubborn
-  'besta', //stupid
-  'estúpido', //stupid
-  'conveniente', //suitable
-  'super', //super
-  'soberba', //superb
-  'superficial', //superficial
-  'supersticioso', //superstitious
-  'surpreendido', //surprised
-  'suave', //sweet
-  'talentoso', //talented
-  'bronzeado', //tanned
-  'temporário', //temporary
-  'terrível', //terrible
-  'grosso', //thick
-  'magro', //thin
-  'minúscula', //tiny
-  'cansado', //tired
-  'cansativo', //tiresome
-  'conjunto', //together
-  'tolerável', //tolerable
-  'tolerante', //tolerant
-  'topo', //top
-  'total', //total
-  'tóxico', //toxic
-  'tradicional', //traditional
-  'triangular', //triangular
-  'perturbador', //troubling
-  'confiante', //trusting
-  'típico', //typical
-  'insuportável', //unbearable
-  'injusto', //unfair
-  'infeliz', //unfortunate
-  'único', //unique
-  'desconhecido', //unknown
-  'ilimitado', //unlimited
-  'desagradável', //unpleasant
-  'imprevisível', //unpredictable
-  'insustentável', //untenable
-  'amigável', //user-friendly
-  'valioso', //valuable
-  'diversos', //various
-  'vasto', //vast
-  'viscoso', //viscous
-  'vulgar', //vulgar
-  'vulnerável', //vulnerable
-  'caloroso',
-  'amigável', //warm, friendly
-  'desconfiado', //wary
-  'estranho', //weird
-  'acolhedor', //welcoming
-  'molhado', //wet
-  'selvagem', //wild
-  'maravilhoso', //wonderful
-  'trabalhador', //worker
-  'mundial', //worldwide
-  'usado', //worn
-  'inquieto', //worried
-  'pior', //worse
-  'ferido', //wounded
-  'jovem', //young
-
-
-  'empolgante',
-  'lapônio',
   'acetílico',
-  'eslavónio',
-  'biológico',
-  'epidérmico',
-  'visto',
-  'trilíngue',
-  'póstumo',
-  'denigrativo',
-  'patronal',
-  'presidiario',
+  'acolhedor', //welcoming
   'acusatório',
-  'tratante',
-  'vogal',
-  'havaiano',
-  'reincidente',
-  'molhado',
-  'cronoestratigráfico',
-  'rechonchudo',
-  'ultrassônico',
-  'aguiarense',
-  'criogénico',
-  'peritoneal',
-  'altivo',
-  'equestre',
-  'baionense',
-  'polémico',
-  'contrário',
-  'animístico',
-  'verde-esmeralda',
-  'privilegiado',
-  'hidrodinâmico',
-  'vetorial',
-  'sovina',
-  'bicamaral',
-  'alocável',
-  'fertilizante',
-  'mixuruca',
-  'pubescente',
-  'generativo',
-  'cómodo',
-  'hipnótico',
-  'pharmaceutico',
-  'comunitário',
-  'cessível',
-  'acolhedor',
-  'adorável',
   'admirável',
+  'adorável',
+  'afastado', //remote
   'ágil',
-  'agradável',
+  'agradável', //pleasant
   'agressivo',
+  'aguiarense',
   'alegre',
+  'alemão',
+  'alocável',
+  'altivo',
+  'alto',
   'altruísta',
   'amado',
+  'amarelo',
   'amargurado',
   'ambicioso',
-  'amigável',
+  'amigável', //user-friendly
   'amoroso',
   'animado',
+  'animístico',
   'ansioso',
   'antipático',
+  'apaixonado', //passionate
   'aplicado',
   'apressado',
   'arrogante',
@@ -240,61 +39,95 @@ export default [
   'autoritário',
   'avarento',
   'aventureiro',
+  'azedo',
+  'azul',
+  'baionense',
+  'baixo',
+  'barato',
+  'barulhento', //noisy
   'batalhador',
   'belo',
+  'besta', //stupid
+  'bicamaral',
+  'biológico',
   'birrento',
   'bisbilhoteiro',
   'bom',
   'bombástico',
   'bondoso',
   'bonito',
+  'branco',
+  'brasileiro',
   'bravo',
   'brilhante',
   'brincalhão',
+  'bronzeado', //tanned
   'bruto',
   'calmo',
+  'caloroso',
+  'cansado', //tired
+  'cansativo', //tiresome
   'capacitado',
   'carente',
   'caridoso',
   'carinhoso',
   'carismático',
+  'caro',
+  'castanho',
   'cativante',
+  'cessível',
   'charmoso',
   'chato',
+  'cheio',
   'cheiroso',
   'chique',
   'cínico',
+  'cinzento',
   'ciumento',
   'civilizado',
   'coerente',
+  'cómodo',
+  'comovente', //moving
   'companheiro',
   'competente',
   'competitivo',
   'comportado',
   'compreensivo',
+  'comprido',
   'compulsivo',
   'comunicativo',
-  'confiante',
+  'comunitário',
+  'confiante', //trusting
+  'conjunto', //together
+  'contrário',
+  'conveniente', //suitable
   'corajoso',
   'cordial',
+  'correto',
   'covarde',
   'criativo',
+  'criogénico',
   'criterioso',
   'crítico',
+  'cronoestratigráfico',
   'cruel',
   'cuidadoso',
   'culto',
   'curioso',
+  'curto', //short
   'debochado',
   'decente',
   'dedicado',
   'delicado',
   'dengoso',
+  'denigrativo',
   'dependente',
   'depressivo',
   'desafiador',
+  'desagradável', //unpleasant
   'desapegado',
-  'desconfiado',
+  'desconfiado', //wary
+  'desconhecido', //unknown
   'descontraído',
   'desejado',
   'desenvolto',
@@ -306,42 +139,62 @@ export default [
   'desmotivado',
   'desobediente',
   'desonesto',
+  'desportivo', //sporty
   'determinado',
-  'devagar',
+  'difícil',
   'digno',
   'disciplinado',
   'disponível',
   'dissimulado',
   'distraído',
+  'diversos', //various
   'divertido',
   'doce',
+  'doente', //sick
+  'dourado',
+  'duro',
   'duvidoso',
   'educado',
   'eficiente',
-  'egoísta',
+  'egoísta', //selfish
   'elegante',
   'empenhado',
   'empolgado',
+  'empolgante',
+  'encantado', //ravi
   'encantador',
   'engraçado',
   'entendido',
   'entusiasmado',
+  'epidérmico',
+  'equestre',
   'equilibrado',
+  'errado',
   'esbelto',
   'esclarecido',
+  'escuro',
+  'esfomeado',
   'esforçado',
+  'eslavónio',
+  'espaçoso', //spacious
+  'espanhol',
   'espantoso',
-  'especial',
+  'especial', //special
+  'específico', //specific
   'esperançoso',
   'esperto',
   'espetacular',
   'espirituoso',
+  'esplêndido', //splendid
   'espontâneo',
   'estourado',
+  'estranho', //weird
+  'estreito', //narrow
   'estressado',
   'estudioso',
-  'estúpido',
+  'estúpido', //stupid
   'eufórico',
+  'europeu',
   'excelente',
   'exigente',
   'experiente',
@@ -350,22 +203,26 @@ export default [
   'extrovertido',
   'fabuloso',
   'faceiro',
+  'fácil',
   'falso',
   'fanático',
   'fantástico',
   'fascinante',
   'feio',
   'feliz',
-  'fenomenal',
+  'fenomenal', //phenomenal
+  'ferido', //wounded
   'feroz',
+  'fertilizante',
   'fervoroso',
+  'fiável', //reliable
   'fiel',
   'fingido',
   'firme',
-  'fofo',
+  'fofo', //mellow
   'formidável',
   'formoso',
-  'forte',
+  'forte', //strong
   'fracassado',
   'fraco',
   'franco',
@@ -375,9 +232,10 @@ export default [
   'gaiteiro',
   'galanteador',
   'ganancioso',
+  'generativo',
   'generoso',
   'genial',
-  'gentil',
+  'gentil', //nice
   'genuíno',
   'gigante',
   'glorioso',
@@ -387,13 +245,16 @@ export default [
   'grande',
   'grato',
   'grosseiro',
-  'grosso',
+  'grosso', //thick
   'guloso',
   'habilidoso',
   'harmonioso',
+  'havaiano',
   'heroico',
-  'hilário',
+  'hidrodinâmico',
   'hilariante',
+  'hilário',
+  'hipnótico',
   'hipócrita',
   'histérico',
   'honesto',
@@ -401,38 +262,45 @@ export default [
   'honrado',
   'horrível',
   'horroroso',
-  'hostil',
   'hospitaleiro',
+  'hostil',
   'humanitário',
   'humilde',
   'ideal',
   'ignorante',
   'igual',
-  'iluminado',
+  'ilimitado', //unlimited
   'ilustre',
   'imbatível',
   'imortal',
+  'imóvel', //stationary
   'imparcial',
   'imperfeito',
+  'imprevisível', //unpredictable
   'impulsivo',
   'incoerente',
   'incompetente',
   'incrível',
   'indeciso',
   'independente',
+  'infeliz', //unfortunate
   'infiel',
   'ingênuo',
+  'inglês',
   'ingrato',
-  'injusto',
+  'íngreme',
+  'injusto', //unfair
   'inocente',
   'inovador',
-  'inquieto',
+  'inquieto', //worried
   'inseguro',
   'insensato',
-  'insuportável',
+  'insuportável', //unbearable
+  'insustentável', //untenable
   'íntegro',
   'inteligente',
   'intenso',
+  'interdito', //prohibited
   'interessante',
   'intrometido',
   'invejoso',
@@ -440,7 +308,7 @@ export default [
   'irritado',
   'jeitoso',
   'jocoso',
-  'jovem',
+  'jovem', //young
   'jovial',
   'jubiloso',
   'judia',
@@ -450,27 +318,33 @@ export default [
   'kantista',
   'kardecista',
   'kepleriano',
+  'lapônio',
+  'laranja',
   'largo',
   'leal',
   'ledo',
   'legal',
   'legítimo',
+  'lento', //slow
   'letrado',
   'leve',
   'liberal',
   'lícito',
-  'líder',
-  'livre',
+  'limpo',
   'lindo',
+  'livre',
+  'loiro',
+  'longo',
   'louco',
   'louvável',
   'lúcido',
   'lutador',
   'luxuoso',
-  'maduro',
+  'maduro', //ripe
   'mágico',
   'magnífico',
   'magoado',
+  'magro', //thin
   'maior',
   'majestoso',
   'malandro',
@@ -479,87 +353,136 @@ export default [
   'malvado',
   'mandão',
   'manhoso',
-  'maravilhoso',
+  'maravilhoso', //wonderful
   'marcante',
+  'mau',
   'máximo',
+  'médio', //medium
   'medroso',
   'meigo',
   'melancólico',
-  'melhor',
   'mentiroso',
   'mesquinho',
   'mimado',
   'minucioso',
-  'misterioso',
+  'minúscula', //tiny
+  'misterioso', //mysterious
+  'mixuruca',
   'moderado',
-  'moderno',
+  'moderno', //modern
   'modesto',
+  'molhado', //wet
   'mortal',
-  'motivado',
-  'natural',
+  'motivado', //motivated
+  'mudo', //mute
+  'muitos',
+  'mundial', //worldwide
   'narcisista',
-  'necessário',
+  'natural', //natural
+  'necessário', //necessary
   'necessitado',
   'negativista',
+  'negligenciável', //negligible
   'negligente',
-  'nervoso',
+  'nervoso', //nervous
   'neurótico',
   'nobre',
   'nojento',
   'normal',
-  'nostálgico',
-  'notável',
-  'novo',
+  'nostálgico', //nostalgic
+  'notável', //remarkable
+  'novo', //new
+  'nulo', //null
+  'numerosos', //many
   'obcecado',
   'obediente',
   'objetivo',
   'observador',
   'obstinado',
+  'óbvio', //obvious
+  'ocupado', //occupied
   'odioso',
+  'oficial', //official
   'oportunista',
-  'otário',
   'ordeiro',
   'ordinário',
   'organizado',
   'orgulhoso',
-  'original',
-  'otimista',
+  'original', //original
+  'otário',
+  'otimista', //optimist
   'ótimo',
   'ousado',
   'pacato',
-  'paciente',
+  'paciente', //patient
+  'passável', //passable
   'passivo',
-  'pequeno',
+  'patronal',
+  'pegajoso', //sticky
+  'penoso', //painful
+  'pequeno', //small
   'perfeccionista',
-  'perfeito',
-  'perseverante',
+  'perfeito', //perfect
+  'peritoneal',
+  'perseverante', //persevering
   'persistente',
   'perspicaz',
-  'pessimista',
+  'perto', //near
+  'perturbador', //troubling
+  'pesado',
+  'pessimista', //pessimistic
+  'pharmaceutico',
+  'picante', //spicy
   'piedoso',
   'pioneiro',
-  'poderoso',
+  'pior', //worse
+  'plano',
+  'pobre', //poor
+  'poderoso', //powerful
+  'podre', //rotten
+  'polémico',
+  'político', //political
+  'poluído', //polluted
   'ponderado',
-  'pontual',
+  'pontual', //punctual
+  'popular', //popular
+  'positivo', //positive
   'possessivo',
+  'possível', //possible
+  'póstumo',
   'potente',
+  'poucos',
+  'prático', //practice
   'prazeroso',
   'precipitado',
+  'preciso', //precise
   'preconceituoso',
   'preguiçoso',
-  'prepotente',
   'preocupado',
   'preparado',
-  'presunçoso',
+  'prepotente',
+  'presidiario',
   'prestativo',
+  'presunçoso',
+  'pretensiosa', //pretentious
+  'preto',
   'prevenido',
   'primoroso',
+  'privado', //private
+  'privilegiado',
   'problemático',
+  'prodigioso', //prodigious
   'produtivo',
+  'profundo',
+  'próprio', //own
   'próspero',
   'protetor',
+  'próximo', //next
   'prudente',
+  'pubescente',
+  'público', //public
   'puro',
+  'quadrado', //square
   'qualificado',
   'quente',
   'querençoso',
@@ -571,15 +494,24 @@ export default [
   'raivosa',
   'rancoroso',
   'rápido',
+  'raro', //rare
+  'raso',
   'razoável',
-  'realista',
+  'realista', //realistic
   'realizado',
   'rebelde',
+  'recente', //recent
   'receptivo',
+  'rechonchudo',
+  'reciclado', //recycled
   'refinado',
+  'regular', //regular
+  'reincidente',
   'rejeitado',
   'relapso',
   'relaxado',
+  'relevante', //relevant
+  'religioso', //religious
   'reluzente',
   'renomado',
   'reservado',
@@ -587,97 +519,143 @@ export default [
   'resistente',
   'respeitado',
   'respeitável',
-  'responsável',
+  'responsável', //responsible
   'revoltado',
+  'rico', //rich
   'rígido',
   'rigoroso',
   'risonho',
   'robusto',
-  'romântico',
+  'romântico', //romantic
+  'roxo',
   'rude',
   'sábio',
   'sadio',
   'sagaz',
+  'salgado', //salted
   'sapeca',
   'sarcástico',
+  'satisfatório', //satisfactory
+  'satisfaz', //satisfied
   'satisfeito',
   'saudável',
   'sedentário',
+  'sedento',
   'sedutor',
+  'segredo', //secret
   'seguro',
+  'selvagem', //wild
+  'semelhante', //similar
   'sensacional',
   'sensato',
   'sensível',
   'sentimental',
   'serelepe',
   'sereno',
-  'sério',
+  'sério', //serious
+  'silencioso', //silent
   'simpático',
-  'sincero',
+  'simples', //simple
+  'sincero', //sincere
   'singular',
-  'sociável',
+  'só',
+  'soberba', //superb
+  'sociável', //sociable
   'sofisticado',
   'sofrido',
   'solícito',
   'solidário',
+  'sólido', //solid
+  'solitário', //solitaire
   'sonhador',
-  'sorridente',
+  'sorridente', //smiling
   'sossegado',
-  'suave',
+  'sovina',
+  'suave', //sweet
   'sublime',
   'sufocado',
+  'sujo',
+  'super', //super
+  'superficial', //superficial
+  'superpovoado', //overcrowded
+  'supersticioso', //superstitious
+  'surpreendido', //surprised
   'sutil',
   'tagarela',
-  'talentoso',
+  'talentoso', //talented
   'tedioso',
-  'teimoso',
+  'teimoso', //stubborn
   'temente',
+  'temporário', //temporary
   'tendencioso',
   'tentador',
   'terno',
-  'tímido',
+  'terrível', //terrible
+  'tímido', //shy
+  'típico', //typical
   'tirano',
   'tocante',
-  'tolerante',
-  'trabalhador',
+  'tolerante', //tolerant
+  'tolerável', //tolerable
+  'topo', //top
+  'total', //total
+  'tóxico', //toxic
+  'tradicional', //traditional
   'traiçoeiro',
   'traidor',
-  'transigente',
-  'trapaceiro',
   'tranquilo',
+  'transigente',
   'transparente',
+  'trapaceiro',
+  'tratante',
+  'triangular', //triangular
+  'trilíngue',
+  'triste', //sad
   'tristonho',
   'triunfal',
   'ultrapassado',
-  'único',
+  'ultrassônico',
+  'único', //unique
   'unificador',
   'urbano',
+  'usado', //worn
   'útil',
   'vaidoso',
   'valente',
-  'valioso',
+  'valioso', //valuable
   'valoroso',
+  'vasto', //vast
+  'vazio',
+  'velho', //old
   'veloz',
   'vencedor',
   'venerável',
+  'verdade', //real, true	
   'verdadeiro',
+  'verde-esmeralda',
+  'verde',
   'vergonhoso',
   'verídico',
+  'vermelho',
   'versátil',
+  'vetorial',
   'vibrante',
   'vigarista',
-  'vingativo',
   'vigilante',
   'vigoroso',
+  'vingativo',
   'viril',
   'virtuoso',
+  'viscoso', //viscous
   'visionário',
+  'visto',
   'vital',
   'vitorioso',
   'vívido',
+  'vogal',
   'voraz',
-  'vulgar',
-  'vulnerável',
+  'vulgar', //vulgar
+  'vulnerável', //vulnerable
   'weberiano',
   'wesleyano',
   'wildiano',
@@ -695,86 +673,5 @@ export default [
   'zeloso',
   'zen',
   'zoado',
-
-  'pesado',
-  'leve',
-  'correto',
-  'errado',
-  'difícil',
-  'fácil',
-  'poucos',
-  'muitos',
-  'novo',
-  'velho',
-  'lento',
-  'rápido',
-  'pobre',
-  'rico',
-  'branco',
-  'preto',
-  'cinzento',
-  'verde',
-  'azul',
-  'vermelho',
-  'laranja',
-  'roxo',
-  'amarelo',
-  'castanho',
-  'bom',
-  'mau',
-  'fraco',
-  'forte',
-  'feliz',
-  'triste',
-  'saudável',
-  'doente',
-  'esfomeado',
-  'sedento',
-  'só',
-  'cansado',
-  'curto',
-  'comprido',
-  'pequeno',
-  'grande',
-  'alto',
-  'baixo',
-  'íngreme',
-  'plano',
-  'raso',
-  'profundo',
-  'estreito',
-  'largo',
-  'barato',
-  'caro',
-  'suave',
-  'duro',
-  'vazio',
-  'cheio',
-  'sujo',
-  'limpo',
-  'doce',
-  'azedo',
-  'jovem',
-  'frio',
-  'quente',
-  'calmo',
-  'simpático',
-  'bonito',
-  'feio',
-  'loiro',
-  'dourado',
-  'escuro',
-  'maravilhoso',
-  'divertido',
-  'generoso',
-  'honesto',
-  'longo',
-  'educado',
-  'magro',
-  'brasileiro',
-  'inglês',
-  'espanhol',
-  'alemão',
-  'europeu',
 ]
 

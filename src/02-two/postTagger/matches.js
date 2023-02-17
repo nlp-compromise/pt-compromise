@@ -10,5 +10,7 @@ const postTagger = function (doc) {
   doc.match('(uma|um) #Value').tag('Value', 'uma-milhão')
   // menos noventa
   doc.match('menos #Value').tag('Value', 'menos-noventa')
+  // cantar é bom
+  doc.match('[#Infinitive] #Copula', 0).tag('Noun', 'gerund-noun')
 }
 export default postTagger

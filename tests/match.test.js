@@ -4,9 +4,9 @@ let here = '[pt-match] '
 
 test('match:', function (t) {
   let arr = [
-    // ['O rato comeu o queijo', '#Determiner #Noun #Verb #Determiner #Noun'],// ("The mouse ate the cheese")
-    // ['o carro é branco', '#Determiner #Noun #Copula #Adjective'],// ("the car is white")
-    // ['a casa é branca', '#Determiner #Noun #Copula #Adjective'],// ("the house is white").
+    ['O rato comeu o queijo', '#Determiner #Noun #Verb #Determiner #Noun'],// ("The mouse ate the cheese")
+    ['o carro é branco', '#Determiner #Noun #Copula #Adjective'],// ("the car is white")
+    ['a casa é branca', '#Determiner #Noun #Copula #Adjective'],// ("the house is white").
 
     // ['Tens que aceitar os factos.', '#Modal que #Verb #Determiner #Noun'],
     // ['Eles querem ir comigo', '#Pronoun #Auxiliary #Verb #Pronoun'],
@@ -18,8 +18,8 @@ test('match:', function (t) {
     // ['estes lindos gatos brancos', '#Pronoun #Adjective #Noun #Adjective'],// ("these lovely white cats")
 
     // ['Fui, apesar da loja estar fechada.', '#Verb #Preposition de la #Noun #Copula #Adjective'],//"I went, even though the shop was closed."
-    // ['queremos cantar', '#Verb #Infinitive'],//we want to sing
-    // ['cantar é bom', '#Gerund #Copula #Adjective'],//sining is good
+    ['queremos cantar', '#Verb #Infinitive'],//we want to sing
+    ['cantar é bom', '#Noun #Copula #Adjective'],//singing is good
     // ['Estavam dormindo', '#Pronoun #Verb'],//they were sleeping
     // ['Estavam a dormir.', '#Pronoun #Auxiliary #Verb'],//they were sleeping
     // ['cantávamos', '#PastTense'],//"we were singing"
@@ -27,6 +27,9 @@ test('match:', function (t) {
     // ['ele havia falado', '#Pronoun #Auxiliary #Verb'],//he had spoken
     // ['temos falado', '#Pronoun #Verb'],//we have been speaking
 
+    ['Tinham deixado aqui uma cadeira', ''],//    They had left a chair here
+
+    ['O Artur está a comer o almoço.', '#Determiner #Person #Auxiliary #Verb #Preposition #Noun'],//arthur is eating lunch
     // lexicon
     ['limpo', '#Adjective'],
     ['limpa', '#Adjective'],

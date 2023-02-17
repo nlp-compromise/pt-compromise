@@ -1,7 +1,11 @@
 import nlp from './src/index.js'
-// nlp.verbose('tagger')
+nlp.verbose('tagger')
 
 let str = ``
-str = `trinta`
-let doc = nlp(str).numbers().toOrdinal().debug()
-console.log(doc.text())
+str = `cantar é bom`
+str = `O Artur está a comer o almoço.`
+str = `Tinham deixado aqui uma cadeira`
+str = `Tinham deixado`
+let doc = nlp(str)
+// console.log(doc.verbs().conjugate())
+doc.debug()

@@ -3,9 +3,9 @@ import checkRegex from './1st-pass/regex.js'
 import titleCase from './1st-pass/titlecase.js'
 import checkYear from './1st-pass/year.js'
 // 2nd pass
-// import acronym from './2nd-pass/acronym.js'
-// import fallback from './2nd-pass/fallback.js'
-// import suffixCheck from './2nd-pass/suffix-lookup.js'
+import acronym from './2nd-pass/acronym.js'
+import fallback from './2nd-pass/fallback.js'
+import suffixCheck from './2nd-pass/suffix-lookup.js'
 // // 3rd
 // import guessNounGender from './3rd-pass/noun-gender.js'
 // import guessPlural from './3rd-pass/noun-plural.js'
@@ -25,14 +25,14 @@ const firstPass = function (terms, world) {
     checkYear(terms, i, world)
   }
 }
-// const secondPass = function (terms, world) {
-//   for (let i = 0; i < terms.length; i += 1) {
-//     let found = acronym(terms, i, world)
-//     found = found || suffixCheck(terms, i, world)
-//     // found = found || neighbours(terms, i, world)
-//     found = found || fallback(terms, i, world)
-//   }
-// }
+const secondPass = function (terms, world) {
+  for (let i = 0; i < terms.length; i += 1) {
+    let found = acronym(terms, i, world)
+    found = found || suffixCheck(terms, i, world)
+    // found = found || neighbours(terms, i, world)
+    found = found || fallback(terms, i, world)
+  }
+}
 
 // const thirdPass = function (terms, world) {
 //   for (let i = 0; i < terms.length; i += 1) {
@@ -49,7 +49,7 @@ const tagger = function (view) {
   let world = view.world
   view.docs.forEach(terms => {
     firstPass(terms, world)
-    // secondPass(terms, world)
+    secondPass(terms, world)
     // thirdPass(terms, world)
   })
   return view

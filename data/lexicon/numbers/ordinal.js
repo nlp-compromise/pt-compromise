@@ -1,23 +1,23 @@
 export default [
-  'primeiro',//1st
-  'segundo',//2nd
-  'terceiro',//3rd
-  'quarto',//4th
-  'quinto',//5th
-  'sexto',//6th
-  'sétimo',//7th
-  'oitavo',//8th
-  'nono',//9th
-  'décimo',//10th
-  'vigésimo',//20th
-  'trigésimo',//30th
-  'quadragésimo',//40th
-  'quinquagésimo',//50th
-  'sexagésimo',//60th
-  'septuagésimo',//70th
-  'octogésimo',//80th
-  'nonagésimo',//90th
-  'centésimo',//100th
+  // 'primeiro',//1st
+  // 'segundo',//2nd
+  // 'terceiro',//3rd
+  // 'quarto',//4th
+  // 'quinto',//5th
+  // 'sexto',//6th
+  // 'sétimo',//7th
+  // 'oitavo',//8th
+  // 'nono',//9th
+  // 'décimo',//10th
+  // 'vigésimo',//20th
+  // 'trigésimo',//30th
+  // 'quadragésimo',//40th
+  // 'quinquagésimo',//50th
+  // 'sexagésimo',//60th
+  // 'septuagésimo',//70th
+  // 'octogésimo',//80th
+  // 'nonagésimo',//90th
+  // 'centésimo',//100th
 
   // // fem forms
   // 'primeira',

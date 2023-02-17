@@ -27,42 +27,42 @@ export default [
   'me',//	myself
   'te',//	yourself
   'ti',//	yourself
-  'se',//	yourself
+  // 'se',//	yourself
   'se',//	himself/herself/itself
   'si',//	himself/herself/itself
   'nos',//	ourselves
   'vos',//	yourselves
-  'se',//	yourselves/themselves/each other
+  // 'se',//	yourselves/themselves/each other
 
   // direct object
   // Me	Me
   // Te	You
-  'o',
-  'a',
+  // 'o',
+  // 'a',
   'lo',
   'la',//	him / her / it
-  'nos',//	us
-  'vos',//	you(plural)
+  // 'nos',//	us
+  // 'vos',//	you(plural)
   'os',
   'as',
   'los',
   'las',//	them
 
   // indirect object pronouns
-  'mim',//	(to/for) me
+  // 'mim',//	(to/for) me
   'lhe',//
-  'ti',//
-  'te',//
-  'você',//(to/for) you
-  'ele',//
-  'ela',//
+  // 'ti',//
+  // 'te',//
+  // 'você',//(to/for) you
+  // 'ele',//
+  // 'ela',//
   // 'o senhor',
   // 'a senhora',//	(to/for) him/her
-  'nós',//	(to/for) us
+  // 'nós',//	(to/for) us
   'lhes',///
-  'vocês',//	(to/for) you (plural)
-  'eles',
-  'elas',//'lhes/para eles/para elas	(to/for) them
+  // 'vocês',//	(to/for) you (plural)
+  // 'eles',
+  // 'elas',//'lhes/para eles/para elas	(to/for) them
 
   // prepositional
   'mim',
