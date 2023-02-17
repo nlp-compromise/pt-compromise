@@ -41,6 +41,15 @@ test('match:', function (t) {
     ['desde', '#Preposition'],
     ['uma', '#Determiner'],
     ['estão', '#Copula'],
+    // dropped-s
+    ['Nós lavamo-nos.', '#Pronoun #FirstPersonPlural #Reflexive'],
+    ['Nós encontramo-nos', '#Pronoun #FirstPersonPlural #Reflexive'],
+    ['Nós encontramos às quinze.', '#Pronoun #Verb #Preposition #Value'],
+    // reflexive
+    ['Eles beijam-se.', '#Pronoun #Verb #Reflexive'],
+    ['banhar-se', '#Infinitive #Reflexive'],
+    ['Ele não se lavou', '#Pronoun #Negative #Reflexive #PastTense'],
+    ['Quando é que ele se lavou?', '#QuestionWord #Verb #Conjunction #Pronoun #Reflexive #PastTense'],
   ]
   arr.forEach(function (a) {
     let [str, match] = a

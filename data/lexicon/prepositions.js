@@ -12,6 +12,7 @@ export default [
   'sem', //"without"
   'sobre', //"on", "above", "on top of", "about"
   'sob', //"under" (mostly literary)
+  'às',//compound
 
 
   // Compound prepositions

@@ -20,5 +20,11 @@ const postTagger = function (doc) {
   doc.match('[{ir}] #Verb', 0).tag('Auxiliary', 'ir-verb')
   // ele havia falado
   doc.match('[{haver}] #Verb', 0).tag('Auxiliary', 'haver-verb')
+  // Ele quer mostrar
+  doc.match('[{querer}] #Verb', 0).tag('Auxiliary', 'querer-verb')
+
+  // ==reflexive verbs==
+  doc.match('#Verb [(me|se|te|nos)]', 0).tag('Reflexive', 'verb-se')
+  doc.match('[(me|se|te|nos)] #Verb', 0).tag('Reflexive', 'se-verb')
 }
 export default postTagger

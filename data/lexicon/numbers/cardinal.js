@@ -1,6 +1,6 @@
 export default [
   'zero',//zero
-  'um',//one
+  // 'um',//one
   'dois',//two
   'duas',//two
   'três',//three

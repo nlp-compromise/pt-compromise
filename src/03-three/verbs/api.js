@@ -3,7 +3,7 @@ export const getNth = (doc, n) => (typeof n === 'number' ? doc.eq(n) : doc)
 // get root form of verb
 const getRoot = function (m) {
   m.compute('root')
-  m = m.not('(#Auxiliary|#Adverb|#Negative)')
+  m = m.not('(#Auxiliary|#Adverb|#Negative|#Reflexive)')
   let str = m.text('root')
   return str
 }

@@ -1,7 +1,16 @@
 
 let lex = {
   'não': 'Negative',
-  'nunca': 'Negative'
+  'nunca': 'Negative',
+  // 'quê': 'QuestionWord',//what?
+  'quem': 'QuestionWord',//who?
+  'qual': 'QuestionWord',//which?
+  'porquê': 'QuestionWord',//why?
+  'quando': 'QuestionWord',//when?
+  'onde': 'QuestionWord',//where?
+  'como': 'QuestionWord',//how?
+  'quanto': 'QuestionWord',
+  'quão': 'QuestionWord',
 }
 
 //possessive pronouns
