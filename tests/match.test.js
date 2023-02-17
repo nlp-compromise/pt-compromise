@@ -66,7 +66,9 @@ test('match:', function (t) {
     ['O vestido que você estava usando', '#Determiner #Noun #Conjunction #Pronoun #Auxiliary #Gerund'],
     ['Catarina poderia ter proposta', '#Noun #Modal #Auxiliary #Verb'],
     ['Posso fumar aqui?', '#Modal #Infinitive .'],//Can I smoke here?
+    ['Deves estar excitado.', '#Modal #Copula #Adjective'],//you must be excited
     // ['Não podes fazer tudo o que queres.', ''], //You can’t do everything you want.
+    ['podemos ir ao quarto para tomar um duche.', '#Modal #Infinitive #Preposition #Determiner #Noun #Preposition #PresentTense #Determiner #Noun'],// we can go to our room and take a shower.
     // ['',''],
   ]
   arr.forEach(function (a) {

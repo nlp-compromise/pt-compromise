@@ -985,5 +985,6 @@ export default [
   'objetivo',
   'vendas',
   'nada',
+  'sistema',
 
 ]

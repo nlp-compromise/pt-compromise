@@ -785,5 +785,6 @@ export default [
   'infantil',
   'outro',
   'mesmo',
+  'excitado',
 ]
 

@@ -5,7 +5,7 @@ import misc from './misc.js'
 
 const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
   toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo } = methods.verb
-let lexicon = misc
+let lexicon = {}
 
 const tagMap = {
   first: 'FirstPerson',
@@ -80,6 +80,9 @@ Object.keys(lexData).forEach(tag => {
     }
   })
 })
+
+Object.assign(lexicon, misc)
 // console.log(lexicon['ele'])
+
 
 export default lexicon

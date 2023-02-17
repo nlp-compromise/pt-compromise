@@ -36,6 +36,8 @@ const postTagger = function (doc) {
   doc.match('[{poder}] #Verb', 0).tag('Modal', 'could-verb')
   doc.match('{poder} ter #Noun').tag('#Modal #Auxiliary #Verb', 'could-have-noun')
   doc.match('[{poder} ter] #Verb', 0).tag('#Modal #Auxiliary', 'could-have-verb')
+  // must 
+  doc.match('[{dever}] #Verb', 0).tag('Modal', 'must-verb')
 
   // ==reflexive verbs==
   doc.match('#Verb [(me|se|te|nos)]', 0).tag('Reflexive', 'verb-se')
@@ -43,5 +45,8 @@ const postTagger = function (doc) {
 
   // ==numbers==
   doc.match('#Value [(primeiro|primeira|primeiros|primeiras)]', 0).tag('Ordinal', 'val-primeiro')
+  // ==misc==
+  // four vs room
+  doc.match('#Determiner [quarto]', 0).tag('Noun', 'quatro-room')
 }
 export default postTagger
