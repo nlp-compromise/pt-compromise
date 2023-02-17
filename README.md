@@ -26,7 +26,7 @@
   </div>
   <div align="center">
     <sub>
-     ver: <a href="https://github.com/nlp-compromise/it-compromise">italian</a> • <a href="https://github.com/nlp-compromise/de-compromise">german</a> • <a href="https://github.com/nlp-compromise/fr-compromise">french</a> • <a href="https://github.com/spencermountain/compromise">english</a> • <a href="https://github.com/spencermountain/es-compromise">spanish</a>
+     ver: <a href="https://github.com/nlp-compromise/it-compromise">italiano</a> • <a href="https://github.com/nlp-compromise/de-compromise">alemão</a> • <a href="https://github.com/nlp-compromise/fr-compromise">francês</a> • <a href="https://github.com/spencermountain/compromise">inglês</a> • <a href="https://github.com/spencermountain/es-compromise">espanhol</a>
     </sub>
   </div>
 </div>
@@ -63,7 +63,7 @@ ou no navegador:
 <script src="https://unpkg.com/pt-compromise"></script>
 <script>
   let txt = 'De um povo heroico o brado retumbante'
-  let doc = esCompromise(txt) // window.esCompromise
+  let doc = ptCompromise(txt) // window.ptCompromise
   console.log(doc.json())
   // { text:'De um...', terms:[ ... ] }
 </script>
