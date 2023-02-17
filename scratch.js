@@ -10,6 +10,10 @@ str = `Tinham deixado`
 str = `18,9 milhões`
 str = `18 milhões`
 str = `será sorteado`
+str = `Heróis do mar, nobre povo,`
+str = `Entre as brumas da memória,`
+str = `Desfralda a invicta Bandeira,`
+str = `O Oceano, a rugir d'amor,`
 let doc = nlp(str)
 
 

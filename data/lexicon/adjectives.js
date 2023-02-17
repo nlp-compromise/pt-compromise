@@ -787,5 +787,6 @@ export default [
   'mesmo',
   'excitado',
   'qualquer',
+  'invicta',
 ]
 
