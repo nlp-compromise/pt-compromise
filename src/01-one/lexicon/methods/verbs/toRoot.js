@@ -12,7 +12,8 @@ let {
   pluperfect,
   presentTense,
   gerunds,
-  pastParticiple
+  pastParticiple,
+  infinitivo
 } = model
 
 // =-=-
@@ -31,6 +32,7 @@ imperfect = revAll(imperfect)
 pastTense = revAll(pastTense)
 pluperfect = revAll(pluperfect)
 presentTense = revAll(presentTense)
+infinitivo = revAll(infinitivo)
 gerunds = reverse(gerunds.gerunds)
 pastParticiple = reverse(pastParticiple.pastParticiple)
 
@@ -50,6 +52,7 @@ const fromImperfect = (str) => allForms(str, imperfect)
 const fromPastTense = (str) => allForms(str, pastTense)
 const fromPluperfect = (str) => allForms(str, pluperfect)
 const fromPresentTense = (str) => allForms(str, presentTense)
+const fromInfinitivo = (str) => allForms(str, infinitivo)
 const fromGerund = (str) => convert(str, gerunds)
 const fromPastParticiple = (str) => convert(str, pastParticiple)
 
@@ -64,4 +67,5 @@ export {
   fromPresentTense,
   fromGerund,
   fromPastParticiple,
+  fromInfinitivo
 }

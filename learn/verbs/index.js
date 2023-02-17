@@ -1,5 +1,5 @@
-import data from './scrape/data.js'
-let want = 'Presente'
+import data from './scrape/data3.js'
+let want = 'Infinitivo Pessoal'
 let out = {}
 data.forEach(obj => {
   out[obj.word] = obj[want]
@@ -14,4 +14,4 @@ data.forEach(obj => {
 //   out[obj.word] = obj.arr[want]
 // })
 
-// console.log(JSON.stringify(out, null, 2))
+console.log(JSON.stringify(out, null, 2))

@@ -4961,7 +4961,7 @@ export default {
   "tactear": ["tacteei", "tacteaste", "tacteou", "tacteamos", "tacteastes", "tactearam"],
   "bravatear": ["bravateei", "bravateaste", "bravateou", "bravateamos", "bravateastes", "bravatearam"],
   "desconcordar": ["desconcordei", "desconcordaste", "desconcordou", "desconcordamos", "desconcordastes", "desconcordaram"],
-  "embaciar": ["embaciei", "embaciaste", "embaciou", "embaciamos", "embaciastes", "embaciaram"],
+  "embaciar": ["embaciei", "embacregulamentasseiaste", "embaciou", "embaciamos", "embaciastes", "embaciaram"],
   "embatucar": ["embatuquei", "embatucaste", "embatucou", "embatucamos", "embatucastes", "embatucaram"],
   "escarnar": ["escarnei", "escarnaste", "escarnou", "escarnamos", "escarnastes", "escarnaram"],
   "inconstitucionalizar": ["inconstitucionalizei", "inconstitucionalizaste", "inconstitucionalizou", "inconstitucionalizamos", "inconstitucionalizastes", "inconstitucionalizaram"],

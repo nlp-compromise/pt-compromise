@@ -25,11 +25,11 @@ const api = function (View) {
         toPluperfect,
         toPresentTense,
         toGerund,
-        toPastParticiple } = methods
+        toPastParticiple,
+        toInfinitivo } = methods
       return getNth(this, n).map(m => {
         let str = getRoot(m, methods)
         return {
-
           Conditional: toConditional(str),
           FutureTense: toFutureTense(str),
           ImperativeNeg: toImperativeNeg(str),
@@ -38,9 +38,9 @@ const api = function (View) {
           PastTense: toPastTense(str),
           Pluperfect: toPluperfect(str),
           PresentTense: toPresentTense(str),
+          Infinitivo: toInfinitivo(str),
           Gerund: toGerund(str),
           PastParticiple: toPastParticiple(str),
-
         }
       }, [])
     }

@@ -4,7 +4,7 @@ import methods from './methods/index.js'
 import misc from './misc.js'
 
 const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
-  toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple } = methods.verb
+  toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo } = methods.verb
 let lexicon = misc
 
 const tagMap = {
@@ -54,6 +54,9 @@ Object.keys(lexData).forEach(tag => {
       // add toPluperfect
       obj = toPluperfect(w)
       addToLex(obj, 'Pluperfect', lexicon)
+      // add toInfinitivo
+      obj = toInfinitivo(w)
+      addToLex(obj, 'Infinitive', lexicon)
       // add gerund
       let str = toGerund(w)
       lexicon[str] = lexicon[str] || 'Gerund'

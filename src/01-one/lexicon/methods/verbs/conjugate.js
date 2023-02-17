@@ -1,4 +1,4 @@
-import { convert, reverse } from 'suffix-thumb'
+import { convert } from 'suffix-thumb'
 import model from '../models.js'
 const forms = ['first', 'second', 'third', 'firstPlural', 'secondPlural', 'thirdPlural']
 
@@ -12,7 +12,8 @@ let {
   pluperfect,
   presentTense,
   gerunds,
-  pastParticiple
+  pastParticiple,
+  infinitivo
 } = model
 
 
@@ -31,6 +32,7 @@ const toImperfect = (str) => allForms(str, imperfect)
 const toPastTense = (str) => allForms(str, pastTense)
 const toPluperfect = (str) => allForms(str, pluperfect)
 const toPresentTense = (str) => allForms(str, presentTense)
+const toInfinitivo = (str) => allForms(str, infinitivo)
 const toGerund = (str) => convert(str, gerunds)
 const toPastParticiple = (str) => convert(str, pastParticiple)
 
@@ -48,6 +50,7 @@ const all = function (str) {
     Object.values(toPastTense(str)),
     Object.values(toPluperfect(str)),
     Object.values(toPresentTense(str)),
+    Object.values(toInfinitivo(str)),
     toGerund(str),
     toPastParticiple(str),
   ).filter(s => s)
@@ -67,5 +70,6 @@ export {
   toPresentTense,
   toGerund,
   toPastParticiple,
+  toInfinitivo
 }
 // console.log(all('broxar'))

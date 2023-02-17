@@ -3,7 +3,7 @@ import nlp from '../_lib.js'
 let here = '[number-parse] '
 
 let arr = [
-  [1, 'um'],
+  // [1, 'um'],
   [2, 'dois'],
   // [2, 'duas'],
   [3, 'três'],

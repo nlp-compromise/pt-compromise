@@ -41,6 +41,18 @@ test('match:', function (t) {
     ['desde', '#Preposition'],
     ['uma', '#Determiner'],
     ['estão', '#Copula'],
+    // future tenses
+    ['eu beberei o vinho', '#Pronoun #FutureTense #Determiner #Noun'],// i will drink wine
+    ['Eu assistirei o filme.', '#Pronoun #FutureTense #Determiner #Noun'],
+    ['Nós ganharemos o jogo.', '#Pronoun #FutureTense #Determiner #Noun'],
+    // ir+infinitive
+    ['eu vou beber o vinho', '#Pronoun #Auxiliary #Infinitive #Determiner #Noun'],// i will drink wine
+    ['Eu vou assistir o filme.', '#Pronoun #Auxiliary #Infinitive #Determiner #Noun'],// 
+    ['Nós vamos ganhar o jogo.', '#Pronoun #Auxiliary #Infinitive #Determiner #Noun'],// 
+    // future-past
+    ['ele chegaria ao jantar.', '#Pronoun #Conditional #Preposition #Determiner #Noun'],// he would make it to the dinner.
+    ['eu ganharia mais dinheiro.', '#Pronoun #Conditional #Adverb #Noun'],// i would earn more money
+
     // dropped-s
     ['Nós lavamo-nos.', '#Pronoun #FirstPersonPlural #Reflexive'],
     ['Nós encontramo-nos', '#Pronoun #FirstPersonPlural #Reflexive'],

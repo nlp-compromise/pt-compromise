@@ -4,8 +4,11 @@ import imperativeNeg from './imperative-negative.js'
 import imperative from './imperative.js'
 import pastTense from './past-tense.js'
 import pluperfect from './pluperfect.js'
-import imperfect from './subj-past.js'
-import presentTense from './subj-present.js'
+import imperfect from './imperfect.js'
+import presentTense from './present-tense.js'
+import infinitive from './infinitive.js'
+// import imperfect from './subj-imperfect.js'
+// import presentTense from './subj-present.js'
 
 const vbOrder = ['first', 'second', 'third', 'firstPlural', 'secondPlural', 'thirdPlural']
 const todo = {
@@ -17,6 +20,7 @@ const todo = {
   pastTense: { data: pastTense, keys: vbOrder },
   pluperfect: { data: pluperfect, keys: vbOrder },
   presentTense: { data: presentTense, keys: vbOrder },
+  infinitivo: { data: infinitive, keys: vbOrder },
 }
 
 // turn our conjugation data into word-pairs
