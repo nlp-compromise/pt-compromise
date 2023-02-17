@@ -23,13 +23,13 @@ test('match:', function (t) {
     // ['Estavam dormindo', '#Pronoun #Verb'],//they were sleeping
     // ['Estavam a dormir.', '#Pronoun #Auxiliary #Verb'],//they were sleeping
     // ['cantávamos', '#PastTense'],//"we were singing"
-    // ['cantaríamos', '#ConditionalVerb'],
-    // ['ele havia falado', '#Pronoun #Auxiliary #Verb'],//he had spoken
+    ['cantaríamos', '#Conditional'],
+    ['ele havia falado', '#Pronoun #Auxiliary #Verb'],//he had spoken
     // ['temos falado', '#Pronoun #Verb'],//we have been speaking
+    ['ele vai cantar', '#Pronoun #Auxiliary #Verb'],
+    // ['Tinham deixado aqui uma cadeira', ''],//    They had left a chair here
 
-    ['Tinham deixado aqui uma cadeira', ''],//    They had left a chair here
-
-    ['O Artur está a comer o almoço.', '#Determiner #Person #Auxiliary #Verb #Preposition #Noun'],//arthur is eating lunch
+    ['O Artur está a comer o almoço.', '#Determiner #Person #Auxiliary #Auxiliary #Verb #Determiner #Noun'],//arthur is eating lunch
     // lexicon
     ['limpo', '#Adjective'],
     ['limpa', '#Adjective'],

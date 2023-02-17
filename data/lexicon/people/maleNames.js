@@ -80,6 +80,7 @@ export default [
   'arnold',
   'aron',
   'arthur',
+  'artur',
   'arturo',
   'aryan',
   'asahi',

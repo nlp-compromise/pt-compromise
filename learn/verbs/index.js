@@ -1,5 +1,5 @@
 import data from './scrape/data.js'
-let want = 'Pretérito Mais-que-perfeito'
+let want = 'Presente'
 let out = {}
 data.forEach(obj => {
   out[obj.word] = obj[want]

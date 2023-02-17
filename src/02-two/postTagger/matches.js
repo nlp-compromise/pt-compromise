@@ -12,5 +12,13 @@ const postTagger = function (doc) {
   doc.match('menos #Value').tag('Value', 'menos-noventa')
   // cantar é bom
   doc.match('[#Infinitive] #Copula', 0).tag('Noun', 'gerund-noun')
+
+  // ===auxiliary verbs==
+  // está a comer
+  doc.match('[{estar} a?] #Verb', 0).tag('Auxiliary', 'está-a-verb')
+  // ele vai cantar
+  doc.match('[{ir}] #Verb', 0).tag('Auxiliary', 'ir-verb')
+  // ele havia falado
+  doc.match('[{haver}] #Verb', 0).tag('Auxiliary', 'haver-verb')
 }
 export default postTagger

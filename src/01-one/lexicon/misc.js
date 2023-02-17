@@ -1,5 +1,8 @@
 
-let lex = {}
+let lex = {
+  'não': 'Negative',
+  'nunca': 'Negative'
+}
 
 //possessive pronouns
 let poss = [

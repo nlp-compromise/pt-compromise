@@ -2,9 +2,9 @@ import conditional from './conditional.js'
 import futureTense from './future-tense.js'
 import imperativeNeg from './imperative-negative.js'
 import imperative from './imperative.js'
-import imperfect from './subj-past.js'
 import pastTense from './past-tense.js'
 import pluperfect from './pluperfect.js'
+import imperfect from './subj-past.js'
 import presentTense from './subj-present.js'
 
 const vbOrder = ['first', 'second', 'third', 'firstPlural', 'secondPlural', 'thirdPlural']
