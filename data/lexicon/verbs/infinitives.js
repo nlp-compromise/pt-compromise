@@ -4997,5 +4997,5 @@ export default [
   'ominar',
   'peculiarizar',
   'rezingar',
-  'vaporizar'
+  'vaporizar',
 ]

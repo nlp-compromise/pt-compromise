@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+// load mac_morpho training dataset
 
 import { fileURLToPath } from 'url'
 const dir = path.dirname(fileURLToPath(import.meta.url))
@@ -94,24 +95,25 @@ const getDoc = function (id) {
       return {
         word: a[0],
         tag: mapping[tag] || tag,
+        was: tag
       }
     })
-    words = words.filter(o => o.tag && punct[o.tag])
+    words = words.filter(o => o.tag && !punct[o.tag])
     return {
-      txt: txt.join(' '),
+      txt: txt.join(' ').replace(/ (,|:|;|.) /g, '$1 ').trim(),
       words
     }
   })
-  return lines
+  return lines.filter(o => o.words.length > 0)
 }
 
 const getAll = function () {
   let all = []
   docs.forEach(id => {
-    all.concat(getDoc(id))
+    all = all.concat(getDoc(id))
   })
   return all
 }
 export default getAll
 // getDoc(docs[3])
-console.log(getAll())
+// console.log(getAll())

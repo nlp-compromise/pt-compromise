@@ -3,6 +3,7 @@ let lex = {
   'não': 'Negative',
   'nunca': 'Negative',
   // 'quê': 'QuestionWord',//what?
+  'o que': 'QuestionWord',//what?
   'quem': 'QuestionWord',//who?
   'qual': 'QuestionWord',//which?
   'porquê': 'QuestionWord',//why?

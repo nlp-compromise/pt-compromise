@@ -37,7 +37,7 @@ export default [
 
 
   // male plurals
-  'primeiro', 'primeiros',
+  // 'primeiro', 'primeiros',
   'segundo', 'segundos',
   'terceiro', 'terceiros',
   'quarto', 'quartos',
@@ -69,7 +69,7 @@ export default [
   'milésimo', 'milésimos',
 
   // female plurals
-  'primeira', 'primeiras',
+  // 'primeira', 'primeiras',
   'segunda', 'segundas',
   'terceira', 'terceiras',
   'quarta', 'quartas',

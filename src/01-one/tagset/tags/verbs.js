@@ -29,8 +29,8 @@ export default {
     is: 'Verb',
   },
   Modal: {
-    is: 'Verb',
-    not: ['Infinitive'],
+    is: 'Auxiliary',
+    not: ['Infinitive', 'PresentTense', 'PastTense', 'FutureTense'],
   },
   PerfectTense: {
     is: 'Verb',

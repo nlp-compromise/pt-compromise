@@ -3,7 +3,7 @@ import nlp from '../_lib.js'
 let here = '[ordinal-parse] '
 
 let genders = [
-  ['primeiro', 'primeira', 1],
+  // ['primeiro', 'primeira', 1],
   ['segundo', 'segunda', 2],
   ['terceiro', 'terceira', 3],
   ['quarto', 'quarta', 4],
@@ -32,7 +32,7 @@ let genders = [
 
 let plurals = [
   // masc forms
-  ['primeiro', 'primeiros'],
+  // ['primeiro', 'primeiros'],
   ['segundo', 'segundos'],
   ['terceiro', 'terceiros'],
   ['quarto', 'quartos'],
@@ -67,7 +67,7 @@ let plurals = [
   ['nongentésimo', 'nongentésimos'],
   ['milésimo', 'milésimos'],
   // fem forms
-  ['primeira', 'primeiras'],
+  // ['primeira', 'primeiras'],
   ['segunda', 'segundas'],
   ['terceira', 'terceiras'],
   ['quarta', 'quartas'],

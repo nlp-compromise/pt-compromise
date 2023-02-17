@@ -62,6 +62,12 @@ test('match:', function (t) {
     ['banhar-se', '#Infinitive #Reflexive'],
     ['Ele não se lavou', '#Pronoun #Negative #Reflexive #PastTense'],
     ['Quando é que ele se lavou?', '#QuestionWord #Verb #Conjunction #Pronoun #Reflexive #PastTense'],
+    ['Nova Iorque é maior que São Paulo', '#City+ #Copula #Adjective #Conjunction #City+'],
+    ['O vestido que você estava usando', '#Determiner #Noun #Conjunction #Pronoun #Auxiliary #Gerund'],
+    ['Catarina poderia ter proposta', '#Noun #Modal #Auxiliary #Verb'],
+    ['Posso fumar aqui?', '#Modal #Infinitive .'],//Can I smoke here?
+    // ['Não podes fazer tudo o que queres.', ''], //You can’t do everything you want.
+    // ['',''],
   ]
   arr.forEach(function (a) {
     let [str, match] = a

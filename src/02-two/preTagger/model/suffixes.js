@@ -44,6 +44,7 @@ export default [
     cto: jj,
     ana: jj,
     eos: jj,
+    ais: jj,
     // ado: vb,
     ndo: first,
     ada: vb,
@@ -142,9 +143,12 @@ export default [
     ores: jj,
     rios: jj,
     ivos: jj,
+    éias: jj,
   },
   { // five-letter suffixes
-    'ación': nn,
+    ación: nn,
+    ários: nn,
+    arios: nn,
     mente: rb,
     ísimo: jj,
     icano: jj,
@@ -164,6 +168,7 @@ export default [
     // six-letter suffixes
     ística: jj,
     ciones: nn,
+    adores: nn,
   },
   {
     // seven-letter suffixes

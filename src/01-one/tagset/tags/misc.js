@@ -51,7 +51,7 @@ export default {
     is: 'Noun',
   },
   Expression: {
-    not: ['Noun', 'Adjective', 'Verb', 'Adverb'],
+    not: ['Noun', 'Adjective', 'Verb', 'Adverb', 'Expression', 'Conjunction'],
   },
   Abbreviation: {},
   Url: {

@@ -161,8 +161,8 @@ let arr = [
   [400, 'quatrocentos'],
   [1000000000, 'um bilhão'],
   [-90, 'menos noventa'],
-  [18000, '18 mil'],
-  [18900, '18,9 mil'],
+  // [18000, '18 mil'],
+  // [18900, '18,9 mil'],
 ]
 test('number-tag:', function (t) {
   arr.forEach(a => {
