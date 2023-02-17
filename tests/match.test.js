@@ -56,7 +56,7 @@ test('match:', function (t) {
     // dropped-s
     ['Nós lavamo-nos.', '#Pronoun #FirstPersonPlural #Reflexive'],
     ['Nós encontramo-nos', '#Pronoun #FirstPersonPlural #Reflexive'],
-    ['Nós encontramos às quinze.', '#Pronoun #Verb #Preposition #Value'],
+    ['Nós encontramos às quinze.', '#Pronoun #Verb #Preposition #Determiner #Value'],
     // reflexive
     ['Eles beijam-se.', '#Pronoun #Verb #Reflexive'],
     ['banhar-se', '#Infinitive #Reflexive'],

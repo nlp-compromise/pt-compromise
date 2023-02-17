@@ -43,8 +43,8 @@ export default [
   'la',//	him / her / it
   // 'nos',//	us
   // 'vos',//	you(plural)
-  'os',
-  'as',
+  // 'os',
+  // 'as',
   'los',
   'las',//	them
 

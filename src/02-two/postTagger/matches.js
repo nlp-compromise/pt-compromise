@@ -12,6 +12,10 @@ const postTagger = function (doc) {
   doc.match('menos #Value').tag('Value', 'menos-noventa')
   // cantar é bom
   doc.match('[#Infinitive] #Copula', 0).tag('Noun', 'gerund-noun')
+  // a o => to the
+  doc.match('[a] #Determiner', 0).tag('Preposition', 'to-the')
+  // o jantar
+  doc.match('o [#Infinitive]', 0).tag('Noun', 'o-verb')
 
   // ===auxiliary verbs==
   // está a comer

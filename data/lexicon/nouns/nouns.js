@@ -975,6 +975,6 @@ export default [
   'voto',
   'voz',
   'zona',
-  // 'branco',
+  'rato',
 
 ]
