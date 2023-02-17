@@ -51,7 +51,7 @@ export default {
   },
   Auxiliary: {
     is: 'Verb',
-    not: ['PastTense', 'PresentTense', 'Gerund', 'Conjunction'],
+    not: ['PastTense', 'PresentTense', 'Gerund', 'Conjunction', 'Copula'],
   },
   Conditional: {
     is: 'Verb',

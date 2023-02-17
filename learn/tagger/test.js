@@ -9,8 +9,12 @@ let rights = 0
 
 const skipWords = {
   se: true,
-  // a: true,
-  // não: true
+  // we handle contractions differently
+  da: true,
+  aa: true,
+  a: true,
+  // considered a verb-phrase
+  não: true
 }
 
 const topk = function (arr) {
@@ -45,19 +49,20 @@ const doOne = function (obj) {
     } else {
       wrong += 1
       out += red(o.word) + ' '
-      // if (o.tag === 'Conjunction') {
-      bads.push(o.word.toLowerCase())
-      // }
-      if (skipWords[o.word]) {
+      if (o.word === 'que') {
         print = true
+
+      }
+      if (!skipWords[o.word]) {
+        bads.push(o.word.toLowerCase())
         // console.log(o)
       }
     }
   })
   if (print && wrong > 0) {
-    // doc.debug()
-    // console.log(out)
-    // console.log(obj)
+    doc.debug()
+    console.log(out)
+    console.log(obj)
   } else {
     // console.log('✅')
   }

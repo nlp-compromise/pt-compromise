@@ -73,11 +73,11 @@ export default [
   'conosco',//	us/with us
 
   // demonstrative
-  // 'este',
-  // 'esta',
-  // 'isto',//	this
-  // 'estes',
-  // 'estas',//	these
+  'este',
+  'esta',
+  'isto',//	this
+  'estes',
+  'estas',//	these
   'esse',
   'essa',
   'isso',
@@ -90,7 +90,7 @@ export default [
   'aquelas',//	those
 
   // relative 
-  'que',//	who/whom/which/that
+  // 'que',//	who/whom/which/that
   'quem',//	who/whom
   'qual',///quais	that/which/who/whom
   'cujo',//

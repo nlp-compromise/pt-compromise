@@ -9,7 +9,7 @@ let lex = {
   'porquê': 'QuestionWord',//why?
   'quando': 'QuestionWord',//when?
   'onde': 'QuestionWord',//where?
-  'como': 'QuestionWord',//how?
+  // 'como': 'QuestionWord',//how?
   'quanto': 'QuestionWord',
   'quão': 'QuestionWord',
 }

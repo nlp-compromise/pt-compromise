@@ -13,7 +13,8 @@ export default [
   'sobre', //"on", "above", "on top of", "about"
   'sob', //"under" (mostly literary)
   'às',//compound
-
+  'além',//in addition
+  'depois',//in addition
 
   // Compound prepositions
   'a partir de', // "from"

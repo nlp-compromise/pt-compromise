@@ -32,7 +32,7 @@ let mapping = {
   KS: 'Conjunction',
   IN: 'Expression',
   PDEN: 'Expression',
-  PCP: 'Participle',
+  PCP: 'Adjective',
   ADV: 'Adverb',
   'ADV|[': 'Adverb',
   'ADV|]': 'Adverb',

@@ -9,8 +9,7 @@ str = `Tinham deixado aqui uma cadeira`
 str = `Tinham deixado`
 str = `18,9 milhões`
 str = `18 milhões`
-str = `Deves estar excitado.`
-// str = `Se quiseres podemos ir ao quarto para tomar um duche..`
+str = `será sorteado`
 let doc = nlp(str)
 
 
