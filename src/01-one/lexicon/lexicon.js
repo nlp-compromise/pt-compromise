@@ -72,6 +72,11 @@ Object.keys(lexData).forEach(tag => {
       let fs = methods.adjective.toFemalePlural(w)
       lexicon[fs] = lexicon[fs] || ['Adjective', 'FemaleAdjective', 'PluralAdjective']
     }
+    if (tag === 'Noun') {
+      lexicon[w] = lexicon[w] || ['Noun']
+      let pl = methods.noun.toPlural(w)
+      lexicon[pl] = lexicon[pl] || 'Plural'
+    }
     if (tag === 'Cardinal') {
       lexicon[w] = ['Cardinal', 'TextValue']
     }
@@ -83,6 +88,7 @@ Object.keys(lexData).forEach(tag => {
 
 Object.assign(lexicon, misc)
 // console.log(lexicon['ele'])
+console.log(Object.keys(lexicon).length)
 
 
 export default lexicon

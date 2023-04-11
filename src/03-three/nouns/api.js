@@ -26,7 +26,6 @@ const api = function (View) {
         }
       }, [])
     }
-
     isPlural(n) {
       return getNth(this, n).if('#PluralNoun')
     }

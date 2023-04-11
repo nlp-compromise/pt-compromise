@@ -3,6 +3,7 @@ const root = function (view) {
   view.docs.forEach(terms => {
     terms.forEach(term => {
       let str = term.implicit || term.normal || term.text
+
     })
   })
 
