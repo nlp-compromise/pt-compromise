@@ -116,4 +116,4 @@ const getAll = function () {
 }
 export default getAll
 // getDoc(docs[3])
-// console.log(getAll())
+console.log(getAll()[30])

@@ -14,6 +14,11 @@ import {
   all as allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromFemalePlural,
 } from './adjectives/index.js'
 
+import {
+  all as allNoun, toPlural as toPluralNoun, toSingular as toSingularNoun
+} from './nouns.js'
+
+
 export default {
   verb: {
     all, toConditional, toFutureTense, toImperativeNeg, toImperative, toImperfect,
@@ -23,7 +28,9 @@ export default {
     fromPastTense, fromPluperfect, fromPresentTense,
     fromGerund, fromPastParticiple, fromInfinitivo
   },
-  noun: {},
+  noun: {
+    all: allNoun, toPlural: toPluralNoun, toSingular: toSingularNoun,
+  },
   adjective: {
     all: allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromFemalePlural,
   },

@@ -1,5 +1,5 @@
 import nlp from './src/index.js'
-nlp.verbose('tagger')
+// nlp.verbose('tagger')
 
 let str = ``
 str = `cantar é bom`
@@ -14,8 +14,10 @@ str = `Heróis do mar, nobre povo,`
 str = `Entre as brumas da memória,`
 str = `Desfralda a invicta Bandeira,`
 str = `O Oceano, a rugir d'amor,`
+str = 'mãezinhas'
 let doc = nlp(str)
 
+console.log(doc.nouns().toSingular().text())
 
 // console.log(doc.numbers().get())
 // doc.numbers().add(2)

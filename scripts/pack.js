@@ -36,12 +36,12 @@ const steps = [
     path: './src/01-one/lexicon/methods/_data.js',
     compress: function () {
       let packed = {}
-      // console.log('plurals')
-      // let plurals = learn(models.plurals)
-      // plurals = compress(plurals)
-      // packed.nouns = {
-      //   plurals
-      // }
+      console.log('plurals')
+      let plurals = learn(models.plurals)
+      plurals = compress(plurals)
+      packed.nouns = {
+        plurals
+      }
       console.log('adjectives')
       packed.adjectives = {
         f: [],

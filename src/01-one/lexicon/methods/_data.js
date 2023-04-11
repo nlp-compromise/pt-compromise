@@ -1,5 +1,13 @@
 // generated in ./lib/models
 export default {
+  "nouns": {
+    "plurals": {
+      "fwd": "2:is,us¦3:res¦ns:m¦eses:és¦omens:ômen¦1s:i,e,u¦1is:al",
+      "both": "1:x¦3:las¦5s:istão¦5es:rguer¦4es:eptil,ssor,lemão¦4s:imen,oupa,orco,adão,rfão,miga,rmão¦3s:mao,uva,nho,çaí,rão,rto,efil,gão,ecil,rna¦3ues:ues¦3es:sul,tor,atão,itão,her,fen,lor¦3eis:éptil¦2s:ta,ia,no,ço,ha,po,do,so,go,vo,nil,lo,ro,ril,sa¦2ões:otão,azão¦2is:ool,iel,vel,zul,aul¦2eis:xtil,átil¦2es:ar,ís¦1oes:cao¦1s-homens:il-homem¦1s:é,ã¦1éis:tel,uel,nel¦1ões:ção,são,ião,eão¦1es:z¦s-feiras:-feira¦eniores:ênior¦ateres:áter¦eses:ês¦óis:ol",
+      "rev": "1:os¦2:ases,aus,éus,tes,xis¦3:pis,bus,bores,nus,amas¦4:uenes,ires,írus,haves¦el:éis¦únior:uniores¦ão:ões¦ólen:olens¦1m:ons,ins¦1il:seis,teis¦1o:ães,aes¦1és:veses¦1l:ies¦1ômen:domens¦2l:sais,mais,rais,vais,nais¦2m:buns,dens,gens¦3m:uvens,ovens¦3l:uzis¦4l:pitais",
+      "ex": "4:cais¦3s:mão,pai,boi,rei¦2es:cão,pão,pao,cao¦4eis:fóssil,míssil,fértil¦3es:gas,cor¦3éis:papel¦5s:sótão¦4s:fuzil,cama¦1uniores:júnior¦4es:amor¦5es:sabor,fossil¦3ões:limão¦1olens:pólen¦4ns:homem¦2ns:bem¦3ns:trem¦2is:sal"
+    }
+  },
   "adjectives": {
     "f": {
       "fwd": "1:os,a",
