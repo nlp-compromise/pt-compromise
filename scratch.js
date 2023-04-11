@@ -1,5 +1,17 @@
 import nlp from './src/index.js'
 // nlp.verbose('tagger')
+import one from '/Users/spencer/mountain/pt-compromise/data/models/plurals.js'
+
+// let already = {}
+// let tmp = one
+// tmp = tmp.filter(a => {
+//   if (already[a[0]]) {
+//     return false
+//   }
+//   already[a[0]] = true
+//   return true
+// })
+// console.log(JSON.stringify(tmp, null, 2))
 
 let str = ``
 str = `cantar é bom`
@@ -15,12 +27,13 @@ str = `Entre as brumas da memória,`
 str = `Desfralda a invicta Bandeira,`
 str = `O Oceano, a rugir d'amor,`
 str = 'mãezinhas'
+str = 'mês'
 let doc = nlp(str)
 
-console.log(doc.nouns().toSingular().text())
+console.log(doc.nouns().toPlural().text())
 
 // console.log(doc.numbers().get())
 // doc.numbers().add(2)
 // doc.match('{ir}').debug()
 // console.log(doc.verbs().conjugate()[0].Gerund)
-doc.debug()
+// doc.debug()

@@ -88,7 +88,7 @@ Object.keys(lexData).forEach(tag => {
 
 Object.assign(lexicon, misc)
 // console.log(lexicon['ele'])
-console.log(Object.keys(lexicon).length)
+// console.log(Object.keys(lexicon).length)
 
 
 export default lexicon

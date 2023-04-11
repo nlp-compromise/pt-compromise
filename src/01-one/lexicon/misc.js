@@ -12,6 +12,7 @@ let lex = {
   // 'como': 'QuestionWord',//how?
   'quanto': 'QuestionWord',
   'quão': 'QuestionWord',
+  'termos': '#Verb'
 }
 
 //possessive pronouns
