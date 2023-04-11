@@ -33,7 +33,7 @@ const api = function (View) {
     toPlural(n) {
       const methods = this.methods.two.transform.noun
       getNth(this, n).forEach(m => {
-        let str = getRoot(m)
+        let str = getRoot(m, methods)
         let plural = methods.toPlural(str)
         return m.replaceWith(plural)
       })
@@ -42,7 +42,7 @@ const api = function (View) {
     toSingular(n) {
       const methods = this.methods.two.transform.noun
       getNth(this, n).if('#Plural').forEach(m => {
-        let str = getRoot(m)
+        let str = getRoot(m, methods)
         let plural = methods.toSingular(str)
         return m.replaceWith(plural)
       })
