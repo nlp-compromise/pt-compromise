@@ -31,7 +31,6 @@ str = 'pesadas'
 str = 'odiado'
 str = 'nós fomos'
 str = 'as lindas flores cresciam rapidamente'
-// str = 'cresciam'
 let doc = nlp(str).debug().compute('root')
 console.log(doc.json()[0].terms)
 

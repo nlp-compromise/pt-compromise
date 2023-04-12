@@ -60,9 +60,9 @@ const doOne = function (obj) {
     }
   })
   if (print && wrong > 0) {
-    doc.debug()
-    console.log(out)
-    console.log(obj)
+    // doc.debug()
+    // console.log(out)
+    // console.log(obj)
   } else {
     // console.log('✅')
   }
