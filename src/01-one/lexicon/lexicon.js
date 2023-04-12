@@ -87,7 +87,8 @@ Object.keys(lexData).forEach(tag => {
 })
 
 Object.assign(lexicon, misc)
-// console.log(lexicon['ele'])
+
+// console.log(lexicon['acordado'])
 // console.log(Object.keys(lexicon).length)
 
 

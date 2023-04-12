@@ -380,10 +380,10 @@ export default {
   },
   "pastParticiple": {
     "pastParticiple": {
-      "fwd": "ido:er¦osto:ôr¦1to:izer¦2do:tir,mir,dir,bir,gir,zir¦3do:rrir,erir",
-      "both": "5do,entregue:tregar¦5ndo:tervir¦4do:utrir,eguir¦4do,inserto:serir¦4ído:minuir¦4ndo:rovir¦4do,impresso:rimir¦3do:orir,arir,irir,ssir,prir¦3ndo:dvir,nvir¦3ido,eleito:leger¦3cado:braçar¦3do,salvo:lvar¦2ído:buir,tuir,luir,ruir,suir¦2do:pir,nir,lir¦2ito:crever¦1ido,roto:per¦1eito:fazer¦1ído:air,oer¦1sto:or¦1erto:brir¦1do:ar",
-      "rev": "r:ndo,do ou ganho,do, pago,do,aceito,do ou gasto,do,solto,do,extinto¦er:ido,morto,isto,ido,preso,ido,aceso¦1er:vido,cido,xido,hido¦1r:ado,morto,ado,expresso¦2er:omido,azido,ndido,abido,ebido,rdido,egido,frido,rrido,btido,emido,mbido¦2zer:dito¦3r:rtido,rmido,uvido,idido,stido,ugido,ngido,umido,itido,utido,rgido,uzido,agido,udido¦3er:uerido,ontido,retido,metido,bstido,batido¦4r:entido,rigido,ferido,ervido,petido,gerido,letido,pedido,xigido,nguido,lodido,andido¦5r:rantido,fundido,gredido¦5er:nvertido",
-      "ex": "1do:ir¦1eito:fazer¦2ndo:vir¦1isto:ver¦2do:rir¦4do:ouvir,pedir,subir,medir,ferir,latir¦5do ou ganho:ganhar¦4ido,morto:morrer¦4do, pago:pagar¦4isto:prever¦5do:servir,sorrir,aderir¦3isto:rever¦6do,aceito:aceitar¦4do,morto:matar¦5ido,preso:prender¦5ido,aceso:acender¦8do,expresso:expressar¦9do:distinguir,prescindir¦5do ou gasto:gastar¦5do,solto:soltar¦8do,extinto:extinguir¦2cado:coçar¦1ido:ser,ter,ler¦3ido:poder,valer,bater,deter,ceder,feder,reter,meter,viger¦1osto:pôr¦2to:dizer¦3do:agir¦4ido:manter,erguer¦2ido:crer,ater¦6do:invadir,proibir"
+      "fwd": "ido:er¦osto:ôr¦1to:izer¦2do:tir,mir,dir,bir,gir,zir¦3do:rrir,guir,erir",
+      "both": "5ndo:tervir¦4do:lorir,ossir¦4ndo:rovir¦3do:trir,arir,irir,prir¦3cado:braçar¦3ndo:nvir¦2do:pir,nir,lir¦2ito:crever¦1eito:fazer¦1ído:air,oer,uir¦1sto:or¦1erto:brir¦1do:ar",
+      "rev": "azer:eito¦er:isto¦r:ndo¦1er:vido,cido,xido,hido¦2er:omido,azido,ndido,abido,ebido,rdido,egido,frido,rrido,btido,emido,mbido¦2zer:dito¦3r:rtido,rmido,uvido,idido,stido,ugido,ngido,umido,itido,utido,rgido,uzido,agido,udido¦3er:uerido,ontido,retido,metido,bstido,batido¦4r:entido,rigido,eguido,ferido,ervido,petido,gerido,letido,pedido,xigido,nguido,lodido,andido¦5r:rantido,fundido,gredido¦5er:nvertido",
+      "ex": "1do:ir¦1eito:fazer¦2ndo:vir¦1isto:ver¦2do:rir¦4do:ouvir,pedir,subir,medir,ferir,latir¦4isto:prever¦5do:servir,sorrir,aderir¦3isto:rever¦4ndo:advir¦2cado:coçar¦1ido:ser,ter,ler¦3ido:poder,valer,bater,deter,ceder,feder,reter,meter,viger¦1osto:pôr¦2to:dizer¦3do:agir¦4ido:manter,erguer¦2ido:crer,ater¦6do:invadir,proibir¦9do:prescindir"
     }
   }
 }

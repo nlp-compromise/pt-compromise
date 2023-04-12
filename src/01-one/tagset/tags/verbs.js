@@ -39,7 +39,7 @@ export default {
   Pluperfect: {
     is: 'Verb',
   },
-  Participle: {
+  PastParticiple: {
     is: 'PastTense',
   },
   PhrasalVerb: {

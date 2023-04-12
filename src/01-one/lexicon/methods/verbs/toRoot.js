@@ -48,8 +48,8 @@ const fromPastTense = (str, form) => fromAll(str, form, pastTenseRev)
 const fromPluperfect = (str, form) => fromAll(str, form, pluperfectRev)
 const fromPresentTense = (str, form) => fromAll(str, form, presentTenseRev)
 const fromInfinitivo = (str, form) => fromAll(str, form, infinitivoRev)
-const fromGerund = (str, form) => fromAll(str, form, gerundsRev)
-const fromPastParticiple = (str, form) => fromAll(str, form, pastParticipleRev)
+const fromGerund = (str) => convert(str, gerundsRev)
+const fromPastParticiple = (str) => convert(str, pastParticipleRev)
 
 export {
   fromConditional,
@@ -66,3 +66,4 @@ export {
 }
 
 // console.log(fromImperfect('cresciam', 'ThirdPersonPlural'))
+// console.log(fromPastParticiple('falado'))

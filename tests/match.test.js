@@ -69,6 +69,8 @@ test('match:', function (t) {
     ['Deves estar excitado.', '#Modal #Copula #Adjective'],//you must be excited
     // ['Não podes fazer tudo o que queres.', ''], //You can’t do everything you want.
     ['podemos ir ao quarto para tomar um duche.', '#Modal #Infinitive #Preposition #Determiner #Noun #Preposition #PresentTense #Determiner #Noun'],// we can go to our room and take a shower.
+    ['confessado', '#PastParticiple'],
+    ['acordado', '#PastParticiple'],
     // ['',''],
   ]
   arr.forEach(function (a) {

@@ -31,13 +31,14 @@ str = 'pesadas'
 str = 'odiado'
 str = 'nós fomos'
 str = 'as lindas flores cresciam rapidamente'
+str = 'falado'
 let doc = nlp(str).debug().compute('root')
 console.log(doc.json()[0].terms)
 
 // doc.match('#Determiner {linda} {flor} {crescer} #Adverb').debug()
 // console.log(doc.nouns().toPlural().text())
 
-// console.log(nlp('crescer').verbs().conjugate()[0])
+// console.log(nlp('falado').verbs().conjugate()[0])
 
 // console.log(doc.numbers().get())
 // doc.numbers().add(2)

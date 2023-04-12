@@ -16,7 +16,6 @@ let {
   infinitivo
 } = model
 
-
 const allForms = function (str, m) {
   return forms.reduce((h, form) => {
     h[form] = convert(str, m[form])
@@ -33,13 +32,10 @@ const toPastTense = (str) => allForms(str, pastTense)
 const toPluperfect = (str) => allForms(str, pluperfect)
 const toPresentTense = (str) => allForms(str, presentTense)
 const toInfinitivo = (str) => allForms(str, infinitivo)
-const toGerund = (str) => convert(str, gerunds)
-const toPastParticiple = (str) => convert(str, pastParticiple)
+const toGerund = (str) => convert(str, gerunds.gerunds)
+const toPastParticiple = (str) => convert(str, pastParticiple.pastParticiple)
 
-
-
-
-// // an array of every inflection, for '{inf}' syntax
+// an array of every inflection, for '{inf}' syntax
 const all = function (str) {
   let res = [str].concat(
     Object.values(toConditional(str)),
@@ -74,5 +70,8 @@ export {
 }
 // console.log(all('broxar'))
 
-
 // console.log(toImperfect('crescer'))
+// console.log(toPastParticiple('casar'))
+// console.log(toPastParticiple('confessar'))
+// console.log(toPastParticiple('falar'))
+// console.log(toGerund('confessar'))
