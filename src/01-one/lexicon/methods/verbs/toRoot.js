@@ -1,20 +1,7 @@
 import { convert, reverse } from 'suffix-thumb'
 import model from '../models.js'
-const forms = ['first', 'second', 'third', 'firstPlural', 'secondPlural', 'thirdPlural']
 
-let {
-  conditional,
-  futureTense,
-  imperativeNeg,
-  imperative,
-  imperfect,
-  pastTense,
-  pluperfect,
-  presentTense,
-  gerunds,
-  pastParticiple,
-  infinitivo
-} = model
+let { conditional, futureTense, imperativeNeg, imperative, imperfect, pastTense, pluperfect, presentTense, gerunds, pastParticiple, infinitivo } = model
 
 // =-=-
 const revAll = function (m) {
@@ -24,37 +11,45 @@ const revAll = function (m) {
   }, {})
 }
 
-conditional = revAll(conditional)
-futureTense = revAll(futureTense)
-imperativeNeg = revAll(imperativeNeg)
-imperative = revAll(imperative)
-imperfect = revAll(imperfect)
-pastTense = revAll(pastTense)
-pluperfect = revAll(pluperfect)
-presentTense = revAll(presentTense)
-infinitivo = revAll(infinitivo)
-gerunds = reverse(gerunds.gerunds)
-pastParticiple = reverse(pastParticiple.pastParticiple)
+let conditionalRev = revAll(conditional)
+let futureTenseRev = revAll(futureTense)
+let imperativeNegRev = revAll(imperativeNeg)
+let imperativeRev = revAll(imperative)
+let imperfectRev = revAll(imperfect)
+let pastTenseRev = revAll(pastTense)
+let pluperfectRev = revAll(pluperfect)
+let presentTenseRev = revAll(presentTense)
+let infinitivoRev = revAll(infinitivo)
+let gerundsRev = reverse(gerunds.gerunds)
+let pastParticipleRev = reverse(pastParticiple.pastParticiple)
 
-
-const allForms = function (str, m) {
-  return forms.reduce((h, form) => {
-    h[form] = convert(str, m[form])
-    return h
-  }, {})
+const fromAll = function (str, form, m) {
+  let forms = {
+    'FirstPerson': (s) => convert(s, m.first),
+    'SecondPerson': (s) => convert(s, m.second),
+    'ThirdPerson': (s) => convert(s, m.third),
+    'FirstPersonPlural': (s) => convert(s, m.firstPlural),
+    'SecondPersonPlural': (s) => convert(s, m.secondPlural),
+    'ThirdPersonPlural': (s) => convert(s, m.thirdPlural),
+  }
+  if (forms.hasOwnProperty(form)) {
+    return forms[form](str)
+  }
+  return str
 }
 
-const fromConditional = (str) => allForms(str, conditional)
-const fromFutureTense = (str) => allForms(str, futureTense)
-const fromImperativeNeg = (str) => allForms(str, imperativeNeg)
-const fromImperative = (str) => allForms(str, imperative)
-const fromImperfect = (str) => allForms(str, imperfect)
-const fromPastTense = (str) => allForms(str, pastTense)
-const fromPluperfect = (str) => allForms(str, pluperfect)
-const fromPresentTense = (str) => allForms(str, presentTense)
-const fromInfinitivo = (str) => allForms(str, infinitivo)
-const fromGerund = (str) => convert(str, gerunds)
-const fromPastParticiple = (str) => convert(str, pastParticiple)
+
+const fromConditional = (str, form) => fromAll(str, form, conditionalRev)
+const fromFutureTense = (str, form) => fromAll(str, form, futureTenseRev)
+const fromImperativeNeg = (str, form) => fromAll(str, form, imperativeNegRev)
+const fromImperative = (str, form) => fromAll(str, form, imperativeRev)
+const fromImperfect = (str, form) => fromAll(str, form, imperfectRev)
+const fromPastTense = (str, form) => fromAll(str, form, pastTenseRev)
+const fromPluperfect = (str, form) => fromAll(str, form, pluperfectRev)
+const fromPresentTense = (str, form) => fromAll(str, form, presentTenseRev)
+const fromInfinitivo = (str, form) => fromAll(str, form, infinitivoRev)
+const fromGerund = (str, form) => fromAll(str, form, gerundsRev)
+const fromPastParticiple = (str, form) => fromAll(str, form, pastParticipleRev)
 
 export {
   fromConditional,
@@ -69,3 +64,5 @@ export {
   fromPastParticiple,
   fromInfinitivo
 }
+
+// console.log(fromImperfect('cresciam', 'ThirdPersonPlural'))

@@ -78,6 +78,7 @@ test('root-match:', function (t) {
     ["odiais", '{odiar}'],
     ["odiamos", '{odiar}'],
 
+    ['as lindas flores cresciam rapidamente', '#Determiner {linda} {flor} {crescer} #Adverb'],
   ]
   arr.forEach(function (a) {
     let [str, match] = a

@@ -73,3 +73,6 @@ export {
   toInfinitivo
 }
 // console.log(all('broxar'))
+
+
+// console.log(toImperfect('crescer'))
