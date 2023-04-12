@@ -27,10 +27,14 @@ str = `Entre as brumas da memória,`
 str = `Desfralda a invicta Bandeira,`
 str = `O Oceano, a rugir d'amor,`
 str = 'mãezinhas'
-str = 'mês'
-let doc = nlp(str)
+str = 'pesadas'
+str = 'odiado'
+str = 'nós fomos'
+let doc = nlp(str).debug().compute('root')
+console.log(doc.json()[0])
 
-console.log(doc.nouns().toPlural().text())
+// doc.match('{odiar}').debug()
+// console.log(doc.nouns().toPlural().text())
 
 // console.log(doc.numbers().get())
 // doc.numbers().add(2)
