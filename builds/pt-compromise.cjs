@@ -422,7 +422,7 @@
   Object.assign(View.prototype, api$j);
   var View$1 = View;
 
-  var version$1 = '14.8.2';
+  var version$1 = '14.9.0';
 
   const isObject$6 = function (item) {
     return item && typeof item === 'object' && !Array.isArray(item)
@@ -463,43 +463,43 @@
       // verb forms
       if (conj[k].pastTense) {
         if (m.toPast) {
-          m.toPast.exceptions[k] = conj[k].pastTense;
+          m.toPast.ex[k] = conj[k].pastTense;
         }
         if (m.fromPast) {
-          m.fromPast.exceptions[conj[k].pastTense] = k;
+          m.fromPast.ex[conj[k].pastTense] = k;
         }
       }
       if (conj[k].presentTense) {
         if (m.toPresent) {
-          m.toPresent.exceptions[k] = conj[k].presentTense;
+          m.toPresent.ex[k] = conj[k].presentTense;
         }
         if (m.fromPresent) {
-          m.fromPresent.exceptions[conj[k].presentTense] = k;
+          m.fromPresent.ex[conj[k].presentTense] = k;
         }
       }
       if (conj[k].gerund) {
         if (m.toGerund) {
-          m.toGerund.exceptions[k] = conj[k].gerund;
+          m.toGerund.ex[k] = conj[k].gerund;
         }
         if (m.fromGerund) {
-          m.fromGerund.exceptions[conj[k].gerund] = k;
+          m.fromGerund.ex[conj[k].gerund] = k;
         }
       }
       // adjective forms
       if (conj[k].comparative) {
         if (m.toComparative) {
-          m.toComparative.exceptions[k] = conj[k].comparative;
+          m.toComparative.ex[k] = conj[k].comparative;
         }
         if (m.fromComparative) {
-          m.fromComparative.exceptions[conj[k].comparative] = k;
+          m.fromComparative.ex[conj[k].comparative] = k;
         }
       }
       if (conj[k].superlative) {
         if (m.toSuperlative) {
-          m.toSuperlative.exceptions[k] = conj[k].superlative;
+          m.toSuperlative.ex[k] = conj[k].superlative;
         }
         if (m.fromSuperlative) {
-          m.fromSuperlative.exceptions[conj[k].superlative] = k;
+          m.fromSuperlative.ex[conj[k].superlative] = k;
         }
       }
     });
@@ -1106,6 +1106,8 @@
     if (typeof input === 'function') {
       return replaceByFn(main, input)
     }
+    let terms = main.docs[0];
+    let isPossessive = keep.possessives && terms[terms.length - 1].tags.has('Possessive');
     // support 'foo $0' replacements
     input = subDollarSign(input, main);
 
@@ -1126,6 +1128,17 @@
     }
     // delete the original terms
     main.delete(original); //science.
+
+    // keep "John's"
+    if (isPossessive) {
+      let tmp = main.docs[0];
+      let term = tmp[tmp.length - 1];
+      if (!term.tags.has('Possessive')) {
+        term.text += '\'s';
+        term.normal += '\'s';
+        term.tags.add('Possessive');
+      }
+    }
     // what should we return?
     let m = main.toView(ptrs).compute(['index', 'lexicon']);
     if (m.world.compute.preTagger) {
@@ -1141,6 +1154,12 @@
     if (keep.case && m.docs[0] && m.docs[0][0] && m.docs[0][0].index[1] === 0) {
       m.docs[0][0].text = titleCase$2(m.docs[0][0].text);
     }
+
+    // try to keep some pre-post punctuation
+    // if (m.terms().length === 1 && main.terms().length === 1) {
+    //   console.log(original.docs)
+    // }
+
     // console.log(input.docs[0])
     // let regs = input.docs[0].map(t => {
     //   return { id: t.id, optional: true }
@@ -1406,6 +1425,8 @@
       return this
     },
   };
+
+  // aliases
   methods$i.deHyphenate = methods$i.dehyphenate;
   methods$i.toQuotation = methods$i.toQuotations;
 
@@ -1673,6 +1694,7 @@
   var contractions$4 = [
     // simple mappings
     { word: '@', out: ['at'] },
+    { word: 'arent', out: ['are', 'not'] },
     { word: 'alot', out: ['a', 'lot'] },
     { word: 'brb', out: ['be', 'right', 'back'] },
     { word: 'cannot', out: ['can', 'not'] },
@@ -1686,11 +1708,12 @@
     { word: "that's", out: ['that', 'is'] },
     { word: "what's", out: ['what', 'is'] },
     { word: "let's", out: ['let', 'us'] },
-    { word: "there's", out: ['there', 'is'] },
+    // { word: "there's", out: ['there', 'is'] },
     { word: 'dunno', out: ['do', 'not', 'know'] },
     { word: 'gonna', out: ['going', 'to'] },
     { word: 'gotta', out: ['have', 'got', 'to'] }, //hmm
     { word: 'gimme', out: ['give', 'me'] },
+    { word: 'outta', out: ['out', 'of'] },
     { word: 'tryna', out: ['trying', 'to'] },
     { word: 'gtg', out: ['got', 'to', 'go'] },
     { word: 'im', out: ['i', 'am'] },
@@ -1734,7 +1757,30 @@
     { before: 't', out: ['tu'] }, // t'aime
   ];
 
-  var model$5 = { one: { contractions: contractions$4 } };
+  // number suffixes that are not units
+  const t$1 = true;
+  var numberSuffixes = {
+    'st': t$1,
+    'nd': t$1,
+    'rd': t$1,
+    'th': t$1,
+    'am': t$1,
+    'pm': t$1,
+    'max': t$1,
+    '°': t$1,
+    's': t$1, // 1990s
+    'e': t$1, // 18e - french/spanish ordinal
+    'er': t$1, //french 1er
+    'ère': t$1, //''
+    'ème': t$1, //french 2ème
+  };
+
+  var model$5 = {
+    one: {
+      contractions: contractions$4,
+      numberSuffixes
+    }
+  };
 
   // put n new words where 1 word was
   const insertContraction = function (document, point, words) {
@@ -1903,27 +1949,15 @@
 
   const numUnit = /^([+-]?[0-9][.,0-9]*)([a-z°²³µ/]+)$/; //(must be lowercase)
 
-  const notUnit = new Set([
-    'st',
-    'nd',
-    'rd',
-    'th',
-    'am',
-    'pm',
-    'max',
-    '°',
-    's', // 1990s
-    'e' // 18e - french/spanish ordinal
-  ]);
-
-  const numberUnit = function (terms, i) {
+  const numberUnit = function (terms, i, world) {
+    const notUnit = world.model.one.numberSuffixes || {};
     let term = terms[i];
     let parts = term.text.match(numUnit);
     if (parts !== null) {
       // is it a recognized unit, like 'km'?
       let unit = parts[2].toLowerCase().trim();
       // don't split '3rd'
-      if (notUnit.has(unit)) {
+      if (notUnit.hasOwnProperty(unit)) {
         return null
       }
       return [parts[1], unit] //split it
@@ -1993,12 +2027,26 @@
     return doc.docs[0]
   };
 
+  // there's is usually [there, is]
+  // but can be 'there has' for 'there has (..) been'
+  const thereHas = function (terms, i) {
+    for (let k = i + 1; k < 5; k += 1) {
+      if (!terms[k]) {
+        break
+      }
+      if (terms[k].normal === 'been') {
+        return ['there', 'has']
+      }
+    }
+    return ['there', 'is']
+  };
+
   //really easy ones
   const contractions$2 = (view) => {
     let { world, document } = view;
     const { model, methods } = world;
     let list = model.one.contractions || [];
-    new Set(model.one.units || []);
+    // let units = new Set(model.one.units || [])
     // each sentence
     document.forEach((terms, n) => {
       // loop through terms backwards
@@ -2017,6 +2065,10 @@
         // ['j', 'aime']
         if (!words && byStart.hasOwnProperty(before)) {
           words = byStart[before](terms, i);
+        }
+        // 'there is' vs 'there has'
+        if (before === 'there' && after === 's') {
+          words = thereHas(terms, i);
         }
         // actually insert the new terms
         if (words) {
@@ -2041,7 +2093,7 @@
           continue
         }
         // split-apart '4km'
-        words = numberUnit$1(terms, i);
+        words = numberUnit$1(terms, i, world);
         if (words) {
           words = toDocs(words, view);
           splice(document, [n, i], words);
@@ -2076,6 +2128,8 @@
 
         // special case for phrasal-verbs - 2nd word is a #Particle
         if (tag && tag.length === 2 && (tag[0] === 'PhrasalVerb' || tag[1] === 'PhrasalVerb')) {
+          // guard against 'take walks in'
+          // if (terms[i + skip - 2] && terms[i + skip - 2].tags.has('Infinitive')) { }
           setTag([ts[1]], 'Particle', world, false, '1-phrasal-particle');
         }
         return true
@@ -2955,6 +3009,46 @@
         }
       }
 
+      //regex
+      if (start(w) === '/' && end(w) === '/') {
+        w = stripBoth(w);
+        if (opts.caseSensitive) {
+          obj.use = 'text';
+        }
+        obj.regex = new RegExp(w); //potential vuln - security/detect-non-literal-regexp
+        return obj
+      }
+
+      // support foo{1,9}
+      if (hasMinMax.test(w) === true) {
+        w = w.replace(hasMinMax, (_a, b, c) => {
+          if (c === undefined) {
+            // '{3}'	Exactly three times
+            obj.min = Number(b);
+            obj.max = Number(b);
+          } else {
+            c = c.replace(/, */, '');
+            if (b === undefined) {
+              // '{,9}' implied zero min
+              obj.min = 0;
+              obj.max = Number(c);
+            } else {
+              // '{2,4}' Two to four times
+              obj.min = Number(b);
+              // '{3,}' Three or more times
+              obj.max = Number(c || 999);
+            }
+          }
+          // use same method as '+'
+          obj.greedy = true;
+          // 0 as min means the same as '?'
+          if (!obj.min) {
+            obj.optional = true;
+          }
+          return ''
+        });
+      }
+
       //wrapped-flags
       if (start(w) === '(' && end(w) === ')') {
         // support (one && two)
@@ -2977,15 +3071,6 @@
           return str.split(/ /g).map(s => parseToken(s, opts))
         });
         w = '';
-      }
-      //regex
-      if (start(w) === '/' && end(w) === '/') {
-        w = stripBoth(w);
-        if (opts.caseSensitive) {
-          obj.use = 'text';
-        }
-        obj.regex = new RegExp(w); //potential vuln - security/detect-non-literal-regexp
-        return obj
       }
 
       //root/sense overloaded
@@ -3021,35 +3106,6 @@
         obj.switch = w;
         return obj
       }
-    }
-    // support foo{1,9}
-    if (hasMinMax.test(w) === true) {
-      w = w.replace(hasMinMax, (_a, b, c) => {
-        if (c === undefined) {
-          // '{3}'	Exactly three times
-          obj.min = Number(b);
-          obj.max = Number(b);
-        } else {
-          c = c.replace(/, */, '');
-          if (b === undefined) {
-            // '{,9}' implied zero min
-            obj.min = 0;
-            obj.max = Number(c);
-          } else {
-            // '{2,4}' Two to four times
-            obj.min = Number(b);
-            // '{3,}' Three or more times
-            obj.max = Number(c || 999);
-          }
-        }
-        // use same method as '+'
-        obj.greedy = true;
-        // 0 as min means the same as '?'
-        if (!obj.min) {
-          obj.optional = true;
-        }
-        return ''
-      });
     }
     //do the actual token content
     if (start(w) === '#') {
@@ -3118,9 +3174,6 @@
   const addVerbs = function (token, world) {
     let { all } = world.methods.two.transform.verb || {};
     let str = token.root;
-    // if (toInfinitive) {
-    //   str = toInfinitive(str, world.model)
-    // }
     if (!all) {
       return []
     }
@@ -6010,7 +6063,7 @@
   };
   var unTag$1 = unTag;
 
-  const e=function(e){return e.children=e.children||[],e._cache=e._cache||{},e.props=e.props||{},e._cache.parents=e._cache.parents||[],e._cache.children=e._cache.children||[],e},t=/^ *(#|\/\/)/,n=function(t){let n=t.trim().split(/->/),r=[];n.forEach((t=>{r=r.concat(function(t){if(!(t=t.trim()))return null;if(/^\[/.test(t)&&/\]$/.test(t)){let n=(t=(t=t.replace(/^\[/,"")).replace(/\]$/,"")).split(/,/);return n=n.map((e=>e.trim())).filter((e=>e)),n=n.map((t=>e({id:t}))),n}return [e({id:t})]}(t));})),r=r.filter((e=>e));let i=r[0];for(let e=1;e<r.length;e+=1)i.children.push(r[e]),i=r[e];return r[0]},r=(e,t)=>{let n=[],r=[e];for(;r.length>0;){let e=r.pop();n.push(e),e.children&&e.children.forEach((n=>{t&&t(e,n),r.push(n);}));}return n},i=e=>"[object Array]"===Object.prototype.toString.call(e),c=e=>(e=e||"").trim(),s=function(c=[]){return "string"==typeof c?function(r){let i=r.split(/\r?\n/),c=[];i.forEach((e=>{if(!e.trim()||t.test(e))return;let r=(e=>{const t=/^( {2}|\t)/;let n=0;for(;t.test(e);)e=e.replace(t,""),n+=1;return n})(e);c.push({indent:r,node:n(e)});}));let s=function(e){let t={children:[]};return e.forEach(((n,r)=>{0===n.indent?t.children=t.children.concat(n.node):e[r-1]&&function(e,t){let n=e[t].indent;for(;t>=0;t-=1)if(e[t].indent<n)return e[t];return e[0]}(e,r).node.children.push(n.node);})),t}(c);return s=e(s),s}(c):i(c)?function(t){let n={};t.forEach((e=>{n[e.id]=e;}));let r=e({});return t.forEach((t=>{if((t=e(t)).parent)if(n.hasOwnProperty(t.parent)){let e=n[t.parent];delete t.parent,e.children.push(t);}else console.warn(`[Grad] - missing node '${t.parent}'`);else r.children.push(t);})),r}(c):(r(s=c).forEach(e),s);var s;},h=e=>"[31m"+e+"[0m",o=e=>"[2m"+e+"[0m",l=function(e,t){let n="-> ";t&&(n=o("→ "));let i="";return r(e).forEach(((e,r)=>{let c=e.id||"";if(t&&(c=h(c)),0===r&&!e.id)return;let s=e._cache.parents.length;i+="    ".repeat(s)+n+c+"\n";})),i},a=function(e){let t=r(e);t.forEach((e=>{delete(e=Object.assign({},e)).children;}));let n=t[0];return n&&!n.id&&0===Object.keys(n.props).length&&t.shift(),t},p={text:l,txt:l,array:a,flat:a},d=function(e,t){return "nested"===t||"json"===t?e:"debug"===t?(console.log(l(e,!0)),null):p.hasOwnProperty(t)?p[t](e):e},u=e=>{r(e,((e,t)=>{e.id&&(e._cache.parents=e._cache.parents||[],t._cache.parents=e._cache.parents.concat([e.id]));}));},f$1=(e,t)=>(Object.keys(t).forEach((n=>{if(t[n]instanceof Set){let r=e[n]||new Set;e[n]=new Set([...r,...t[n]]);}else {if((e=>e&&"object"==typeof e&&!Array.isArray(e))(t[n])){let r=e[n]||{};e[n]=Object.assign({},t[n],r);}else i(t[n])?e[n]=t[n].concat(e[n]||[]):void 0===e[n]&&(e[n]=t[n]);}})),e),j=/\//;class g$1{constructor(e={}){Object.defineProperty(this,"json",{enumerable:!1,value:e,writable:!0});}get children(){return this.json.children}get id(){return this.json.id}get found(){return this.json.id||this.json.children.length>0}props(e={}){let t=this.json.props||{};return "string"==typeof e&&(t[e]=!0),this.json.props=Object.assign(t,e),this}get(t){if(t=c(t),!j.test(t)){let e=this.json.children.find((e=>e.id===t));return new g$1(e)}let n=((e,t)=>{let n=(e=>"string"!=typeof e?e:(e=e.replace(/^\//,"")).split(/\//))(t=t||"");for(let t=0;t<n.length;t+=1){let r=e.children.find((e=>e.id===n[t]));if(!r)return null;e=r;}return e})(this.json,t)||e({});return new g$1(n)}add(t,n={}){if(i(t))return t.forEach((e=>this.add(c(e),n))),this;t=c(t);let r=e({id:t,props:n});return this.json.children.push(r),new g$1(r)}remove(e){return e=c(e),this.json.children=this.json.children.filter((t=>t.id!==e)),this}nodes(){return r(this.json).map((e=>(delete(e=Object.assign({},e)).children,e)))}cache(){return (e=>{let t=r(e,((e,t)=>{e.id&&(e._cache.parents=e._cache.parents||[],e._cache.children=e._cache.children||[],t._cache.parents=e._cache.parents.concat([e.id]));})),n={};t.forEach((e=>{e.id&&(n[e.id]=e);})),t.forEach((e=>{e._cache.parents.forEach((t=>{n.hasOwnProperty(t)&&n[t]._cache.children.push(e.id);}));})),e._cache.children=Object.keys(n);})(this.json),this}list(){return r(this.json)}fillDown(){var e;return e=this.json,r(e,((e,t)=>{t.props=f$1(t.props,e.props);})),this}depth(){u(this.json);let e=r(this.json),t=e.length>1?1:0;return e.forEach((e=>{if(0===e._cache.parents.length)return;let n=e._cache.parents.length+1;n>t&&(t=n);})),t}out(e){return u(this.json),d(this.json,e)}debug(){return u(this.json),d(this.json,"debug"),this}}const _=function(e){let t=s(e);return new g$1(t)};_.prototype.plugin=function(e){e(this);};
+  const e=function(e){return e.children=e.children||[],e._cache=e._cache||{},e.props=e.props||{},e._cache.parents=e._cache.parents||[],e._cache.children=e._cache.children||[],e},t=/^ *(#|\/\/)/,n=function(t){let n=t.trim().split(/->/),r=[];n.forEach((t=>{r=r.concat(function(t){if(!(t=t.trim()))return null;if(/^\[/.test(t)&&/\]$/.test(t)){let n=(t=(t=t.replace(/^\[/,"")).replace(/\]$/,"")).split(/,/);return n=n.map((e=>e.trim())).filter((e=>e)),n=n.map((t=>e({id:t}))),n}return [e({id:t})]}(t));})),r=r.filter((e=>e));let i=r[0];for(let e=1;e<r.length;e+=1)i.children.push(r[e]),i=r[e];return r[0]},r=(e,t)=>{let n=[],r=[e];for(;r.length>0;){let e=r.pop();n.push(e),e.children&&e.children.forEach((n=>{t&&t(e,n),r.push(n);}));}return n},i=e=>"[object Array]"===Object.prototype.toString.call(e),c=e=>(e=e||"").trim(),s=function(c=[]){return "string"==typeof c?function(r){let i=r.split(/\r?\n/),c=[];i.forEach((e=>{if(!e.trim()||t.test(e))return;let r=(e=>{const t=/^( {2}|\t)/;let n=0;for(;t.test(e);)e=e.replace(t,""),n+=1;return n})(e);c.push({indent:r,node:n(e)});}));let s=function(e){let t={children:[]};return e.forEach(((n,r)=>{0===n.indent?t.children=t.children.concat(n.node):e[r-1]&&function(e,t){let n=e[t].indent;for(;t>=0;t-=1)if(e[t].indent<n)return e[t];return e[0]}(e,r).node.children.push(n.node);})),t}(c);return s=e(s),s}(c):i(c)?function(t){let n={};t.forEach((e=>{n[e.id]=e;}));let r=e({});return t.forEach((t=>{if((t=e(t)).parent)if(n.hasOwnProperty(t.parent)){let e=n[t.parent];delete t.parent,e.children.push(t);}else console.warn(`[Grad] - missing node '${t.parent}'`);else r.children.push(t);})),r}(c):(r(s=c).forEach(e),s);var s;},h=e=>"[31m"+e+"[0m",o=e=>"[2m"+e+"[0m",l=function(e,t){let n="-> ";t&&(n=o("→ "));let i="";return r(e).forEach(((e,r)=>{let c=e.id||"";if(t&&(c=h(c)),0===r&&!e.id)return;let s=e._cache.parents.length;i+="    ".repeat(s)+n+c+"\n";})),i},a=function(e){let t=r(e);t.forEach((e=>{delete(e=Object.assign({},e)).children;}));let n=t[0];return n&&!n.id&&0===Object.keys(n.props).length&&t.shift(),t},p={text:l,txt:l,array:a,flat:a},d=function(e,t){return "nested"===t||"json"===t?e:"debug"===t?(console.log(l(e,!0)),null):p.hasOwnProperty(t)?p[t](e):e},u=e=>{r(e,((e,t)=>{e.id&&(e._cache.parents=e._cache.parents||[],t._cache.parents=e._cache.parents.concat([e.id]));}));},f$1=(e,t)=>(Object.keys(t).forEach((n=>{if(t[n]instanceof Set){let r=e[n]||new Set;e[n]=new Set([...r,...t[n]]);}else {if((e=>e&&"object"==typeof e&&!Array.isArray(e))(t[n])){let r=e[n]||{};e[n]=Object.assign({},t[n],r);}else i(t[n])?e[n]=t[n].concat(e[n]||[]):void 0===e[n]&&(e[n]=t[n]);}})),e),j=/\//;let g$1 = class g{constructor(e={}){Object.defineProperty(this,"json",{enumerable:!1,value:e,writable:!0});}get children(){return this.json.children}get id(){return this.json.id}get found(){return this.json.id||this.json.children.length>0}props(e={}){let t=this.json.props||{};return "string"==typeof e&&(t[e]=!0),this.json.props=Object.assign(t,e),this}get(t){if(t=c(t),!j.test(t)){let e=this.json.children.find((e=>e.id===t));return new g(e)}let n=((e,t)=>{let n=(e=>"string"!=typeof e?e:(e=e.replace(/^\//,"")).split(/\//))(t=t||"");for(let t=0;t<n.length;t+=1){let r=e.children.find((e=>e.id===n[t]));if(!r)return null;e=r;}return e})(this.json,t)||e({});return new g(n)}add(t,n={}){if(i(t))return t.forEach((e=>this.add(c(e),n))),this;t=c(t);let r=e({id:t,props:n});return this.json.children.push(r),new g(r)}remove(e){return e=c(e),this.json.children=this.json.children.filter((t=>t.id!==e)),this}nodes(){return r(this.json).map((e=>(delete(e=Object.assign({},e)).children,e)))}cache(){return (e=>{let t=r(e,((e,t)=>{e.id&&(e._cache.parents=e._cache.parents||[],e._cache.children=e._cache.children||[],t._cache.parents=e._cache.parents.concat([e.id]));})),n={};t.forEach((e=>{e.id&&(n[e.id]=e);})),t.forEach((e=>{e._cache.parents.forEach((t=>{n.hasOwnProperty(t)&&n[t]._cache.children.push(e.id);}));})),e._cache.children=Object.keys(n);})(this.json),this}list(){return r(this.json)}fillDown(){var e;return e=this.json,r(e,((e,t)=>{t.props=f$1(t.props,e.props);})),this}depth(){u(this.json);let e=r(this.json),t=e.length>1?1:0;return e.forEach((e=>{if(0===e._cache.parents.length)return;let n=e._cache.parents.length+1;n>t&&(t=n);})),t}out(e){return u(this.json),d(this.json,e)}debug(){return u(this.json),d(this.json,"debug"),this}};const _=function(e){let t=s(e);return new g$1(t)};_.prototype.plugin=function(e){e(this);};
 
   // i just made these up
   const colors = {
@@ -6401,6 +6454,8 @@
   };
   var smartMerge$1 = smartMerge;
 
+  /* eslint-disable regexp/no-dupe-characters-character-class */
+
   // merge embedded quotes into 1 sentence
   // like - 'he said "no!" and left.' 
   const MAX_QUOTE = 280;// ¯\_(ツ)_/¯
@@ -6426,8 +6481,8 @@
     // '\u0060': '\u00B4', // 'PrimeSingleQuotes'
     '\u301F': '\u301E', // 'LowPrimeDoubleQuotesReversed'
   };
-  const openQuote = RegExp('(' + Object.keys(pairs).join('|') + ')', 'g');
-  const closeQuote = RegExp('(' + Object.values(pairs).join('|') + ')', 'g');
+  const openQuote = RegExp('[' + Object.keys(pairs).join('') + ']', 'g');
+  const closeQuote = RegExp('[' + Object.values(pairs).join('') + ']', 'g');
 
   const closesQuote = function (str) {
     if (!str) {
@@ -6637,7 +6692,29 @@
   const isBoundary = /^[!?.]+$/;
   const naiiveSplit = /(\S+)/;
 
-  let notWord = ['.', '?', '!', ':', ';', '-', '–', '—', '--', '...', '(', ')', '[', ']', '"', "'", '`', '«', '»', '*'];
+  let notWord = [
+    '.',
+    '?',
+    '!',
+    ':',
+    ';',
+    '-',
+    '–',
+    '—',
+    '--',
+    '...',
+    '(',
+    ')',
+    '[',
+    ']',
+    '"',
+    "'",
+    '`',
+    '«',
+    '»',
+    '*',
+    '•',
+  ];
   notWord = notWord.reduce((h, c) => {
     h[c] = true;
     return h
@@ -10415,8 +10492,6 @@
         let str = normalize(w);
         if (toNumber.hasOwnProperty(str)) {
           carry += toNumber[str];
-        } else {
-          console.log('missing', w);
         }
         // console.log(terms.map(t => t.text))
       }
