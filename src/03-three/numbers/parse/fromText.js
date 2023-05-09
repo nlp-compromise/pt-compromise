@@ -46,8 +46,6 @@ const fromText = function (terms) {
       let str = normalize(w)
       if (toNumber.hasOwnProperty(str)) {
         carry += toNumber[str]
-      } else {
-        console.log('missing', w)
       }
       // console.log(terms.map(t => t.text))
     }

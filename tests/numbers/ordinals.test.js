@@ -133,7 +133,7 @@ test('number-parse:', function (t) {
 
 test('toOrdinal:', function (t) {
   genders.forEach(a => {
-    let [m, f, n] = a
+    let [m, , n] = a
     let doc = nlp(String(n))
     doc.numbers().toText().toOrdinal()
     t.equal(doc.text(), m, here + '[toOrdinal] ' + n)

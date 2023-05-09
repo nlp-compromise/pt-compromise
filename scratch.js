@@ -1,3 +1,4 @@
+/* eslint-disable no-console, no-unused-vars */
 import nlp from './src/index.js'
 // nlp.verbose('tagger')
 import one from '/Users/spencer/mountain/pt-compromise/data/models/plurals.js'
