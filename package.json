@@ -11,7 +11,8 @@
   "exports": {
     ".": {
       "import": "./builds/pt-compromise.mjs",
-      "require": "./builds/pt-compromise.cjs"
+      "require": "./builds/pt-compromise.cjs",
+      "types": "./types/index.d.ts"
     }
   },
   "types": "types/index.d.ts",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "test": "tape \"./tests/**/*.test.js\" | tap-dancer",
-    "testb": "TESTENV=prod npm run test",
+    "testb": "cross-env TESTENV=prod npm run test",
     "build": "npm run version && rollup -c --silent",
     "version": "node ./scripts/version.js",
     "pack": "node ./scripts/pack.js",
@@ -32,7 +33,8 @@
   },
   "files": [
     "builds/",
-    "docs/"
+    "types/",
+    "src/"
   ],
   "dependencies": {
     "compromise": "^14.9.0",
@@ -43,6 +45,7 @@
     "@rollup/plugin-node-resolve": "15.0.2",
     "@rollup/plugin-terser": "^0.4.1",
     "amble": "1.3.0",
+    "cross-env": "^7.0.3",
     "eslint": "8.40.0",
     "eslint-plugin-regexp": "1.14.0",
     "rollup": "3.21.5",
