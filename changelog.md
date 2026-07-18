@@ -1,4 +1,4 @@
-### 0.0.3 [Jul 2026]
+### 0.0.4 [Jul 2026]
 - **[new]** - subjunctive conjugation + tagging
 - **[new]** - portuguese suffix-patterns, more tagger rules
 - **[new]** - compound tenses - 'tenho falado', 'tinha saído'
