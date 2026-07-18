@@ -5,9 +5,10 @@
 - **[new]** - verb transforms - `.verbs().toPastTense()` etc
 - **[new]** - noun gender - `.nouns().toFeminine()`, feminine forms in lexicon
 - **[new]** - mesoclisis + clitic allomorphs - 'dar-te-ei', 'dão-no'
-- **[new]** - typescript types
+- **[fix]** - typescript types
 - **[fix]** - tagging of common words - 'está', 'não', clitic pronouns
 - **[fix]** - conjugation data cleanup, imperative person-mapping
+- **[update]** - dependencies
 
 ### 0.0.2 [Feb 2023]
 - **[new]** - number parsing
