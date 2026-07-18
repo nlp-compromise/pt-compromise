@@ -81,7 +81,7 @@ export interface Adjectives extends View {
 
 export interface Numbers extends View {
   /** parsed number data for each match */
-  json(n?: number): object[]
+  json(options?: number | string | object): any
   /** return only unit-terms - 'dólares' */
   units(): View
   /** return only ordinal numbers - 'quinto' */

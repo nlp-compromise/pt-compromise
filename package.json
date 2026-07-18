@@ -28,6 +28,7 @@
     "pack": "node ./scripts/pack.js",
     "score": "node ./learn/tagger/test.js",
     "lint": "eslint ./src/**/*",
+    "check-types": "tsc",
     "watch": "amble ./scratch.js",
     "stress": "node scripts/stress.js"
   },
@@ -37,7 +38,7 @@
     "src/"
   ],
   "dependencies": {
-    "compromise": "14.10.0",
+    "compromise": "14.16.0",
     "efrt": "2.7.0",
     "suffix-thumb": "5.0.2"
   },
@@ -50,7 +51,8 @@
     "eslint-plugin-regexp": "1.15.0",
     "rollup": "3.28.1",
     "tap-dancer": "0.3.4",
-    "tape": "5.6.6"
+    "tape": "5.6.6",
+    "typescript": "^7.0.2"
   },
   "license": "MIT"
 }
