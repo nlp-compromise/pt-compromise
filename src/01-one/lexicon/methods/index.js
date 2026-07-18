@@ -17,7 +17,8 @@ import {
 } from './adjectives/index.js'
 
 import {
-  all as allNoun, toPlural as toPluralNoun, toSingular as toSingularNoun
+  all as allNoun, toPlural as toPluralNoun, toSingular as toSingularNoun,
+  toFeminine, fromFeminine,
 } from './nouns.js'
 
 
@@ -34,6 +35,7 @@ export default {
   },
   noun: {
     all: allNoun, toPlural: toPluralNoun, toSingular: toSingularNoun,
+    toFeminine, fromFeminine,
   },
   adjective: {
     all: allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromFemalePlural,

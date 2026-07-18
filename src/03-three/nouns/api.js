@@ -23,8 +23,26 @@ const api = function (View) {
         return {
           singular: str,
           plural: methods.toPlural(str),
+          feminine: methods.toFeminine(str),
         }
       }, [])
+    }
+    toFeminine(n) {
+      const methods = this.methods.two.transform.noun
+      const detMap = { o: 'a', os: 'as', um: 'uma', uns: 'umas' }
+      getNth(this, n).forEach(m => {
+        let str = getRoot(m, methods)
+        let fem = methods.toFeminine(str)
+        if (fem && fem !== str) {
+          // agree the determiner - 'o professor' → 'a professora'
+          let det = m.lookBehind('(o|os|um|uns)$').last()
+          if (det.found) {
+            det.replaceWith(detMap[det.text('normal')])
+          }
+          m.replaceWith(fem)
+        }
+      })
+      return this
     }
     isPlural(n) {
       return getNth(this, n).if('#PluralNoun')

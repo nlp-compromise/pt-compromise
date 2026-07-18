@@ -46,6 +46,21 @@ const postTagger = function (doc) {
   // 'começou a chover' - 'a' + infinitive is a preposition
   doc.match('[a] #Infinitive', 0).tag('Preposition', 'a-infinitive')
 
+  // ==clitic pronouns==
+  // 'eu o vi', 'não a conheço' - accusative clitic, not a determiner
+  doc.match('(#Pronoun|#Negative) [(o|a|os|as)] #Verb', 0).tag('Pronoun', 'clitic-acc')
+
+  // ==compound tenses==
+  // 'tenho falado' - present perfect
+  doc.match('[(tenho|tens|tem|temos|tendes|têm)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'ter-participle')
+  doc.match('(tenho|tens|tem|temos|tendes|têm) #Adverb? [#PastParticiple]', 0).tag('PerfectTense', 'present-perfect')
+  // 'tinha falado', 'havia falado' - pluperfect
+  doc.match('[(tinha|tinhas|tínhamos|tínheis|tinham|havia|havias|havíamos|havíeis|haviam)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'tinha-participle')
+  doc.match('(tinha|tinhas|tínhamos|tínheis|tinham|havia|havias|havíamos|havíeis|haviam) #Adverb? [#PastParticiple]', 0).tag('Pluperfect', 'pluperfect-compound')
+  // 'terá falado', 'teria falado', 'tenha falado' - other perfect forms
+  doc.match('[(terei|terás|terá|teremos|tereis|terão|teria|terias|teríamos|teríeis|teriam|tenha|tenhas|tenhamos|tenham|tivesse|tivesses|tivéssemos|tivessem|tiver|tiveres|tivermos|tiverem)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'ter-fut-participle')
+  doc.match('(terei|terás|terá|teremos|tereis|terão|teria|terias|teríamos|teríeis|teriam|tenha|tenhas|tenhamos|tenham|tivesse|tivesses|tivéssemos|tivessem|tiver|tiveres|tivermos|tiverem) #Adverb? [#PastParticiple]', 0).tag('PerfectTense', 'other-perfect')
+
   // ===auxiliary verbs==
   // está a comer
   doc.match('[{estar} a?] #Verb', 0).tag('Auxiliary', 'está-a-verb')

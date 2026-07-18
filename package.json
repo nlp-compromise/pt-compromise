@@ -10,9 +10,9 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "import": "./builds/pt-compromise.mjs",
-      "require": "./builds/pt-compromise.cjs",
-      "types": "./types/index.d.ts"
+      "require": "./builds/pt-compromise.cjs"
     }
   },
   "types": "types/index.d.ts",

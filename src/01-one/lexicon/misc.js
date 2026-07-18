@@ -46,6 +46,30 @@ poss.forEach(str => {
   lex[str] = ['Possessive', 'Pronoun']
 })
 
+// feminine forms of common person-nouns, whose masculine ends in -o
+let femNouns = [
+  'aluna',
+  'amiga',
+  'médica',
+  'advogada',
+  'engenheira',
+  'enfermeira',
+  'vizinha',
+  'cozinheira',
+  'garota',
+  'companheira',
+  'secretária',
+  'menina',
+  'filha',
+  'irmã',
+  'atriz',
+]
+femNouns.forEach(str => {
+  lex[str] = ['Noun', 'FemaleNoun', 'Singular']
+  let pl = str === 'atriz' ? 'atrizes' : str + 's'
+  lex[pl] = ['Noun', 'FemaleNoun', 'Plural']
+})
+
 const forms = ['FirstPerson', 'SecondPerson', 'ThirdPerson', 'FirstPersonPlural', 'SecondPersonPlural', 'ThirdPersonPlural']
 const addCopulas = (arr, tags) => {
   if (typeof tags === 'string') {

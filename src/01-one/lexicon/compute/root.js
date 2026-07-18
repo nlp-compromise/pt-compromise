@@ -31,10 +31,15 @@ const toRoot = function (term, methods) {
   }
   // reduce a noun to root
   if (tags.has('Noun')) {
+    let out = str
     if (tags.has('Plural')) {
-      return noun.fromPlural(str)
+      out = noun.toSingular(out)
     }
-    return null
+    // professora → professor
+    if (tags.has('FemaleNoun')) {
+      out = noun.fromFeminine(out)
+    }
+    return out !== str ? out : null
   }
   // reduce a verb to root
   // check specific tags before the tags they inherit from -
