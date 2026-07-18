@@ -1,177 +1,102 @@
+// portuguese suffix-patterns, for guessing the tag of unknown words
+// (only applied to words that received no tag from the lexicon)
 const rb = 'Adverb'
 const nn = 'Noun'
-const vb = 'Verb'
 const jj = 'Adjective'
-const cond = 'Conditional'
-const fut = 'FutureTense'
-// const inf = 'Infinitive'
 const g = 'Gerund'
-const ref = 'Reflexive'
-const first = 'FirstPerson'
+const inf = 'Infinitive'
+const past = 'PastTense'
+const imp = 'Imperfect'
+const fut = 'FutureTense'
+const cond = 'Conditional'
+const subj = 'Subjunctive'
+const pp = 'PastParticiple'
 
 export default [
   null,
   {
     // one-letter suffixes
-    'ó': vb,
   },
   {
     // two-letter suffixes
-    al: jj,
-    ño: jj,
-    // no: jj,
-    // do: vb,
-    // ar: vb,
-    an: vb,
-    'ió': vb,
-    en: vb,
-    ir: vb,
-    er: vb,
-    'tó': vb,
+    ou: past, // falou, chegou
+    iu: past, // partiu, caiu
+    ei: past, // falei, comprei
   },
   {
     // three-letter suffixes
-    ico: jj,
-    // ica: jj,
-    ble: jj,
-    nal: jj,
-    ial: jj,
-    oso: jj,
-    iso: jj,
-    ito: jj,
-    ita: jj,
-    izo: jj,
-    cto: jj,
-    ana: jj,
-    eos: jj,
-    ais: jj,
-    // ado: vb,
-    ndo: first,
-    ada: vb,
-    ron: vb,
-    // ido: vb,
-    aba: vb,
-    tar: vb,
-    gar: vb,
-    nar: vb,
-    'ían': vb,
-    rar: vb,
-    ría: cond,
-    aré: fut,
-    iré: fut,
-    eré: fut,
-    rás: fut,
-    ará: fut,
-    ado: vb,
-    pto: jj,
+    'ção': nn, // nação
+    'são': nn, // decisão
+    oso: jj, // famoso
     osa: jj,
-    tos: jj,
-
-    // ida: vb,
+    ivo: jj, // ativo
+    iva: jj,
+    vel: jj, // amável, possível
+    ndo: g, // falando, comendo, pondo
+    ava: imp, // falava
+    ado: pp, // falado
+    ido: pp, // comido
+    'ará': fut, // falará
+    'erá': fut,
+    'irá': fut,
   },
   {
     // four-letter suffixes
-    itas: jj,
-    itos: jj,
-    icos: jj,
-    icas: jj,
-    tico: jj,
-    fica: jj,
-    gica: jj,
-    mica: jj,
-    nica: jj,
-    lica: jj,
-    tica: jj,
-    able: jj,
-    tivo: jj,
-    sivo: jj,
-    esco: jj,
-    iaco: jj,
-    íaco: jj,
-    áceo: jj,
-    áneo: jj,
-    icio: jj,
-    culo: jj,
-    aria: jj,
-    bles: jj,
-    tiva: jj,
-    ante: jj,
-    ente: jj,
-    ánea: jj,
-    siva: jj,
-    ular: jj,
-    osas: jj,
-    ales: jj,
-    iles: jj,
-    anos: jj,
-    osos: jj,
-    'ción': nn,
-    idad: nn,
-    ento: nn,
-    ncia: nn,
-    'sión': nn,
-    ando: g,
-    endo: g,
-    // ados: vb,
-    aron: vb,
-    adas: vb,
-    tado: first,
-    rías: cond,
-    amos: cond,
-    íais: cond,
-    rían: cond,
-    réis: fut,
-    arán: fut,
-    // refexive verbs
-    arse: ref,
-    arte: ref,
-    arme: ref,
-    irse: ref,
-    irte: ref,
-    erse: ref,
-    dose: ref,
-    ario: jj,
-    orio: jj,
-    iano: jj,
-    dero: jj,
-    fero: jj,
-    jero: jj,
-    lero: jj,
-    nero: jj,
-    tero: jj,
-    ares: jj,
-    ores: jj,
-    rios: jj,
-    ivos: jj,
-    éias: jj,
+    'ções': nn, // nações
+    'sões': nn, // decisões
+    dade: nn, // verdade, cidade
+    agem: nn, // viagem, coragem
+    ismo: nn, // otimismo
+    ista: nn, // dentista
+    'ável': jj, // notável
+    'ível': jj, // incrível
+    ante: jj, // interessante
+    ente: jj, // diferente
+    izar: inf, // modernizar
+    ecer: inf, // envelhecer
+    ejar: inf, // desejar
+    avam: imp, // falavam
+    aram: past, // falaram
+    eram: past, // comeram
+    iram: past, // partiram
+    'ámos': past, // falámos (european spelling)
+    asse: subj, // falasse
+    isse: subj, // partisse
+    'arão': fut, // falarão
+    'erão': fut,
+    'irão': fut,
+    arei: fut, // falarei
+    erei: fut,
+    irei: fut,
+    'arás': fut, // falarás
   },
-  { // five-letter suffixes
-    ación: nn,
-    ários: nn,
-    arios: nn,
-    mente: rb,
-    ísimo: jj,
-    icano: jj,
-    ntino: jj,
-    tivas: jj,
-    andés: jj,
-    adora: jj,
-    antes: jj,
-    iendo: g,
-    yendo: g,
-    ieron: vb,
-    remos: fut,
-    iente: jj,
-    entes: jj,
+  {
+    // five-letter suffixes
+    mente: rb, // rapidamente
+    mento: nn, // movimento
+    'ência': nn, // paciência
+    'ância': nn, // importância
+    assem: subj, // falassem
+    issem: subj, // partissem
+    ariam: cond, // falariam
+    eriam: cond,
+    iriam: cond,
+    'íamos': imp, // comíamos
   },
   {
     // six-letter suffixes
-    ística: jj,
-    ciones: nn,
-    adores: nn,
+    'ríamos': cond, // falaríamos
+    aremos: fut, // falaremos
+    eremos: fut,
+    iremos: fut,
+    'ávamos': imp, // falávamos
+    'íssimo': jj, // lindíssimo
+    'íssima': jj,
   },
   {
     // seven-letter suffixes
-    aciones: nn
-  }
+    'ássemos': subj, // falássemos
+    'êssemos': subj,
+    'íssemos': subj,
+  },
 ]

@@ -1,7 +1,11 @@
 import { convert, reverse } from 'suffix-thumb'
 import model from '../models.js'
 
-let { conditional, futureTense, imperativeNeg, imperative, imperfect, pastTense, pluperfect, presentTense, gerunds, pastParticiple, infinitivo } = model
+let {
+  conditional, futureTense, imperativeNeg, imperative, imperfect, pastTense,
+  pluperfect, presentTense, gerunds, pastParticiple, infinitivo,
+  subjPresent, subjImperfect, subjFuture,
+} = model
 
 // =-=-
 const revAll = function (m) {
@@ -20,20 +24,32 @@ let pastTenseRev = revAll(pastTense)
 let pluperfectRev = revAll(pluperfect)
 let presentTenseRev = revAll(presentTense)
 let infinitivoRev = revAll(infinitivo)
+let subjPresentRev = revAll(subjPresent)
+let subjImperfectRev = revAll(subjImperfect)
+let subjFutureRev = revAll(subjFuture)
 let gerundsRev = reverse(gerunds.gerunds)
 let pastParticipleRev = reverse(pastParticiple.pastParticiple)
 
+const forms = {
+  'FirstPerson': 'first',
+  'SecondPerson': 'second',
+  'ThirdPerson': 'third',
+  'FirstPersonPlural': 'firstPlural',
+  'SecondPersonPlural': 'secondPlural',
+  'ThirdPersonPlural': 'thirdPlural',
+}
 const fromAll = function (str, form, m) {
-  let forms = {
-    'FirstPerson': (s) => convert(s, m.first),
-    'SecondPerson': (s) => convert(s, m.second),
-    'ThirdPerson': (s) => convert(s, m.third),
-    'FirstPersonPlural': (s) => convert(s, m.firstPlural),
-    'SecondPersonPlural': (s) => convert(s, m.secondPlural),
-    'ThirdPersonPlural': (s) => convert(s, m.thirdPlural),
+  if (forms.hasOwnProperty(form) && m[forms[form]]) {
+    return convert(str, m[forms[form]])
   }
-  if (forms.hasOwnProperty(form)) {
-    return forms[form](str)
+  // an ambiguous form, like 'falava' (1st or 3rd person) has no person-tag -
+  // try each person's model until one converts it
+  let keys = Object.keys(m)
+  for (let i = 0; i < keys.length; i += 1) {
+    let out = convert(str, m[keys[i]])
+    if (out !== str) {
+      return out
+    }
   }
   return str
 }
@@ -48,6 +64,9 @@ const fromPastTense = (str, form) => fromAll(str, form, pastTenseRev)
 const fromPluperfect = (str, form) => fromAll(str, form, pluperfectRev)
 const fromPresentTense = (str, form) => fromAll(str, form, presentTenseRev)
 const fromInfinitivo = (str, form) => fromAll(str, form, infinitivoRev)
+const fromSubjPresent = (str, form) => fromAll(str, form, subjPresentRev)
+const fromSubjImperfect = (str, form) => fromAll(str, form, subjImperfectRev)
+const fromSubjFuture = (str, form) => fromAll(str, form, subjFutureRev)
 const fromGerund = (str) => convert(str, gerundsRev)
 const fromPastParticiple = (str) => convert(str, pastParticipleRev)
 
@@ -62,8 +81,8 @@ export {
   fromPresentTense,
   fromGerund,
   fromPastParticiple,
-  fromInfinitivo
+  fromInfinitivo,
+  fromSubjPresent,
+  fromSubjImperfect,
+  fromSubjFuture,
 }
-
-// console.log(fromImperfect('cresciam', 'ThirdPersonPlural'))
-// console.log(fromPastParticiple('falado'))

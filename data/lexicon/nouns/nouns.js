@@ -986,5 +986,20 @@ export default [
   'vendas',
   'nada',
   'sistema',
-
+  // common nouns that collide with rare verb conjugations
+  'bolo',
+  'verdade',
+  'professora',
+  'doutora',
+  'banho',
+  'beijo',
+  'abraço',
+  'fala',
+  'amiga',
+  'comida',
+  'problema',
+  'fruta',
+  'começo',
+  'choro',
+  'projeto',
 ]

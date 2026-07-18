@@ -1,13 +1,15 @@
 import {
   all, toConditional, toFutureTense, toImperativeNeg, toImperative, toImperfect,
   toPastTense, toPluperfect, toPresentTense,
-  toGerund, toPastParticiple, toInfinitivo
+  toGerund, toPastParticiple, toInfinitivo,
+  toSubjPresent, toSubjImperfect, toSubjFuture,
 } from './verbs/conjugate.js'
 
 import {
   fromConditional, fromFutureTense, fromImperativeNeg, fromImperative,
   fromImperfect, fromPastTense, fromPluperfect, fromPresentTense,
-  fromGerund, fromPastParticiple, fromInfinitivo
+  fromGerund, fromPastParticiple, fromInfinitivo,
+  fromSubjPresent, fromSubjImperfect, fromSubjFuture,
 } from './verbs/toRoot.js'
 
 import {
@@ -23,10 +25,12 @@ export default {
   verb: {
     all, toConditional, toFutureTense, toImperativeNeg, toImperative, toImperfect,
     toPastTense, toPluperfect, toPresentTense, toGerund, toPastParticiple, toInfinitivo,
+    toSubjPresent, toSubjImperfect, toSubjFuture,
 
     fromConditional, fromFutureTense, fromImperativeNeg, fromImperative, fromImperfect,
     fromPastTense, fromPluperfect, fromPresentTense,
-    fromGerund, fromPastParticiple, fromInfinitivo
+    fromGerund, fromPastParticiple, fromInfinitivo,
+    fromSubjPresent, fromSubjImperfect, fromSubjFuture,
   },
   noun: {
     all: allNoun, toPlural: toPluralNoun, toSingular: toSingularNoun,

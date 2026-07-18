@@ -630,7 +630,7 @@ export default [
   'veloz',
   'vencedor',
   'venerável',
-  'verdade', //real, true	
+
   'verdadeiro',
   'verde-esmeralda',
   'verde',

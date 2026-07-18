@@ -4,7 +4,8 @@ import methods from './methods/index.js'
 import misc from './misc.js'
 
 const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
-  toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo } = methods.verb
+  toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo,
+  toSubjPresent, toSubjImperfect, toSubjFuture } = methods.verb
 let lexicon = {}
 
 const tagMap = {
@@ -15,14 +16,42 @@ const tagMap = {
   secondPlural: 'SecondPersonPlural',
   thirdPlural: 'ThirdPersonPlural',
 }
-const addToLex = function (obj, tag, lex) {
+const addToLex = function (obj, tags, lex) {
+  // find forms that repeat across persons, like 'falava' (1st + 3rd)
+  let counts = {}
+  Object.values(obj).forEach(w => {
+    counts[w] = (counts[w] || 0) + 1
+  })
   Object.keys(obj).forEach(k => {
     let w = obj[k]
     if (!lex[w]) {
-      lex[w] = [tag, tagMap[k]]
+      // skip the person-tag for ambiguous forms
+      if (counts[w] > 1) {
+        lex[w] = tags
+      } else {
+        lex[w] = tags.concat([tagMap[k]])
+      }
     }
   })
 }
+
+// which tense-models produce which tags
+const conjugations = [
+  [toPresentTense, ['PresentTense']],
+  [toPastTense, ['PastTense']],
+  [toFutureTense, ['FutureTense']],
+  [toConditional, ['Conditional']],
+  [toImperative, ['Imperative']],
+  [toImperativeNeg, ['Imperative']],
+  [toImperfect, ['Imperfect']],
+  [toPluperfect, ['Pluperfect']],
+  [toInfinitivo, ['Infinitive']],
+  // subjunctive forms that overlap the above (like 'fale') keep their first tag,
+  // distinct ones ('falasse', 'fizer', 'quiser'..) are added here
+  [toSubjPresent, ['Subjunctive', 'PresentTense']],
+  [toSubjImperfect, ['Subjunctive', 'Imperfect']],
+  [toSubjFuture, ['Subjunctive', 'FutureTense']],
+]
 
 Object.keys(lexData).forEach(tag => {
   let wordsObj = unpack(lexData[tag])
@@ -31,32 +60,10 @@ Object.keys(lexData).forEach(tag => {
 
     // add conjugations for our verbs
     if (tag === 'Infinitive') {
-      // add present tense
-      let obj = toPresentTense(w)
-      addToLex(obj, 'PresentTense', lexicon)
-      // add past tense
-      obj = toPastTense(w)
-      addToLex(obj, 'PastTense', lexicon)
-      // add future tense
-      obj = toFutureTense(w)
-      addToLex(obj, 'FutureTense', lexicon)
-      // add conditional
-      obj = toConditional(w)
-      addToLex(obj, 'Conditional', lexicon)
-      // add imperative
-      obj = toImperative(w)
-      addToLex(obj, 'Imperative', lexicon)
-      obj = toImperativeNeg(w)
-      addToLex(obj, 'Imperative', lexicon)
-      // add Imperfect
-      obj = toImperfect(w)
-      addToLex(obj, 'Imperfect', lexicon)
-      // add toPluperfect
-      obj = toPluperfect(w)
-      addToLex(obj, 'Pluperfect', lexicon)
-      // add toInfinitivo
-      obj = toInfinitivo(w)
-      addToLex(obj, 'Infinitive', lexicon)
+      conjugations.forEach(a => {
+        let obj = a[0](w)
+        addToLex(obj, a[1], lexicon)
+      })
       // add gerund
       let str = toGerund(w)
       lexicon[str] = lexicon[str] || 'Gerund'
