@@ -1,10 +1,10 @@
 // compile-time smoke-test for types/index.d.ts
-// checked by `npm run check-types` - never executed
-import nlp from '../../types/index.js'
+// checked by `pnpm run check-types` - never executed
+import nlp from 'pt-compromise'
 import type {
   PtView, Verbs, Nouns, Adjectives, Numbers,
   VerbConjugation, NounConjugation, AdjectiveConjugation, ConjugationSet,
-} from '../../types/index.js'
+} from 'pt-compromise'
 
 const doc: PtView = nlp('a professora falou com os alunos')
 
@@ -51,6 +51,9 @@ nlp.addWords({ 'skate': 'Noun' })
 nlp.addTags({ Checked: { is: 'Noun' } })
 nlp.buildTrie(['a', 'b'])
 nlp.parseMatch('#Noun')
+
+// @ts-expect-error input text must be a string
+nlp(25)
 
 // silence noUnusedLocals
 export { txt, found, firstPerson, subj, gerund, feminine, female, tokens, ver }

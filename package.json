@@ -3,7 +3,12 @@
   "name": "pt-compromise",
   "description": "processamento de linguagem natural modesto em javascript",
   "version": "0.0.4",
-  "main": "./src/index.js",
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0 || ^26.0.0",
+    "pnpm": "^11.5.0"
+  },
+  "main": "./builds/pt-compromise.mjs",
   "browser": "./builds/pt-compromise.min.js",
   "unpkg": "./builds/pt-compromise.min.js",
   "type": "module",
@@ -21,9 +26,10 @@
     "url": "git://github.com/nlp-compromise/pt-compromise.git"
   },
   "scripts": {
-    "test": "tape \"./tests/**/*.test.js\" | tap-dancer",
-    "testb": "cross-env TESTENV=prod npm run test",
-    "build": "npm run version && rollup -c --silent",
+    "test": "pnpm run check-types && tape \"./tests/**/*.test.js\" | tap-dancer",
+    "testb": "cross-env TESTENV=prod pnpm run test",
+    "build": "pnpm run version && rollup -c --silent",
+    "prepack": "pnpm run build && pnpm run testb && pnpm run lint",
     "version": "node ./scripts/version.js",
     "pack": "node ./scripts/pack.js",
     "score": "node ./learn/tagger/test.js",
