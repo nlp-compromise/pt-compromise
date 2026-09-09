@@ -1,6 +1,5 @@
 import js from '@eslint/js'
 import regexp from 'eslint-plugin-regexp'
-import globals from 'globals'
 
 export default [
   {
@@ -12,10 +11,6 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
     },
     rules: {
       'comma-dangle': [1, 'only-multiline'],
