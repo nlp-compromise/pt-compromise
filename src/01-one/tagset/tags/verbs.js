@@ -25,12 +25,14 @@ export default {
   Copula: {
     is: 'Verb',
   },
+  // 'não', 'nunca' - not a verb itself
   Negative: {
-    is: 'Verb',
+    not: ['Value'],
   },
+  // modals stay fully-conjugated in portuguese - 'pudesse', 'deveria'
+  // so don't strip their tense tags
   Modal: {
     is: 'Auxiliary',
-    not: ['Infinitive', 'PresentTense', 'PastTense', 'FutureTense'],
   },
   PerfectTense: {
     is: 'Verb',
@@ -51,14 +53,15 @@ export default {
   },
   Auxiliary: {
     is: 'Verb',
-    not: ['PastTense', 'PresentTense', 'Gerund', 'Conjunction', 'Copula'],
+    not: ['Conjunction'],
   },
   Conditional: {
     is: 'Verb',
     not: ['Infinitive', 'Imperative'],
   },
+  // clitic pronouns - 'me', 'se', 'te', 'nos'
   Reflexive: {
-    is: 'Verb',
+    is: 'Pronoun',
   },
   // sometimes 'pretérito'
   Perfecto: {
@@ -67,7 +70,7 @@ export default {
   // moods
   Imperative: {
     is: 'Verb',
-    Subjunctive: ['Subjunctive']
+    not: ['Subjunctive']
   },
   Subjunctive: {
     is: 'Verb',

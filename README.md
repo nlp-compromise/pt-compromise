@@ -244,10 +244,20 @@ doc.text()
 ### Lematização
 encontrar a forma raiz das palavras
 ```js
-let doc = nlp('tiramos nuestros zapatos')
+let doc = nlp('tiramos os nossos sapatos')
 doc.compute('root')
-doc.has('{tirar} nuestros {zapato}')
+doc.has('{tirar} os nossos {sapato}')
 //true
+```
+
+### Conjugação
+conjugar verbos em todos os tempos, incluindo o subjuntivo
+```js
+let doc = nlp('falou')
+doc.verbs().conjugate()[0].SubjunctiveImperfect.first
+// 'falasse'
+doc.verbs().conjugate()[0].FutureTense.third
+// 'falará'
 ```
 
 <div align="right">

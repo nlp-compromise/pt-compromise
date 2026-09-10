@@ -13,12 +13,18 @@ let {
   presentTense,
   gerunds,
   pastParticiple,
-  infinitivo
+  infinitivo,
+  subjPresent,
+  subjImperfect,
+  subjFuture,
 } = model
 
 const allForms = function (str, m) {
   return forms.reduce((h, form) => {
-    h[form] = convert(str, m[form])
+    // imperatives are missing the first-person form
+    if (m[form]) {
+      h[form] = convert(str, m[form])
+    }
     return h
   }, {})
 }
@@ -32,6 +38,9 @@ const toPastTense = (str) => allForms(str, pastTense)
 const toPluperfect = (str) => allForms(str, pluperfect)
 const toPresentTense = (str) => allForms(str, presentTense)
 const toInfinitivo = (str) => allForms(str, infinitivo)
+const toSubjPresent = (str) => allForms(str, subjPresent)
+const toSubjImperfect = (str) => allForms(str, subjImperfect)
+const toSubjFuture = (str) => allForms(str, subjFuture)
 const toGerund = (str) => convert(str, gerunds.gerunds)
 const toPastParticiple = (str) => convert(str, pastParticiple.pastParticiple)
 
@@ -47,6 +56,9 @@ const all = function (str) {
     Object.values(toPluperfect(str)),
     Object.values(toPresentTense(str)),
     Object.values(toInfinitivo(str)),
+    Object.values(toSubjPresent(str)),
+    Object.values(toSubjImperfect(str)),
+    Object.values(toSubjFuture(str)),
     toGerund(str),
     toPastParticiple(str),
   ).filter(s => s)
@@ -66,12 +78,8 @@ export {
   toPresentTense,
   toGerund,
   toPastParticiple,
-  toInfinitivo
+  toInfinitivo,
+  toSubjPresent,
+  toSubjImperfect,
+  toSubjFuture,
 }
-// console.log(all('broxar'))
-
-// console.log(toImperfect('crescer'))
-// console.log(toPastParticiple('casar'))
-// console.log(toPastParticiple('confessar'))
-// console.log(toPastParticiple('falar'))
-// console.log(toGerund('confessar'))

@@ -21,6 +21,46 @@ const postTagger = function (doc) {
   // according to
   doc.match('^[segundo] #Noun').tag('Preposition', 'segundo-salles')
 
+  // ==determiner + conjugated-verb is usually a noun==
+  // 'uma fala', 'esse bolo', 'a melhor aluna'
+  doc.match('(um|uma|uns|umas|este|esta|estes|estas|esse|essa|esses|essas|aquele|aquela|meu|minha|teu|tua|seu|sua|nosso|nossa) #Adjective? [#Verb]', 0)
+    .ifNo('(#Copula|#Auxiliary)')
+    .tag('Noun', 'det-verb-noun')
+  // 'a verdade era..' - but not 'eu o vi', where o|a is a clitic pronoun
+  doc.match('^(o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'start-det-verb')
+  doc.match('#Preposition (o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'prep-det-verb')
+  doc.match('#Verb (o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'verb-det-verb')
+
+  // 'preciso que..', 'eu preciso de ajuda' - verb-use of 'preciso'
+  // but not 'o trabalho preciso', where it stays an adjective
+  doc.match('^[preciso] (que|de|#Infinitive)', 0).tag('Verb', 'preciso-verb')
+  doc.match('(#Pronoun|#Negative|#Adverb) [preciso] (que|de|#Infinitive)', 0).tag('Verb', 'pron-preciso-verb')
+
+  // ==subjunctive context==
+  // 'espero que fale', 'talvez ele venha', 'que você não fale'
+  doc.match('(que|talvez|embora) (#Pronoun|#Negative)? (#Pronoun|#Negative)? [#Imperative]', 0).tag('Subjunctive', 'que-subjunctive')
+
+  // 'se eu fosse' - conditional-if, not the reflexive pronoun
+  doc.match('[se] (eu|tu|ele|ela|nós|vós|você|vocês|eles|elas)', 0).tag('Conjunction', 'se-if')
+
+  // 'começou a chover' - 'a' + infinitive is a preposition
+  doc.match('[a] #Infinitive', 0).tag('Preposition', 'a-infinitive')
+
+  // ==clitic pronouns==
+  // 'eu o vi', 'não a conheço' - accusative clitic, not a determiner
+  doc.match('(#Pronoun|#Negative) [(o|a|os|as)] #Verb', 0).tag('Pronoun', 'clitic-acc')
+
+  // ==compound tenses==
+  // 'tenho falado' - present perfect
+  doc.match('[(tenho|tens|tem|temos|tendes|têm)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'ter-participle')
+  doc.match('(tenho|tens|tem|temos|tendes|têm) #Adverb? [#PastParticiple]', 0).tag('PerfectTense', 'present-perfect')
+  // 'tinha falado', 'havia falado' - pluperfect
+  doc.match('[(tinha|tinhas|tínhamos|tínheis|tinham|havia|havias|havíamos|havíeis|haviam)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'tinha-participle')
+  doc.match('(tinha|tinhas|tínhamos|tínheis|tinham|havia|havias|havíamos|havíeis|haviam) #Adverb? [#PastParticiple]', 0).tag('Pluperfect', 'pluperfect-compound')
+  // 'terá falado', 'teria falado', 'tenha falado' - other perfect forms
+  doc.match('[(terei|terás|terá|teremos|tereis|terão|teria|terias|teríamos|teríeis|teriam|tenha|tenhas|tenhamos|tenham|tivesse|tivesses|tivéssemos|tivessem|tiver|tiveres|tivermos|tiverem)] #Adverb? #PastParticiple', 0).tag('Auxiliary', 'ter-fut-participle')
+  doc.match('(terei|terás|terá|teremos|tereis|terão|teria|terias|teríamos|teríeis|teriam|tenha|tenhas|tenhamos|tenham|tivesse|tivesses|tivéssemos|tivessem|tiver|tiveres|tivermos|tiverem) #Adverb? [#PastParticiple]', 0).tag('PerfectTense', 'other-perfect')
+
   // ===auxiliary verbs==
   // está a comer
   doc.match('[{estar} a?] #Verb', 0).tag('Auxiliary', 'está-a-verb')

@@ -986,5 +986,17 @@ export default [
   'vendas',
   'nada',
   'sistema',
-
+  // common nouns that collide with rare verb conjugations
+  // (words like 'fala', 'começo', 'choro' are left out - their verb-use is
+  //  more common, and the determiner+verb rules recover the noun-use)
+  'bolo',
+  'verdade',
+  'banho',
+  'beijo',
+  'abraço',
+  'amiga',
+  'comida',
+  'problema',
+  'fruta',
+  'projeto',
 ]

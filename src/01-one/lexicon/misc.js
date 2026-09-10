@@ -12,7 +12,7 @@ let lex = {
   // 'como': 'QuestionWord',//how?
   'quanto': 'QuestionWord',
   'quão': 'QuestionWord',
-  'termos': '#Verb'
+  'termos': 'Verb'
 }
 
 //possessive pronouns
@@ -46,13 +46,49 @@ poss.forEach(str => {
   lex[str] = ['Possessive', 'Pronoun']
 })
 
+// feminine forms of common person-nouns, whose masculine ends in -o
+let femNouns = [
+  'aluna',
+  'amiga',
+  'médica',
+  'advogada',
+  'engenheira',
+  'enfermeira',
+  'vizinha',
+  'cozinheira',
+  'garota',
+  'companheira',
+  'secretária',
+  'menina',
+  'filha',
+  'irmã',
+  'atriz',
+]
+femNouns.forEach(str => {
+  lex[str] = ['Noun', 'FemaleNoun', 'Singular']
+  let pl = str === 'atriz' ? 'atrizes' : str + 's'
+  lex[pl] = ['Noun', 'FemaleNoun', 'Plural']
+})
+
 const forms = ['FirstPerson', 'SecondPerson', 'ThirdPerson', 'FirstPersonPlural', 'SecondPersonPlural', 'ThirdPersonPlural']
-const addCopulas = (arr, tag) => {
+const addCopulas = (arr, tags) => {
+  if (typeof tags === 'string') {
+    tags = [tags]
+  }
   arr.forEach((str, i) => {
-    lex[str] = lex[str] || ['Copula', forms[i], tag]
+    if (lex[str]) {
+      return
+    }
+    // forms shared between persons, like 'era' (1st + 3rd) get no person-tag
+    if (arr.indexOf(str) !== arr.lastIndexOf(str)) {
+      lex[str] = ['Copula'].concat(tags)
+    } else {
+      lex[str] = ['Copula', forms[i]].concat(tags)
+    }
   })
 }
 // copula ser
+// note: indicative tenses are listed before their (less-common) subjunctive homographs
 lex['sido'] = ['PastParticiple', 'Copula']
 lex['sendo'] = ['Gerund', 'Copula']
 lex['sê'] = ['Imperative', 'Copula', 'SecondPerson']
@@ -63,26 +99,26 @@ addCopulas(['fui', 'foste', 'foi', 'fomos', 'fostes', 'foram'], 'PastTense')
 addCopulas(['era', 'eras', 'era', 'éramos', 'éreis', 'eram'], 'Imperfect')
 addCopulas(['fora', 'foras', 'fora', 'fôramos', 'fôreis', 'foram'], 'Pluperfect')
 addCopulas(['serei', 'serás', 'será', 'seremos', 'sereis', 'serão'], 'FutureTense')
-addCopulas(['seria', 'serias', 'seria', 'seríamos', 'seríeis', 'seriam'], 'ConditionalVerb')
-addCopulas(['seja', 'sejas', 'seja', 'sejamos', 'sejais', 'sejam'], 'PresentTense')// (Subjunctive)
-addCopulas(['fosse', 'fosses', 'fosse', 'fôssemos', 'fôsseis', 'fossem'], 'Imperfect')// (Subjunctive)
-addCopulas(['for', 'fores', 'for', 'formos', 'fordes', 'forem'], 'FutureTense')// (Subjunctive)
+addCopulas(['seria', 'serias', 'seria', 'seríamos', 'seríeis', 'seriam'], 'Conditional')
+addCopulas(['seja', 'sejas', 'seja', 'sejamos', 'sejais', 'sejam'], ['PresentTense', 'Subjunctive'])
+addCopulas(['fosse', 'fosses', 'fosse', 'fôssemos', 'fôsseis', 'fossem'], ['Imperfect', 'Subjunctive'])
+addCopulas(['for', 'fores', 'for', 'formos', 'fordes', 'forem'], ['FutureTense', 'Subjunctive'])
 
 // copula estar
 lex['estado'] = ['PastParticiple', 'Copula']
 lex['estando'] = ['Gerund', 'Copula']
-lex['está'] = ['Imperative', 'Copula', 'SecondPerson']
 lex['estai'] = ['Imperative', 'Copula', 'SecondPersonPlural']
+// 'está' is far more often present-tense than imperative
 addCopulas(['estar', 'estares', 'estar', 'estarmos', 'estardes', 'estarem'], 'Infinitive')
 addCopulas(['estou', 'estás', 'está', 'estamos', 'estais', 'estão'], 'PresentTense')
 addCopulas(['estive', 'estiveste', 'esteve', 'estivemos', 'estivestes', 'estiveram'], 'PastTense')
 addCopulas(['estava', 'estavas', 'estava', 'estávamos', 'estáveis', 'estavam'], 'Imperfect')
 addCopulas(['estivera', 'estiveras', 'estivera', 'estivéramos', 'estivéreis', 'estiveram'], 'Pluperfect')
 addCopulas(['estarei', 'estarás', 'estará', 'estaremos', 'estareis', 'estarão'], 'FutureTense')
-addCopulas(['estaria', 'estarias', 'estaria', 'estaríamos', 'estaríeis', 'estariam'], 'ConditionalVerb')
-addCopulas(['esteja', 'estejas', 'esteja', 'estejamos', 'estejais', 'estejam'], 'PresentTense')
-addCopulas(['estivesse', 'estivesses', 'estivesse', 'estivéssemos', 'estivésseis', 'estivessem'], 'Imperfect')
-addCopulas(['estiver', 'estiveres', 'estiver', 'estivermos', 'estiverdes', 'estiverem'], 'FutureTense')
+addCopulas(['estaria', 'estarias', 'estaria', 'estaríamos', 'estaríeis', 'estariam'], 'Conditional')
+addCopulas(['esteja', 'estejas', 'esteja', 'estejamos', 'estejais', 'estejam'], ['PresentTense', 'Subjunctive'])
+addCopulas(['estivesse', 'estivesses', 'estivesse', 'estivéssemos', 'estivésseis', 'estivessem'], ['Imperfect', 'Subjunctive'])
+addCopulas(['estiver', 'estiveres', 'estiver', 'estivermos', 'estiverdes', 'estiverem'], ['FutureTense', 'Subjunctive'])
 
 
 export default lex

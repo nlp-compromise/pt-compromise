@@ -31,19 +31,41 @@ const toRoot = function (term, methods) {
   }
   // reduce a noun to root
   if (tags.has('Noun')) {
+    let out = str
     if (tags.has('Plural')) {
-      return noun.fromPlural(str)
+      out = noun.toSingular(out)
     }
-    return null
+    // professora → professor
+    if (tags.has('FemaleNoun')) {
+      out = noun.fromFeminine(out)
+    }
+    return out !== str ? out : null
   }
   // reduce a verb to root
+  // check specific tags before the tags they inherit from -
+  // Gerund/Infinitive are #PresentTense, PastParticiple/Imperfect are #PastTense
   if (tags.has('Verb')) {
     let form = verbForm(term)
+    if (tags.has('Gerund')) {
+      return verb.fromGerund(str, form)
+    }
+    if (tags.has('PastParticiple')) {
+      return verb.fromPastParticiple(str, form)
+    }
+    if (tags.has('Infinitive')) {
+      return verb.fromInfinitivo(str, form)
+    }
     if (tags.has('Conditional')) {
       return verb.fromConditional(str, form)
     }
-    if (tags.has('FutureTense')) {
-      return verb.fromFutureTense(str, form)
+    if (tags.has('Subjunctive')) {
+      if (tags.has('Imperfect') || tags.has('PastTense')) {
+        return verb.fromSubjImperfect(str, form)
+      }
+      if (tags.has('FutureTense')) {
+        return verb.fromSubjFuture(str, form)
+      }
+      return verb.fromSubjPresent(str, form)
     }
     if (tags.has('Imperative') && tags.has('Negative')) {
       return verb.fromImperativeNeg(str, form)
@@ -54,23 +76,17 @@ const toRoot = function (term, methods) {
     if (tags.has('Imperfect')) {
       return verb.fromImperfect(str, form)
     }
-    if (tags.has('PastTense')) {
-      return verb.fromPastTense(str, form)
-    }
     if (tags.has('Pluperfect')) {
       return verb.fromPluperfect(str, form)
     }
+    if (tags.has('PastTense')) {
+      return verb.fromPastTense(str, form)
+    }
+    if (tags.has('FutureTense')) {
+      return verb.fromFutureTense(str, form)
+    }
     if (tags.has('PresentTense')) {
       return verb.fromPresentTense(str, form)
-    }
-    if (tags.has('Gerund')) {
-      return verb.fromGerund(str, form)
-    }
-    if (tags.has('PastParticiple')) {
-      return verb.fromPastParticiple(str, form)
-    }
-    if (tags.has('Infinitive')) {
-      return verb.fromInfinitivo(str, form)
     }
     return str
   }
