@@ -1,6 +1,6 @@
 import data from './scrape/data3.js'
-let want = 'Infinitivo Pessoal'
-let out = {}
+const want = 'Infinitivo Pessoal'
+const out = {}
 data.forEach(obj => {
   out[obj.word] = obj[want]
 })

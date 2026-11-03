@@ -4,7 +4,7 @@ import toTextOrdinal from './toOrdinal.js'
 
 const formatNumber = function (parsed, fmt) {
   if (fmt === 'TextOrdinal') {
-    let words = toText(parsed.num)
+    const words = toText(parsed.num)
     return toTextOrdinal(words)
   }
   if (fmt === 'TextCardinal') {

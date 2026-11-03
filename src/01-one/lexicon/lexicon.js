@@ -6,7 +6,7 @@ import misc from './misc.js'
 const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
   toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo,
   toSubjPresent, toSubjImperfect, toSubjFuture } = methods.verb
-let lexicon = {}
+const lexicon = {}
 
 const tagMap = {
   first: 'FirstPerson',
@@ -30,12 +30,12 @@ const notAgentive = {
 }
 const addToLex = function (obj, tags, lex) {
   // find forms that repeat across persons, like 'falava' (1st + 3rd)
-  let counts = {}
+  const counts = {}
   Object.values(obj).forEach(w => {
     counts[w] = (counts[w] || 0) + 1
   })
   Object.keys(obj).forEach(k => {
-    let w = obj[k]
+    const w = obj[k]
     if (!lex[w]) {
       // skip the person-tag for ambiguous forms
       if (counts[w] > 1) {
@@ -66,14 +66,14 @@ const conjugations = [
 ]
 
 Object.keys(lexData).forEach(tag => {
-  let wordsObj = unpack(lexData[tag])
+  const wordsObj = unpack(lexData[tag])
   Object.keys(wordsObj).forEach(w => {
     lexicon[w] = tag
 
     // add conjugations for our verbs
     if (tag === 'Infinitive') {
       conjugations.forEach(a => {
-        let obj = a[0](w)
+        const obj = a[0](w)
         addToLex(obj, a[1], lexicon)
       })
       // add gerund
@@ -84,25 +84,25 @@ Object.keys(lexData).forEach(tag => {
       lexicon[str] = lexicon[str] || 'PastParticiple'
     }
     if (tag === 'Adjective') {
-      let s = methods.adjective.toPlural(w)
+      const s = methods.adjective.toPlural(w)
       lexicon[s] = lexicon[s] || ['Adjective', 'MaleAdjective', 'PluralAdjective']
-      let f = methods.adjective.toFemale(w)
+      const f = methods.adjective.toFemale(w)
       lexicon[f] = lexicon[f] || ['Adjective', 'FemaleAdjective', 'SingularAdjective']
-      let fs = methods.adjective.toFemalePlural(w)
+      const fs = methods.adjective.toFemalePlural(w)
       lexicon[fs] = lexicon[fs] || ['Adjective', 'FemaleAdjective', 'PluralAdjective']
     }
     if (tag === 'Noun') {
       lexicon[w] = lexicon[w] || ['Noun']
-      let pl = methods.noun.toPlural(w)
+      const pl = methods.noun.toPlural(w)
       lexicon[pl] = lexicon[pl] || 'Plural'
       // professor → professora, but not abstract -or nouns like 'amor'
       if (/or$/.test(w) && notAgentive[w] !== true) {
-        let fem = methods.noun.toFeminine(w)
+        const fem = methods.noun.toFeminine(w)
         if (fem !== w) {
           if (!lexicon[fem] || lexicon[fem] === 'Noun') {
             lexicon[fem] = ['Noun', 'FemaleNoun', 'Singular']
           }
-          let femPl = fem + 's'
+          const femPl = fem + 's'
           if (!lexicon[femPl] || lexicon[femPl] === 'Plural') {
             lexicon[femPl] = ['Noun', 'FemaleNoun', 'Plural']
           }

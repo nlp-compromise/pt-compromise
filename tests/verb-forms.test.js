@@ -1,9 +1,9 @@
 import test from 'tape'
 import nlp from './_lib.js'
-let here = '[verb-forms] '
+const here = '[verb-forms] '
 
 test('escoicear:', function (t) {
-  let vb = {
+  const vb = {
     "Infinitive": ["escoicear"],
     "Presente": ["escoiceie", "escoiceies", "escoiceie", "escoiceemos", "escoiceeis", "escoiceiem"],
     // "Pretérito Imperfeito": ["escoiceasse", "escoiceasses", "escoiceasse", "escoiceássemos", "escoiceásseis", "escoiceassem"],
@@ -18,7 +18,7 @@ test('escoicear:', function (t) {
   }
   Object.keys(vb).forEach(form => {
     vb[form].forEach(str => {
-      let doc = nlp(str)
+      const doc = nlp(str)
       t.equal(doc.has('#Verb'), true, here + `'${str}' is ${form}  #Verb`)
     })
   })
@@ -26,7 +26,7 @@ test('escoicear:', function (t) {
 })
 
 test('pronunciar', function (t) {
-  let vb = {
+  const vb = {
     "word": ["pronunciar"],
     "Presente": ["pronuncio", "pronuncias", "pronuncia", "pronunciamos", "pronunciais", "pronunciam"],
     "Pretérito Imperfeito": ["pronunciava", "pronunciavas", "pronunciava", "pronunciávamos", "pronunciáveis", "pronunciavam"],
@@ -42,14 +42,14 @@ test('pronunciar', function (t) {
 
   Object.keys(vb).forEach(form => {
     vb[form].forEach(str => {
-      let doc = nlp(str)
+      const doc = nlp(str)
       t.equal(doc.has('#Verb'), true, here + `'${str}' is ${form} #Verb`)
     })
   })
   t.end()
 })
 test('ter', function (t) {
-  let vb = {
+  const vb = {
     "word": ["ter"],
     "Presente": ["tenho", "tens", "tem", "temos", "tendes", "têm"],
     "Pretérito Imperfeito": ["tinha", "tinhas", "tinha", "tínhamos", "tínheis", "tinham"],
@@ -64,14 +64,14 @@ test('ter', function (t) {
   }
   Object.keys(vb).forEach(form => {
     vb[form].forEach(str => {
-      let doc = nlp(str)
+      const doc = nlp(str)
       t.equal(doc.has('#Verb'), true, here + `'${str}' is ${form} #Verb`)
     })
   })
   t.end()
 })
 test('gesticular', function (t) {
-  let vb = {
+  const vb = {
     "word": ["gesticular"],
     "Presente": ["gesticulo", "gesticulas", "gesticula", "gesticulamos", "gesticulais", "gesticulam"],
     "Pretérito Imperfeito": ["gesticulava", "gesticulavas", "gesticulava", "gesticulávamos", "gesticuláveis", "gesticulavam"],
@@ -87,7 +87,7 @@ test('gesticular', function (t) {
   }
   Object.keys(vb).forEach(form => {
     vb[form].forEach(str => {
-      let doc = nlp(str)
+      const doc = nlp(str)
       t.equal(doc.has('#Verb'), true, here + `'${str}' is ${form} #Verb`)
     })
   })

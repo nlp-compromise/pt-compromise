@@ -1,5 +1,5 @@
 const verbForm = function (term) {
-  let want = [
+  const want = [
     'FirstPerson',
     'SecondPerson',
     'ThirdPerson',
@@ -12,8 +12,8 @@ const verbForm = function (term) {
 
 const toRoot = function (term, methods) {
   const { verb, noun, adjective } = methods.two.transform
-  let tags = term.tags
-  let str = term.implicit || term.normal || term.text
+  const tags = term.tags
+  const str = term.implicit || term.normal || term.text
   // reduce an adjective to its root
   if (tags.has('Adjective')) {
     // female plural
@@ -45,7 +45,7 @@ const toRoot = function (term, methods) {
   // check specific tags before the tags they inherit from -
   // Gerund/Infinitive are #PresentTense, PastParticiple/Imperfect are #PastTense
   if (tags.has('Verb')) {
-    let form = verbForm(term)
+    const form = verbForm(term)
     if (tags.has('Gerund')) {
       return verb.fromGerund(str, form)
     }
@@ -96,7 +96,7 @@ const toRoot = function (term, methods) {
 const root = function (view) {
   view.docs.forEach(terms => {
     terms.forEach(term => {
-      let str = toRoot(term, view.world.methods)
+      const str = toRoot(term, view.world.methods)
       if (str && str !== term.normal) {
         term.root = str
       }

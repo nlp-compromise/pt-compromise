@@ -1,7 +1,7 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import XmlStream from 'xml-stream'
 
-let file = '/Users/spencer/mountain/pt-compromise/learn/verbs/conjugations-pt.xml'
+const file = '/Users/spencer/mountain/pt-compromise/learn/verbs/conjugations-pt.xml'
 const stream = fs.createReadStream(file)
 const xml = new XmlStream(stream)
 

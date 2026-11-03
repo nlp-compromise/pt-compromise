@@ -1,6 +1,6 @@
 import test from 'tape'
 import nlp from './_lib.js'
-let here = '[transforms] '
+const here = '[transforms] '
 
 test('compound tenses:', function (t) {
   let doc = nlp('Eu tenho falado com ela')
@@ -20,7 +20,7 @@ test('compound tenses:', function (t) {
 })
 
 test('verb transforms:', function (t) {
-  let arr = [
+  const arr = [
     ['eu falei com ela', 'toPresentTense', 'eu falo com ela'],
     ['ela come pão', 'toPastTense', 'ela comeu pão'],
     ['nós falamos', 'toFutureTense', 'nós falaremos'],
@@ -34,7 +34,7 @@ test('verb transforms:', function (t) {
     ['eu falo', 'toConditional', 'eu falaria'],
   ]
   arr.forEach(a => {
-    let doc = nlp(a[0])
+    const doc = nlp(a[0])
     doc.verbs()[a[1]]()
     t.equal(doc.text(), a[2], here + `${a[0]} → ${a[2]}`)
   })
@@ -45,7 +45,7 @@ test('noun gender:', function (t) {
   let doc = nlp('a professora')
   t.equal(doc.match('professora').has('#FemaleNoun'), true, here + 'professora #FemaleNoun')
 
-  let obj = nlp('o professor').nouns().conjugate()[0]
+  const obj = nlp('o professor').nouns().conjugate()[0]
   t.equal(obj.feminine, 'professora', here + 'conjugate feminine')
 
   doc = nlp('o professor')
@@ -53,13 +53,13 @@ test('noun gender:', function (t) {
   t.equal(doc.text(), 'a professora', here + 'toFeminine with determiner')
 
   // roots
-  let arr = [
+  const arr = [
     ['as professoras', '{professor}'],
     ['a atriz', '{ator}'],
     ['a menina', '{menino}'],
   ]
   arr.forEach(a => {
-    let d = nlp(a[0])
+    const d = nlp(a[0])
     d.compute('root')
     t.equal(d.has(a[1]), true, here + `${a[0]} → ${a[1]}`)
   })
@@ -82,7 +82,7 @@ test('mesoclisis:', function (t) {
 
 test('clitic allomorphs:', function (t) {
   // 'dão-no' is dão + o, not 'em o'
-  let doc = nlp('Eles dão-no ao pai')
+  const doc = nlp('Eles dão-no ao pai')
   t.equal(doc.match('no').has('#Reflexive'), true, here + 'dão-no clitic')
   t.equal(doc.match('no').has('#Preposition'), false, here + 'dão-no not em+o')
   t.end()

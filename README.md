@@ -290,3 +290,7 @@ npm watch
 - &nbsp; **[luizppa/portuguese-pos-tagging](https://github.com/luizppa/portuguese-pos-tagging)** - by Luiz Philippe
 
 MIT
+
+### TypeScript
+
+Both ESM imports and CommonJS `import = require()` are supported. CommonJS typings require TypeScript 5.3 or newer.

@@ -1,7 +1,7 @@
 import { convert, reverse } from 'suffix-thumb'
 import model from '../models.js'
 
-let {
+const {
   conditional, futureTense, imperativeNeg, imperative, imperfect, pastTense,
   pluperfect, presentTense, gerunds, pastParticiple, infinitivo,
   subjPresent, subjImperfect, subjFuture,
@@ -15,20 +15,20 @@ const revAll = function (m) {
   }, {})
 }
 
-let conditionalRev = revAll(conditional)
-let futureTenseRev = revAll(futureTense)
-let imperativeNegRev = revAll(imperativeNeg)
-let imperativeRev = revAll(imperative)
-let imperfectRev = revAll(imperfect)
-let pastTenseRev = revAll(pastTense)
-let pluperfectRev = revAll(pluperfect)
-let presentTenseRev = revAll(presentTense)
-let infinitivoRev = revAll(infinitivo)
-let subjPresentRev = revAll(subjPresent)
-let subjImperfectRev = revAll(subjImperfect)
-let subjFutureRev = revAll(subjFuture)
-let gerundsRev = reverse(gerunds.gerunds)
-let pastParticipleRev = reverse(pastParticiple.pastParticiple)
+const conditionalRev = revAll(conditional)
+const futureTenseRev = revAll(futureTense)
+const imperativeNegRev = revAll(imperativeNeg)
+const imperativeRev = revAll(imperative)
+const imperfectRev = revAll(imperfect)
+const pastTenseRev = revAll(pastTense)
+const pluperfectRev = revAll(pluperfect)
+const presentTenseRev = revAll(presentTense)
+const infinitivoRev = revAll(infinitivo)
+const subjPresentRev = revAll(subjPresent)
+const subjImperfectRev = revAll(subjImperfect)
+const subjFutureRev = revAll(subjFuture)
+const gerundsRev = reverse(gerunds.gerunds)
+const pastParticipleRev = reverse(pastParticiple.pastParticiple)
 
 const forms = {
   'FirstPerson': 'first',
@@ -44,9 +44,9 @@ const fromAll = function (str, form, m) {
   }
   // an ambiguous form, like 'falava' (1st or 3rd person) has no person-tag -
   // try each person's model until one converts it
-  let keys = Object.keys(m)
+  const keys = Object.keys(m)
   for (let i = 0; i < keys.length; i += 1) {
-    let out = convert(str, m[keys[i]])
+    const out = convert(str, m[keys[i]])
     if (out !== str) {
       return out
     }

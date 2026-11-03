@@ -1,5 +1,5 @@
 import { chromium } from 'playwright'
-import fs from 'fs'
+import fs from 'node:fs'
 import words from '/Users/spencer/mountain/pt-compromise/data/lexicon/verbs/infinitives.js'
 
 // let words = [
@@ -9,31 +9,31 @@ import words from '/Users/spencer/mountain/pt-compromise/data/lexicon/verbs/infi
 const doit = async function (page, word) {
   let safer = word.replace(/ç/, 'c')
   safer = safer.replace(/ô/, 'o')
-  let url = `https://www.conju` + '' + `gacao.co${''}m.br/verbo-${safer}/`
+  const url = `https://www.conju` + '' + `gacao.co${''}m.br/verbo-${safer}/`
   await page.goto(url)
   await page.waitForTimeout(1500) // wait for 1 seconds
-  let data = { word }
-  let table = await page.locator('#conjugacao')
-  let types = await table.locator('.tempo-conjugacao')
+  const data = { word }
+  const table = await page.locator('#conjugacao')
+  const types = await table.locator('.tempo-conjugacao')
   const count = await types.count()
   for (let i = 0; i < count; ++i) {
-    let row = await types.nth(i)
-    let type = await row.locator('h4').textContent()
+    const row = await types.nth(i)
+    const type = await row.locator('h4').textContent()
     if (data[type]) {
       console.log(type)
       continue
     }
     data[type] = []
 
-    let kinds = await row.locator('.f')
+    const kinds = await row.locator('.f')
     const allKinds = await kinds.count()
     for (let k = 0; k < allKinds; k += 1) {
-      let res = await kinds.nth(k).textContent()
+      const res = await kinds.nth(k).textContent()
       data[type].push(res)
     }
   }
   console.log(data)
-  let str = '\n' + JSON.stringify(data) + ',\n'
+  const str = '\n' + JSON.stringify(data) + ',\n'
   fs.writeFileSync('./results.txt', str, { flag: 'a' })
 
   return data
@@ -46,7 +46,7 @@ const doAll = async function () {
   const page = await browser.newPage()
 
   for (let i = 0; i < words.length; i += 1) {
-    let meta = await doit(page, words[i])
+    const meta = await doit(page, words[i])
     console.log(meta)
   }
   await browser.close()

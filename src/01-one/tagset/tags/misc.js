@@ -2,82 +2,105 @@ const anything = ['Noun', 'Verb', 'Adjective', 'Adverb', 'Value', 'QuestionWord'
 
 export default {
   Adjective: {
-    not: ['Noun', 'Verb', 'Adverb', 'Value'],
+    aliases: [null, 'Adjetivo'],
+    not: ['Noun', 'Verb', 'Adverb', 'Value']
   },
   FemaleAdjective: {
+    aliases: [null, 'AdjetivoFeminino'],
     is: 'Adjective',
-    not: ['MaleAdjective'],
+    not: ['MaleAdjective']
   },
   MaleAdjective: {
+    aliases: [null, 'AdjetivoMasculino'],
     is: 'Adjective',
-    not: ['FemaleAdjective'],
+    not: ['FemaleAdjective']
   },
   PluralAdjective: {
+    aliases: [null, 'AdjetivoPlural'],
     is: 'Adjective',
-    not: ['SingularAdjective'],
+    not: ['SingularAdjective']
   },
   SingularAdjective: {
+    aliases: [null, 'AdjetivoSingular'],
     is: 'Adjective',
-    not: ['PluralAdjective'],
+    not: ['PluralAdjective']
   },
   Comparable: {
-    is: 'Adjective',
+    aliases: [null, 'Comparável'],
+    is: 'Adjective'
   },
   Comparative: {
-    is: 'Adjective',
+    aliases: [null, 'Comparativo'],
+    is: 'Adjective'
   },
   Superlative: {
+    aliases: [null, 'Superlativo'],
     is: 'Adjective',
-    not: ['Comparative'],
+    not: ['Comparative']
   },
-  NumberRange: {},
+  NumberRange: {
+    aliases: [null, 'IntervaloNumérico'],
+  },
   Adverb: {
-    not: ['Noun', 'Verb', 'Adjective', 'Value'],
+    aliases: [null, 'Advérbio'],
+    not: ['Noun', 'Verb', 'Adjective', 'Value']
   },
 
   Determiner: {
-    not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord', 'Conjunction', 'Preposition'], //allow 'a' to be a Determiner/Value
+    aliases: [null, 'Determinante', 'Artigo'],
+    not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord', 'Conjunction', 'Preposition'] //allow 'a' to be a Determiner/Value
   },
   Conjunction: {
-    not: anything,
+    aliases: [null, 'Conjunção'],
+    not: anything
   },
   Preposition: {
-    not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord'],
+    aliases: [null, 'Preposição'],
+    not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord']
   },
   QuestionWord: {
-    not: ['Determiner'],
+    aliases: [null, 'Interrogativo'],
+    not: ['Determiner']
   },
   Currency: {
-    is: 'Noun',
+    aliases: [null, 'Moeda'],
+    is: 'Noun'
   },
   Expression: {
-    not: ['Noun', 'Adjective', 'Verb', 'Adverb', 'Expression', 'Conjunction'],
+    aliases: [null, 'Interjeição'],
+    not: ['Noun', 'Adjective', 'Verb', 'Adverb', 'Conjunction']
   },
-  Abbreviation: {},
+  Abbreviation: {
+    aliases: [null, 'Abreviatura'],
+  },
   Url: {
-    not: ['HashTag', 'PhoneNumber', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email'],
+    not: ['HashTag', 'PhoneNumber', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email']
   },
   PhoneNumber: {
-    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email'],
+    aliases: [null, 'Telefone'],
+    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email']
   },
   HashTag: {},
   AtMention: {
+    aliases: [null, 'Menção'],
     is: 'Noun',
-    not: ['HashTag', 'Email'],
+    not: ['HashTag', 'Email']
   },
   Emoji: {
-    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention'],
+    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention']
   },
   Emoticon: {
-    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention'],
+    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention']
   },
   Email: {
-    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention'],
+    not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention']
   },
   Acronym: {
-    not: ['Plural', 'RomanNumeral'],
+    aliases: [null, 'Acrônimo'],
+    not: ['Plural', 'RomanNumeral']
   },
   Condition: {
-    not: ['Verb', 'Adjective', 'Noun', 'Value'],
-  },
+    aliases: [null, 'Condição'],
+    not: ['Verb', 'Adjective', 'Noun', 'Value']
+  }
 }

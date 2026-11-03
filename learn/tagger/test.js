@@ -4,7 +4,7 @@ import nlp from '../../src/index.js'
 const green = str => '\x1b[32m' + str + '\x1b[0m'
 const red = str => '\x1b[31m' + str + '\x1b[0m'
 
-let bads = []
+const bads = []
 let rights = 0
 
 const skipWords = {
@@ -18,12 +18,12 @@ const skipWords = {
 }
 
 const topk = function (arr) {
-  let obj = {}
+  const obj = {}
   arr.forEach(a => {
     obj[a] = obj[a] || 0
     obj[a] += 1
   })
-  let res = Object.keys(obj).map(k => [k, obj[k]])
+  const res = Object.keys(obj).map(k => [k, obj[k]])
   return res.sort((a, b) => (a[1] > b[1] ? -1 : 0))
 }
 const percent = (part, total) => {
@@ -33,13 +33,13 @@ const percent = (part, total) => {
 };
 
 const doOne = function (obj) {
-  let doc = nlp(obj.txt)
-  let right = 0
+  const doc = nlp(obj.txt)
+  const right = 0
   let wrong = 0
   let out = ''
   let print = false
   obj.words.forEach(o => {
-    let m = doc.match(o.word.toLowerCase())
+    const m = doc.match(o.word.toLowerCase())
     if (!m.found) {
       return
     }
@@ -68,7 +68,7 @@ const doOne = function (obj) {
   }
 }
 
-let docs = getData()
+const docs = getData()
 docs.forEach(doOne)
 console.log(topk(bads))
 

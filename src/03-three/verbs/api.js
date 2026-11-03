@@ -4,7 +4,7 @@ export const getNth = (doc, n) => (typeof n === 'number' ? doc.eq(n) : doc)
 const getRoot = function (m) {
   m.compute('root')
   m = m.not('(#Auxiliary|#Adverb|#Negative|#Reflexive)')
-  let str = m.text('root')
+  const str = m.text('root')
   return str
 }
 
@@ -37,7 +37,7 @@ const getPerson = function (m) {
     return 'third'
   }
   // look at the subject-pronoun, before the verb
-  let subj = m.lookBehind('(eu|tu|ele|ela|você|nós|vós|vocês|eles|elas)$')
+  const subj = m.lookBehind('(eu|tu|ele|ela|você|nós|vós|vocês|eles|elas)$')
   if (subj.found) {
     return personMap[subj.last().text('normal')] || 'third'
   }
@@ -48,13 +48,13 @@ const getPerson = function (m) {
 const convertTo = function (view, method) {
   const methods = view.methods.two.transform.verb
   view.forEach(m => {
-    let str = getRoot(m)
+    const str = getRoot(m)
     if (!str) {
       return
     }
-    let person = getPerson(m)
-    let obj = methods[method](str)
-    let form = obj[person] || obj.third
+    const person = getPerson(m)
+    const obj = methods[method](str)
+    const form = obj[person] || obj.third
     if (form) {
       m.replaceWith(form)
     }
@@ -85,7 +85,7 @@ const api = function (View) {
         toSubjImperfect,
         toSubjFuture } = methods
       return getNth(this, n).map(m => {
-        let str = getRoot(m, methods)
+        const str = getRoot(m, methods)
         return {
           Conditional: toConditional(str),
           FutureTense: toFutureTense(str),
@@ -122,11 +122,11 @@ const api = function (View) {
     toGerund(n) {
       const methods = this.methods.two.transform.verb
       getNth(this, n).forEach(m => {
-        let str = getRoot(m)
+        const str = getRoot(m)
         if (!str) {
           return
         }
-        let gerund = methods.toGerund(str)
+        const gerund = methods.toGerund(str)
         if (gerund) {
           m.replaceWith(gerund)
         }
@@ -135,7 +135,7 @@ const api = function (View) {
     }
     toInfinitive(n) {
       getNth(this, n).forEach(m => {
-        let str = getRoot(m)
+        const str = getRoot(m)
         if (str) {
           m.replaceWith(str)
         }

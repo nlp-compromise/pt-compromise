@@ -10,8 +10,8 @@ const conditionalEnds = /^(ia|ias|íamos|íeis|iam)$/
 const nasalClitics = { no: true, na: true, nos: true, nas: true }
 
 const verbPhrase = function (terms, i, world) {
-  let setTag = world.methods.one.setTag
-  let t = terms[i]
+  const setTag = world.methods.one.setTag
+  const t = terms[i]
   // handle dropped-s in  'lavamo-nos' (lavamos + nos)
   if (terms[i + 1] && terms[i + 1].normal === 'nos') {
     if (/mo$/.test(t.normal)) {
@@ -27,7 +27,7 @@ const verbPhrase = function (terms, i, world) {
   // handle mesoclisis - 'dar-te-ei', 'dir-se-ia'
   if (terms[i + 2] && t.post === '-' && /r$/.test(t.normal) &&
     terms[i + 1].post === '-' && midClitics[terms[i + 1].normal] === true) {
-    let end = terms[i + 2].normal
+    const end = terms[i + 2].normal
     let tense = null
     if (futureEnds.test(end)) {
       tense = 'FutureTense'
@@ -41,8 +41,8 @@ const verbPhrase = function (terms, i, world) {
   }
   // handle clitic allomorphs after a nasal verb - 'dão-no' is dão + o, not 'em o'
   if (terms[i + 1] && t.post === '-' && /(ão|õe|m)$/.test(t.normal) && t.tags.has('Verb')) {
-    let nxt = terms[i + 1]
-    let txt = (nxt.text || '').toLowerCase()
+    const nxt = terms[i + 1]
+    const txt = (nxt.text || '').toLowerCase()
     if (nasalClitics[txt] === true && nxt.implicit === 'em') {
       // undo the em+o contraction-split
       nxt.implicit = undefined

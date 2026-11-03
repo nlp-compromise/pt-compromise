@@ -1,9 +1,9 @@
 import test from 'tape'
 import nlp from './_lib.js'
-let here = '[pt-match] '
+const here = '[pt-match] '
 
 test('match:', function (t) {
-  let arr = [
+  const arr = [
     ['O rato comeu o queijo', '#Determiner #Noun #Verb #Determiner #Noun'],// ("The mouse ate the cheese")
     ['o carro é branco', '#Determiner #Noun #Copula #Adjective'],// ("the car is white")
     ['a casa é branca', '#Determiner #Noun #Copula #Adjective'],// ("the house is white").
@@ -74,11 +74,11 @@ test('match:', function (t) {
     // ['',''],
   ]
   arr.forEach(function (a) {
-    let [str, match] = a
-    let doc = nlp(str)//.compute('tagRank')
-    let tags = doc.json()[0].terms.map(term => term.tags[0])
-    let msg = `'${(str + "' ").padEnd(20, ' ')}  - '${tags.join(', ')}'`
-    let m = doc.match(match)
+    const [str, match] = a
+    const doc = nlp(str)//.compute('tagRank')
+    const tags = doc.json()[0].terms.map(term => term.tags[0])
+    const msg = `'${(str + "' ").padEnd(20, ' ')}  - '${tags.join(', ')}'`
+    const m = doc.match(match)
     t.equal(m.text(), doc.text(), here + msg)
   })
   t.end()
