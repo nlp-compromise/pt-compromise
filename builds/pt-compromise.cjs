@@ -11260,6 +11260,7 @@
 
   var nouns$1 = {
     Noun: {
+      aliases: [null, 'Substantivo'],
       not: ['Verb', 'Adjective', 'Adverb', 'Value', 'Determiner'],
     },
     Singular: {
@@ -11267,64 +11268,80 @@
       not: ['Plural'],
     },
     ProperNoun: {
+      aliases: [null, 'NomePróprio'],
       is: 'Noun',
     },
     Person: {
+      aliases: [null, 'Pessoa'],
       is: 'Singular',
       also: ['ProperNoun'],
       not: ['Place', 'Organization', 'Date'],
     },
     FirstName: {
+      aliases: [null, 'PrimeiroNome'],
       is: 'Person',
     },
     MaleName: {
+      aliases: [null, 'NomeMasculino'],
       is: 'FirstName',
       not: ['FemaleName', 'LastName'],
     },
     FemaleName: {
+      aliases: [null, 'NomeFeminino'],
       is: 'FirstName',
       not: ['MaleName', 'LastName'],
     },
     LastName: {
+      aliases: [null, 'Sobrenome'],
       is: 'Person',
       not: ['FirstName'],
     },
     Honorific: {
+      aliases: [null, 'Título'],
       is: 'Noun',
       not: ['FirstName', 'LastName', 'Value'],
     },
     Place: {
+      aliases: [null, 'Lugar'],
       is: 'Singular',
       not: ['Person', 'Organization'],
     },
     Country: {
+      aliases: [null, 'País'],
       is: 'Place',
       also: ['ProperNoun'],
       not: ['City'],
     },
     City: {
+      aliases: [null, 'Cidade'],
       is: 'Place',
       also: ['ProperNoun'],
       not: ['Country'],
     },
     Region: {
+      aliases: [null, 'Região'],
       is: 'Place',
       also: ['ProperNoun'],
     },
     Address: {
+      aliases: [null, 'Endereço'],
       // is: 'Place',
     },
     Organization: {
+      aliases: [null, 'Organização'],
       is: 'ProperNoun',
       not: ['Person', 'Place'],
     },
     SportsTeam: {
+      aliases: [null, 'Equipe'],
       is: 'Organization',
     },
     School: {
+      aliases: [null, 'Escola'],
       is: 'Organization',
     },
     Company: {
+      aliases: [null, 'Empresa'],
       is: 'Organization',
     },
     Plural: {
@@ -11332,9 +11349,11 @@
       not: ['Singular'],
     },
     Uncountable: {
+      aliases: [null, 'Incontável'],
       is: 'Noun',
     },
     Pronoun: {
+      aliases: [null, 'Pronome'],
       is: 'Noun',
       not: entity,
     },
@@ -11343,27 +11362,33 @@
       not: entity,
     },
     Activity: {
+      aliases: [null, 'Atividade'],
       is: 'Noun',
       not: ['Person', 'Place'],
     },
     Unit: {
+      aliases: [null, 'Unidade'],
       is: 'Noun',
       not: entity,
     },
     Demonym: {
+      aliases: [null, 'Gentílico'],
       is: 'Noun',
       also: ['ProperNoun'],
       not: entity,
     },
     Possessive: {
+      aliases: [null, 'Possessivo'],
       is: 'Noun',
     },
 
     FemaleNoun: {
+      aliases: [null, 'SubstantivoFeminino'],
       is: 'Noun',
       not: ['MaleNoun']
     },
     MaleNoun: {
+      aliases: [null, 'SubstantivoMasculino'],
       is: 'Noun',
       not: ['FemaleNoun']
     },
@@ -11372,33 +11397,41 @@
 
   var verbs$1 = {
     Verb: {
+      aliases: [null, 'Verbo'],
       not: ['Noun', 'Adjective', 'Adverb', 'Value', 'Expression'],
     },
     PresentTense: {
+      aliases: [null, 'Presente'],
       is: 'Verb',
       not: ['PastTense'],
     },
     Infinitive: {
+      aliases: [null, 'Infinitivo'],
       is: 'PresentTense',
       not: ['Gerund'],
     },
     Gerund: {
+      aliases: [null, 'Gerúndio'],
       is: 'PresentTense',
       not: ['Copula', 'FutureTense'],
     },
     PastTense: {
+      aliases: [null, 'Passado'],
       is: 'Verb',
       not: ['PresentTense', 'Gerund', 'FutureTense'],
     },
     FutureTense: {
+      aliases: [null, 'Futuro'],
       is: 'Verb',
       not: ['PresentTense', 'Gerund', 'PastTense'],
     },
     Copula: {
+      aliases: [null, 'Cópula'],
       is: 'Verb',
     },
     // 'não', 'nunca' - not a verb itself
     Negative: {
+      aliases: [null, 'Negação'],
       not: ['Value'],
     },
     // modals stay fully-conjugated in portuguese - 'pudesse', 'deveria'
@@ -11407,13 +11440,16 @@
       is: 'Auxiliary',
     },
     PerfectTense: {
+      aliases: [null, 'PretéritoPerfeito'],
       is: 'Verb',
       not: ['Gerund'],
     },
     Pluperfect: {
+      aliases: [null, 'MaisQuePerfeito'],
       is: 'Verb',
     },
     PastParticiple: {
+      aliases: [null, 'Particípio'],
       is: 'PastTense',
     },
     PhrasalVerb: {
@@ -11424,15 +11460,18 @@
       not: ['PastTense', 'PresentTense', 'Copula', 'Gerund'],
     },
     Auxiliary: {
+      aliases: [null, 'Auxiliar'],
       is: 'Verb',
       not: ['Conjunction'],
     },
     Conditional: {
+      aliases: [null, 'Condicional'],
       is: 'Verb',
       not: ['Infinitive', 'Imperative'],
     },
     // clitic pronouns - 'me', 'se', 'te', 'nos'
     Reflexive: {
+      aliases: [null, 'Reflexivo'],
       is: 'Pronoun',
     },
     // sometimes 'pretérito'
@@ -11441,14 +11480,17 @@
     },
     // moods
     Imperative: {
+      aliases: [null, 'Imperativo'],
       is: 'Verb',
       not: ['Subjunctive']
     },
     Subjunctive: {
+      aliases: [null, 'Subjuntivo'],
       is: 'Verb',
       not: ['Imperative']
     },
     Imperfect: {
+      aliases: [null, 'Imperfeito'],
       is: 'PastTense',
       not: ['Imperative']
     },
@@ -11456,26 +11498,32 @@
 
     // 
     FirstPerson: {
+      aliases: [null, 'PrimeiraPessoa'],
       is: 'Verb',
       not: ['SecondPerson', 'ThirdPerson', 'FirstPersonPlural', 'SecondPersonPlural', 'ThirdPersonPlural']
     },
     SecondPerson: {
+      aliases: [null, 'SegundaPessoa'],
       is: 'Verb',
       not: ['FirstPerson', 'ThirdPerson', 'FirstPersonPlural', 'SecondPersonPlural', 'ThirdPersonPlural']
     },
     ThirdPerson: {
+      aliases: [null, 'TerceiraPessoa'],
       is: 'Verb',
       not: ['FirstPerson', 'SecondPerson', 'FirstPersonPlural', 'SecondPersonPlural', 'ThirdPersonPlural']
     },
     FirstPersonPlural: {
+      aliases: [null, 'PrimeiraPessoaPlural'],
       is: 'Verb',
       not: ['FirstPerson', 'SecondPerson', 'ThirdPerson', 'SecondPersonPlural', 'ThirdPersonPlural']
     },
     SecondPersonPlural: {
+      aliases: [null, 'SegundaPessoaPlural'],
       is: 'Verb',
       not: ['FirstPerson', 'SecondPerson', 'ThirdPerson', 'FirstPersonPlural', 'ThirdPersonPlural']
     },
     ThirdPersonPlural: {
+      aliases: [null, 'TerceiraPessoaPlural'],
       is: 'Verb',
       not: ['FirstPerson', 'SecondPerson', 'ThirdPerson', 'FirstPersonPlural', 'SecondPersonPlural']
     },
@@ -11483,6 +11531,7 @@
 
   var values = {
     Value: {
+      aliases: [null, 'Número'],
       not: ['Verb', 'Adjective', 'Adverb'],
     },
     Ordinal: {
@@ -11494,73 +11543,90 @@
       not: ['Ordinal'],
     },
     Fraction: {
+      aliases: [null, 'Fração'],
       is: 'Value',
       not: ['Noun'],
     },
     Multiple: {
+      aliases: [null, 'Múltiplo'],
       is: 'Value',
     },
     RomanNumeral: {
+      aliases: [null, 'NúmeroRomano'],
       is: 'Cardinal',
       not: ['TextValue'],
     },
     TextValue: {
+      aliases: [null, 'Numeral'],
       is: 'Value',
       not: ['NumericValue'],
     },
     NumericValue: {
+      aliases: [null, 'Numérico'],
       is: 'Value',
       not: ['TextValue'],
     },
     Money: {
+      aliases: [null, 'Dinheiro'],
       is: 'Cardinal',
     },
     Percent: {
+      aliases: [null, 'Porcentagem'],
       is: 'Value',
     },
   };
 
   var dates = {
     Date: {
+      aliases: [null, 'Data'],
       not: ['Verb', 'Adverb', 'Adjective'],
     },
     Month: {
+      aliases: [null, 'Mês'],
       is: 'Singular',
       also: ['Date'],
       not: ['Year', 'WeekDay', 'Time'],
     },
     WeekDay: {
+      aliases: [null, 'DiaDaSemana'],
       is: 'Noun',
       also: ['Date'],
     },
     Year: {
+      aliases: [null, 'Ano'],
       is: 'Date',
       not: ['RomanNumeral'],
     },
     FinancialQuarter: {
+      aliases: [null, 'Trimestre'],
       is: 'Date',
       not: 'Fraction',
     },
     // 'easter'
     Holiday: {
+      aliases: [null, 'Feriado'],
       is: 'Date',
       also: ['Noun'],
     },
     // 'summer'
     Season: {
+      aliases: [null, 'Estação'],
       is: 'Date',
     },
     Timezone: {
+      aliases: [null, 'FusoHorário'],
       is: 'Noun',
       also: ['Date'],
       not: ['ProperNoun'],
     },
     Time: {
+      aliases: [null, 'Hora'],
       is: 'Date',
       not: ['AtMention'],
     },
     // 'months'
     Duration: {
+      aliases: [null, 'Duração'],
       is: 'Noun',
       also: ['Date'],
     },
@@ -11570,66 +11636,87 @@
 
   var misc = {
     Adjective: {
+      aliases: [null, 'Adjetivo'],
       not: ['Noun', 'Verb', 'Adverb', 'Value']
     },
     FemaleAdjective: {
+      aliases: [null, 'AdjetivoFeminino'],
       is: 'Adjective',
       not: ['MaleAdjective']
     },
     MaleAdjective: {
+      aliases: [null, 'AdjetivoMasculino'],
       is: 'Adjective',
       not: ['FemaleAdjective']
     },
     PluralAdjective: {
+      aliases: [null, 'AdjetivoPlural'],
       is: 'Adjective',
       not: ['SingularAdjective']
     },
     SingularAdjective: {
+      aliases: [null, 'AdjetivoSingular'],
       is: 'Adjective',
       not: ['PluralAdjective']
     },
     Comparable: {
+      aliases: [null, 'Comparável'],
       is: 'Adjective'
     },
     Comparative: {
+      aliases: [null, 'Comparativo'],
       is: 'Adjective'
     },
     Superlative: {
+      aliases: [null, 'Superlativo'],
       is: 'Adjective',
       not: ['Comparative']
     },
-    NumberRange: {},
+    NumberRange: {
+      aliases: [null, 'IntervaloNumérico'],
+    },
     Adverb: {
+      aliases: [null, 'Advérbio'],
       not: ['Noun', 'Verb', 'Adjective', 'Value']
     },
 
     Determiner: {
+      aliases: [null, 'Determinante', 'Artigo'],
       not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord', 'Conjunction', 'Preposition'] //allow 'a' to be a Determiner/Value
     },
     Conjunction: {
+      aliases: [null, 'Conjunção'],
       not: anything
     },
     Preposition: {
+      aliases: [null, 'Preposição'],
       not: ['Noun', 'Verb', 'Adjective', 'Adverb', 'QuestionWord']
     },
     QuestionWord: {
+      aliases: [null, 'Interrogativo'],
       not: ['Determiner']
     },
     Currency: {
+      aliases: [null, 'Moeda'],
       is: 'Noun'
     },
     Expression: {
+      aliases: [null, 'Interjeição'],
       not: ['Noun', 'Adjective', 'Verb', 'Adverb', 'Conjunction']
     },
-    Abbreviation: {},
+    Abbreviation: {
+      aliases: [null, 'Abreviatura'],
+    },
     Url: {
       not: ['HashTag', 'PhoneNumber', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email']
     },
     PhoneNumber: {
+      aliases: [null, 'Telefone'],
       not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention', 'Email']
     },
     HashTag: {},
     AtMention: {
+      aliases: [null, 'Menção'],
       is: 'Noun',
       not: ['HashTag', 'Email']
     },
@@ -11643,9 +11730,11 @@
       not: ['HashTag', 'Verb', 'Adjective', 'Value', 'AtMention']
     },
     Acronym: {
+      aliases: [null, 'Acrônimo'],
       not: ['Plural', 'RomanNumeral']
     },
     Condition: {
+      aliases: [null, 'Condição'],
       not: ['Verb', 'Adjective', 'Noun', 'Value']
     }
   };
@@ -12585,7 +12674,7 @@
     api,
   };
 
-  var version = '0.0.5';
+  var version = '0.0.6';
 
   nlp.plugin(tokenizer);
   nlp.plugin(tagset);
