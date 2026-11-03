@@ -2,7 +2,7 @@ import test from 'tape'
 import nlp from './_lib.js'
 const here = '[plurals] '
 
-let arr = [
+const arr = [
   ['mesa', 'mesas'],
   ['pai', 'pais'],
   ['flor', 'flores'],
@@ -370,7 +370,7 @@ let arr = [
 
 test('noun-inflection:', function (t) {
   arr.forEach(a => {
-    let [sing, plur] = a
+    const [sing, plur] = a
     let str = nlp(sing).tag('Noun').nouns().toPlural().text()
     t.equal(str, plur, here + 'toPlural: ' + sing)
 

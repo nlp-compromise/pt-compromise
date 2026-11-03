@@ -1,8 +1,8 @@
 import test from 'tape'
 import nlp from '../_lib.js'
-let here = '[ordinal-parse] '
+const here = '[ordinal-parse] '
 
-let genders = [
+const genders = [
   // ['primeiro', 'primeira', 1],
   ['segundo', 'segunda', 2],
   ['terceiro', 'terceira', 3],
@@ -30,7 +30,7 @@ let genders = [
   ['trigésimo quarto', 'trigésima quarto', 34],
 ]
 
-let plurals = [
+const plurals = [
   // masc forms
   // ['primeiro', 'primeiros'],
   ['segundo', 'segundos'],
@@ -102,12 +102,12 @@ let plurals = [
 ]
 test('number-tag:', function (t) {
   genders.forEach(a => {
-    let [m, f] = a
+    const [m, f] = a
     t.equal(nlp(m).has('^#Ordinal+$'), true, here + 'tag ' + m)
     t.equal(nlp(f).has('^#Ordinal+$'), true, here + 'tag ' + f)
   })
   plurals.forEach(a => {
-    let [s, p] = a
+    const [s, p] = a
     t.equal(nlp(s).has('^#Ordinal+$'), true, here + 'tag ' + s)
     t.equal(nlp(p).has('^#Ordinal+$'), true, here + 'tag ' + p)
   })
@@ -116,16 +116,16 @@ test('number-tag:', function (t) {
 
 test('number-parse:', function (t) {
   genders.forEach(a => {
-    let [m, f, n] = a
+    const [m, f, n] = a
     let num = nlp(m).numbers().get()[0]
     t.equal(num, n, here + '[toNumber] ' + m)
     num = nlp(f).numbers().get()[0]
     t.equal(num, n, here + '[toNumber] ' + f)
   })
   plurals.forEach(a => {
-    let [s, p] = a
-    let left = nlp(s).numbers().get()[0]
-    let right = nlp(p).numbers().get()[0]
+    const [s, p] = a
+    const left = nlp(s).numbers().get()[0]
+    const right = nlp(p).numbers().get()[0]
     t.equal(left, right, here + `${left} == ${right}`)
   })
   t.end()
@@ -133,8 +133,8 @@ test('number-parse:', function (t) {
 
 test('toOrdinal:', function (t) {
   genders.forEach(a => {
-    let [m, , n] = a
-    let doc = nlp(String(n))
+    const [m, , n] = a
+    const doc = nlp(String(n))
     doc.numbers().toText().toOrdinal()
     t.equal(doc.text(), m, here + '[toOrdinal] ' + n)
   })

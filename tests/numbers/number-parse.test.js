@@ -1,8 +1,8 @@
 import test from 'tape'
 import nlp from '../_lib.js'
-let here = '[number-parse] '
+const here = '[number-parse] '
 
-let arr = [
+const arr = [
   // [1, 'um'],
   [2, 'dois'],
   // [2, 'duas'],
@@ -173,9 +173,9 @@ test('number-tag:', function (t) {
 
 test('number-parse:', function (t) {
   arr.forEach(a => {
-    let [want, str] = a
-    let doc = nlp(str)
-    let n = doc.numbers().get()[0]
+    const [want, str] = a
+    const doc = nlp(str)
+    const n = doc.numbers().get()[0]
     t.equal(n, want, here + '[toNumber] ' + str)
   })
   t.end()
@@ -183,8 +183,8 @@ test('number-parse:', function (t) {
 
 test('number-create:', function (t) {
   arr.forEach(a => {
-    let [num, str] = a
-    let doc = nlp(String(num))
+    const [num, str] = a
+    const doc = nlp(String(num))
     doc.numbers().toText()
     t.equal(doc.text(), str, here + '[toText] ' + num)
   })
@@ -192,7 +192,7 @@ test('number-create:', function (t) {
 })
 
 test('misc:', function (t) {
-  let doc = nlp('cinquenta e cinco dólares')
+  const doc = nlp('cinquenta e cinco dólares')
   doc.numbers().minus(10)
   t.equal(doc.text(), 'quarenta e cinco dólares', here + 'minus')
   t.end()

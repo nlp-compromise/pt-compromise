@@ -1,9 +1,9 @@
 import data from '../data.js'
-let ones = data.ones.reverse()
-let tens = data.tens.reverse()
-let hundreds = data.hundreds.reverse()
+const ones = data.ones.reverse()
+const tens = data.tens.reverse()
+const hundreds = data.hundreds.reverse()
 
-let multiples = [
+const multiples = [
   [1000000000, 'bilhão', 'bilhões'],
   [1000000, 'milhão', 'milhões'],
   [1000, 'mil', 'mil'],
@@ -14,10 +14,10 @@ let multiples = [
 //turn number into an array of magnitudes, like [[5, million], [2, hundred]]
 const getMagnitudes = function (num) {
   let working = num
-  let have = []
+  const have = []
   multiples.forEach(a => {
     if (num >= a[0]) {
-      let howmany = Math.floor(working / a[0])
+      const howmany = Math.floor(working / a[0])
       working -= howmany * a[0]
       if (howmany) {
         let str = a[1]
@@ -37,10 +37,10 @@ const getMagnitudes = function (num) {
 // when to put 'and' - these seem very complicated
 const andRules = function (words) {
   // do 'mil e duzentos' but 'mil duzentos e quinze'
-  let index = words.findIndex((w, i) => w === 'mil' && words[i + 1] === 'e')
+  const index = words.findIndex((w, i) => w === 'mil' && words[i + 1] === 'e')
   if (index !== -1) {
     // we have another 'e' after..
-    let hasAfter = words.slice(index + 2).find(w => w === 'e')
+    const hasAfter = words.slice(index + 2).find(w => w === 'e')
     if (hasAfter) {
       // remove the 'e'
       words.splice(index + 1, 1)
@@ -50,7 +50,7 @@ const andRules = function (words) {
 }
 
 const threeDigit = function (num) {
-  let words = []
+  const words = []
   // 100-900
   for (let i = 0; i < hundreds.length; i += 1) {
     if (hundreds[i][0] <= num) {
@@ -99,9 +99,9 @@ const toText = function (num) {
     num = Math.abs(num)
   }
   // handle multiples
-  let found = getMagnitudes(num)
+  const found = getMagnitudes(num)
   found.forEach((obj, i) => {
-    let res = threeDigit(obj.num)
+    const res = threeDigit(obj.num)
     if (res[0] === 'cem' && res.length > 1) {
       res[0] = 'cento'
     }

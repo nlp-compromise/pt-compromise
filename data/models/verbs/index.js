@@ -30,12 +30,12 @@ const todo = {
 }
 
 // turn our conjugation data into word-pairs
-let model = {}
+const model = {}
 Object.keys(todo).forEach(k => {
   model[k] = {}
-  let { data, keys } = todo[k]
+  const { data, keys } = todo[k]
   keys.forEach((form, i) => {
-    let pairs = []
+    const pairs = []
     Object.keys(data).forEach(inf => {
       // defective verbs have missing forms - their positions are unreliable
       if (data[inf].length !== keys.length) {

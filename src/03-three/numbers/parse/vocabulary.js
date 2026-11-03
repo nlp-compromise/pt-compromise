@@ -1,8 +1,8 @@
 import data from '../data.js'
 
-let toNumber = {}
-let toCardinal = {}
-let multiples = {
+const toNumber = {}
+const toCardinal = {}
+const multiples = {
   'cem': 100,
   'cento': 100,
   'centésimo': 100,
@@ -17,10 +17,10 @@ let multiples = {
 }
 
 data.ones.concat(data.tens, data.hundreds, data.multiples).forEach(a => {
-  let [n, card, ord] = a
+  const [n, card, ord] = a
   toNumber[card] = n //cardinal
   if (/os$/.test(card)) {
-    let f = card.replace(/os$/, 'as')
+    const f = card.replace(/os$/, 'as')
     toNumber[f] = n //female
   }
   if (ord) {

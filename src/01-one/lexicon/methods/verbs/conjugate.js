@@ -2,7 +2,7 @@ import { convert } from 'suffix-thumb'
 import model from '../models.js'
 const forms = ['first', 'second', 'third', 'firstPlural', 'secondPlural', 'thirdPlural']
 
-let {
+const {
   conditional,
   futureTense,
   imperativeNeg,

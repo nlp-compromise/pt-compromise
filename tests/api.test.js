@@ -3,7 +3,7 @@ import nlp from './_lib.js'
 const here = '[api] '
 
 test('api:', function (t) {
-  let arr = [
+  const arr = [
     `Tenho que ir embora agora.. Tens que aceitar os factos..`,
     '',
     '...........?',

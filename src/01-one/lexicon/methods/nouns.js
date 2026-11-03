@@ -1,9 +1,9 @@
 import { convert, reverse } from 'suffix-thumb'
 import model from './models.js'
 
-let { plurals } = model.nouns
+const { plurals } = model.nouns
 
-let rev = reverse(plurals)
+const rev = reverse(plurals)
 
 const toPlural = (str) => convert(str, plurals)
 const toSingular = (str) => convert(str, rev)

@@ -1,5 +1,5 @@
 import data from '../data.js'
-let toOrdinal = {}
+const toOrdinal = {}
 
 data.ones.concat(data.tens, data.hundreds, data.multiples).forEach(a => {
   toOrdinal[a[1]] = a[2]

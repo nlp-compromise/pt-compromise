@@ -1,5 +1,5 @@
 
-let lex = {
+const lex = {
   'não': 'Negative',
   'nunca': 'Negative',
   // 'quê': 'QuestionWord',//what?
@@ -16,7 +16,7 @@ let lex = {
 }
 
 //possessive pronouns
-let poss = [
+const poss = [
   'meu',
   'meus',// (masc.)
   'minha',
@@ -47,7 +47,7 @@ poss.forEach(str => {
 })
 
 // feminine forms of common person-nouns, whose masculine ends in -o
-let femNouns = [
+const femNouns = [
   'aluna',
   'amiga',
   'médica',
@@ -66,7 +66,7 @@ let femNouns = [
 ]
 femNouns.forEach(str => {
   lex[str] = ['Noun', 'FemaleNoun', 'Singular']
-  let pl = str === 'atriz' ? 'atrizes' : str + 's'
+  const pl = str === 'atriz' ? 'atrizes' : str + 's'
   lex[pl] = ['Noun', 'FemaleNoun', 'Plural']
 })
 

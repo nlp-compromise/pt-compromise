@@ -13,7 +13,7 @@ const fromText = function (terms) {
   let carry = 0
   let minus = false
 
-  let tokens = terms.map(o => o.normal || o.text).filter(str => str)
+  const tokens = terms.map(o => o.normal || o.text).filter(str => str)
   for (let i = 0; i < tokens.length; i += 1) {
     let w = tokens[i] || ''
     // minus eight
@@ -30,7 +30,7 @@ const fromText = function (terms) {
     }
     // 'cent'
     if (multiples.hasOwnProperty(w)) {
-      let mult = multiples[w] || 1
+      const mult = multiples[w] || 1
       if (carry === 0) {
         carry = 1
       }
@@ -43,7 +43,7 @@ const fromText = function (terms) {
     if (toNumber.hasOwnProperty(w)) {
       carry += toNumber[w]
     } else {
-      let str = normalize(w)
+      const str = normalize(w)
       if (toNumber.hasOwnProperty(str)) {
         carry += toNumber[str]
       }

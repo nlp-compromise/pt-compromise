@@ -16,7 +16,7 @@
 // ã Ã &#195;
 // õ Õ &#213;
 
-let compact = {
+const compact = {
   '?': 'Ɂ',
   '"': '“”"❝❞',
   "'": '‘‛❛❜’',
@@ -49,7 +49,7 @@ let compact = {
   z: 'ŹźŻżŽžƵƶȤȥɀΖ',
 }
 //decompress data into two hashes
-let unicode = {}
+const unicode = {}
 Object.keys(compact).forEach(function (k) {
   compact[k].split('').forEach(function (s) {
     unicode[s] = k
