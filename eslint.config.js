@@ -1,16 +1,21 @@
 import js from '@eslint/js'
 import regexp from 'eslint-plugin-regexp'
+import globals from 'globals'
 
 export default [
   {
-    ignores: ['builds/*', 'learn/**', 'scripts/**'],
+    ignores: ['builds/**', 'scripts/**', 'data/**', 'scratch.js'],
   },
   js.configs.recommended,
-  regexp.configs.recommended,
+  regexp.configs['flat/recommended'],
   {
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
     rules: {
       'comma-dangle': [1, 'only-multiline'],
@@ -33,9 +38,9 @@ export default [
       'no-shadow': 2,
       'no-unmodified-loop-condition': 1,
       'no-use-before-define': 1,
+      'no-useless-assignment': 0,
       'prefer-const': 0,
       radix: 1,
-      'no-useless-assignment': 0,
       'no-unused-vars': 1,
       'regexp/prefer-d': 0,
       'regexp/prefer-w': 0,

@@ -12,6 +12,8 @@ declare namespace nlp {
   export type Nouns = api.Nouns
   export type Adjectives = api.Adjectives
   export type Numbers = api.Numbers
+  export type SpecOptions = api.SpecOptions
+  export type SpecFailure = api.SpecFailure
   export type PtView = api.PtView
 }
 

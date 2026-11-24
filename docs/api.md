@@ -219,7 +219,6 @@ Elas são escritas para cada língua, por isso as que estão disponíveis aqui n
 _(chamados no objeto `nlp` importado, e não em uma visão)_
 
 - **`nlp.tokenize(text, lexicon?)`** — analisa o texto sem rodar o etiquetador
-<!-- - **`nlp.lazy(text, match?)`** — percorre o texto com uma análise mínima -->
 - **`nlp.plugin(plugin)`** — adiciona um plugin do compromise
 - **`nlp.extend(plugin)`** — alias de nlp.plugin()
 - **`nlp.addWords(words, isFrozen?)`** — adiciona novas palavras ao léxico interno

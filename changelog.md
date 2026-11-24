@@ -1,3 +1,12 @@
+### Unreleased
+
+- **[change]** - typescript types rewritten from the real api - core `View` types now come from `compromise`, and the document type is `PtView`
+- **[new]** - types for `nlp.fromSpec()`, `nlp.testSpec()` and `nlp.compile()`
+- **[change]** - remove `nlp.lazy()` from types and docs - it lives in a plugin now
+- **[change]** - minimum node version is 18
+- **[update]** - tests moved to `tests/unit`, `tests/types`, `tests/_hmm` and `tests/_backlog`
+- **[update]** - suffix-thumb 6.1.0
+
 ### 0.0.6 [Nov 2026]
 
 - **[update]** - smaller suffix-thumb format

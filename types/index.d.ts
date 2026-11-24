@@ -116,6 +116,25 @@ export interface Numbers extends View {
   decrement(): Numbers
 }
 
+/** options for nlp.fromSpec() */
+export interface SpecOptions {
+  tags?: 'ignore' | 'use'
+  failures?: 'ignore' | 'throw' | 'retain' | 'log'
+  verbose?: boolean
+}
+
+/** a failed line in a tagging spec */
+export interface SpecFailure {
+  code: 'length' | 'tags' | 'syntax' | 'match'
+  line: number
+  text: string
+  message: string
+  term?: number
+  word?: string
+  expected?: string[] | number
+  actual?: string[] | number
+}
+
 /** a compromise document, with portuguese-specific methods */
 export interface PtView extends View {
   /** return any verbs, with conjugation methods */
@@ -134,10 +153,10 @@ declare function nlp(text?: string, lexicon?: Lexicon): PtView
 declare namespace nlp {
   /** interpret text without tagging */
   export function tokenize(text: string, lexicon?: Lexicon): PtView
-  /** scan through text with minimal analysis */
-  export function lazy(text: string, match?: string): PtView
   /** mix in a compromise-plugin */
   export function plugin(plugin: Plugin): any
+  /** mix in a compromise-plugin */
+  export function extend(plugin: Plugin): any
   /** turn a match-string into json */
   export function parseMatch(match: string, opts?: matchOptions): object[]
   /** grab library internals */
@@ -155,13 +174,19 @@ declare namespace nlp {
   /** connect new tags to tagset graph */
   export function addTags(tags: object): any
   /** add new words to internal lexicon */
-  export function addWords(words: Lexicon): any
+  export function addWords(words: Lexicon, isFrozen?: boolean): any
   /** turn a list of words into a searchable graph */
   export function buildTrie(words: string[]): object
+  /** alias for nlp.buildTrie() */
+  export function compile(words: string[]): object
   /** compile a set of match objects to a more optimized form */
   export function buildNet(matches: Match[]): Net
   /** add words to the autoFill dictionary */
   export function typeahead(words: Lexicon): any
+  /** parse spec text, optionally applying tags or validating its constraints */
+  export function fromSpec(spec: string, options?: SpecOptions): PtView & { failures: SpecFailure[] }
+  /** returns untagged sentences and failing tagged lines, with validation failures */
+  export function testSpec(spec: string, verbose?: boolean, throwError?: boolean): PtView & { failures: SpecFailure[] }
 }
 
 export default nlp
