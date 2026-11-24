@@ -55,6 +55,14 @@ doc.match('#Adjective').out('array')
 // [ 'plácidas' ]
 ```
 
+### Documentação
+
+- [Introdução](./docs/index.md)
+- [Conjunto de etiquetas](./docs/tagset.md)
+- [Sintaxe dos padrões](./docs/match.md)
+- [API](./docs/api.md)
+- [Como contribuir](./docs/contributing.md)
+
 <!-- spacer -->
 <img height="15px" src="https://user-images.githubusercontent.com/399657/68221862-17ceb980-ffb8-11e9-87d4-7b30b6488f16.png"/>
 
