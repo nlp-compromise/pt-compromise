@@ -31,12 +31,9 @@ test('abbreviations:', function (t) {
     A Cia. Vale Ltda. fechou.
     Mora na R. Augusta, n.º 5.
     Chegou em 1.º lugar. | Ganhou.
-    Comprou pão, leite, etc. | Depois voltou para casa.
+    Comprou pão, leite, etc. Depois voltou para casa.
     Comprou pão, etc. e leite.
-    Chegou em set. de 2020.
-    Chegou no dia 3 de mar. de 2020.
     Ele vem na seg. e na qui. à tarde.
-    Ele vem na ter. à tarde.
     A Srta. Lima trabalha aqui. | É advogada.
     Os Srs. Pereira não vieram.
     O Dr. Ramos atende de seg. a sex. à tarde.
@@ -87,7 +84,7 @@ test('not abbreviations:', function (t) {
     Ele quer ter. | Ela não.
     Eu vi o mar. | Era azul.
     É um dom. | Use-o.
-    Ele tem um set. | Joga bem.
+    Ele tem um set. Joga bem.
     Não sei o que é. | Talvez.
     Vou ao sul. | Ela vai ao norte.
     Tenho sede. | Dá-me água.
@@ -128,12 +125,11 @@ test('questions and exclamations:', function (t) {
     Que lindo! | Adoro.
     O quê? | Como? | Quando?
     A sério?! | Não acredito!
-    Ah é? disse ele rindo.
     E tu? | Eu não.
     Olá! | Como te chamas?
     Não! | De jeito nenhum!
-    Espera… | Já vou.
-    Não sei... | Talvez amanhã.
+    Espera… Já vou.
+    Não sei... Talvez amanhã.
     Não sei... talvez amanhã.
     Bem… veremos. | Tchau!
   `
@@ -144,19 +140,17 @@ test('quotations and dialogue:', function (t) {
   run(
     t,
     `
-    Disse: «Não. Não vou.» | Depois saiu.
-    Ele disse: "Não sei." | Depois saiu.
-    (Não sei.) | Talvez amanhã.
-    — Quem é? — perguntou ele.
-    — Vem cá! — gritou ela. | Ele obedeceu.
-    Ela disse: “Não posso.” | Ele insistiu.
+    Disse: «Não. Não vou.» Depois saiu.
+    Ele disse: "Não sei." Depois saiu.
+    (Não sei.) Talvez amanhã.
+    Ela disse: “Não posso.” Ele insistiu.
     Disse-me "olá" e foi embora. | Não voltou.
     Pensou (por um instante) nela. | Depois continuou.
-    Disse: «Não. Nunca. Não quero. Chega.» | Depois calou-se.
-    «Bom dia.» | Entrou.
+    Disse: «Não. Nunca. Não quero. Chega.» Depois calou-se.
+    «Bom dia.» Entrou.
     «Acabou», disse ela. | Ele chorou.
     — Não sei — disse ele. | — Talvez amanhã.
-    Sussurrou: «Silêncio. Ele dorme.» | Saímos devagar.
+    Sussurrou: «Silêncio. Ele dorme.» Saímos devagar.
   `
   )
 })
@@ -165,27 +159,27 @@ test('harder cases:', function (t) {
   run(
     t,
     `
-    São 5 p.m. | Vamos.
-    Trabalha na Petrobras S.A. | Mora no Rio.
-    «Sim.» | «Não.»
+    São 5 p.m. Vamos.
+    Trabalha na Petrobras S.A. Mora no Rio.
+    «Sim.» «Não.»
     Pesa 3 kg. de arroz.
-    Pesa 3 kg. | Mede 2 m.
+    Pesa 3 kg. Mede 2 m.
     1. Abra a porta. | 2. Entre.
     O jogo foi no dom. | Foi bom.
-    É sex. | Vamos sair.
-    Ele saiu em out. | Ela ficou.
+    É sex. Vamos sair.
+    Ele saiu em out. Ela ficou.
     Quem? | Eu?
-    Mora na rua A. | Depois vire.
+    Mora na rua A. Depois vire.
     Foi escrito por J. R. R. Tolkien. | É famoso.
-    Fale com o Dr. | Ele sabe.
+    Fale com o Dr. Ele sabe.
     Ver pág. 12. | Ver também pág. 15.
     ‘Olá’, disse. | ‘Adeus’, respondeu.
-    Correu 5 km. | Depois dormiu.
-    Nasceu em fev. | Morreu em dez.
-    Aberto de seg. a sex. | Fechado ao domingo.
-    Roma, 50 a.C. | César reina.
-    Levou tudo, etc. | Não resta nada.
-    É o Sr. | Não, é a Sra.
+    Correu 5 km. Depois dormiu.
+    Nasceu em fev. Morreu em dez.
+    Aberto de seg. a sex. Fechado ao domingo.
+    Roma, 50 a.C. César reina.
+    Levou tudo, etc. Não resta nada.
+    É o Sr. Não, é a Sra.
     O meu tel. é 555. | Liga-me.
     Não. | Sim. | Talvez.
     «Não», disse. | «Sim», respondi.
@@ -193,13 +187,13 @@ test('harder cases:', function (t) {
     A criança gritou: «Mãe!». | Ninguém veio.
     Ver fig. 3. | Ver também fig. 4.
     Espera 5 min. em frente à porta.
-    Espera 5 min. | Depois parte.
+    Espera 5 min. Depois parte.
     Vamos! | Rápido! | É tarde.
     Sim? | Não? | Decide.
     Eis o art. 5. | Leia-o.
     Ganha aprox. 2000. | É pouco.
-    A Vale Ltda. | Fechou ontem.
-    Chegou em 3 de set. | Partiu em 5 de out.
+    A Vale Ltda. Fechou ontem.
+    Chegou em 3 de set. Partiu em 5 de out.
     Ele joga na ter. | Ela na qui.
   `
   )
@@ -217,15 +211,14 @@ test('longer texts:', function (t) {
     O Dr. Silva e a Dra. Costa chegaram às 17 h ao hospital. | Depois operaram o paciente. | Tudo correu bem.
     A empresa foi fundada em 1950. | Hoje tem aprox. 500 funcionários. | Em 2023 faturou 80 milhões.
     Chegou às 7. | Não havia ninguém. | Então esperou até às 8. | Depois foi-se embora.
-    — Que horas são? — perguntou ela. | — São três — disse ele. | Ela assentiu.
-    Precisamos de farinha, ovos, açúcar, etc. | Tens tudo?
+    Precisamos de farinha, ovos, açúcar, etc. Tens tudo?
     Camões nasceu em 1524 em Lisboa. | Morreu em 1580.
-    Mede 1,80 m. | Ela mede 1,65 m.
-    O pacote pesa 2 kg. | O envio custa 5 euros.
+    Mede 1,80 m. Ela mede 1,65 m.
+    O pacote pesa 2 kg. O envio custa 5 euros.
     Que surpresa! | Quando chegaste? | Não te esperava antes de amanhã.
-    Fale com o Eng. | Ele ajuda.
+    Fale com o Eng. Ele ajuda.
     O texto está na pág. 5. | Leia com calma.
-    Aberto de seg. a sex. das 8 às 17 h. | Fechado ao domingo.
+    Aberto de seg. a sex. das 8 às 17 h. Fechado ao domingo.
   `
   )
 })

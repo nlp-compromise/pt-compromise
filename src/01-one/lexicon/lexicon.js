@@ -2,6 +2,7 @@ import lexData from './_data.js'
 import { unpack } from 'efrt'
 import methods from './methods/index.js'
 import misc from './misc.js'
+import { properNouns } from 'compromise/shared'
 
 const { toPresentTense, toPastTense, toFutureTense, toConditional, toImperative,
   toImperativeNeg, toImperfect, toPluperfect, toGerund, toPastParticiple, toInfinitivo,
@@ -123,5 +124,12 @@ Object.assign(lexicon, misc)
 // console.log(lexicon['acordado'])
 // console.log(Object.keys(lexicon).length)
 
+
+// names of people and places, shared by every language - our own words win
+Object.keys(properNouns).forEach(tag => {
+  Object.keys(unpack(properNouns[tag])).forEach(w => {
+    lexicon[w] = lexicon[w] || tag
+  })
+})
 
 export default lexicon
