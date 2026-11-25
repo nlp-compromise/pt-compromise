@@ -1,6 +1,9 @@
 import unicode from './unicode.js'
 import contractions from './contractions.js'
-import abbreviations from './abbreviations.js'
+import build from './sentences.js'
+import sentenceRules from './abbreviations.js'
+
+const { isSentence, wrap, abbreviations } = build(sentenceRules)
 
 
 export default {
@@ -9,8 +12,10 @@ export default {
 
     world.model.one.contractions = contractions
 
-    // pt abbreviations for sentence parser
-    Object.assign(world.model.one.abbreviations, abbreviations)
+    // our own abbreviations, and sentence-boundary rules
+    world.model.one.abbreviations = { ...abbreviations }
+    world.methods.one.tokenize.isSentence = isSentence
+    world.methods.one.tokenize.splitSentences = wrap(world.methods.one.tokenize.splitSentences)
 
     // 'que' -> 'quebec'
     delete world.model.one.lexicon.que
