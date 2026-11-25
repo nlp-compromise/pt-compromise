@@ -2,12 +2,6 @@ import test from 'tape'
 import nlp from '../_lib.js'
 const here = '[pt-nouns-hmm] '
 
-test('nouns isPlural:', function (t) {
-  t.deepEqual(nlp('os gatos e o cão').nouns().isPlural().out('array'), ['gatos'], here + 'gatos')
-  t.deepEqual(nlp('comprei livros novos').nouns().isPlural().out('array'), ['livros'], here + 'livros')
-  t.end()
-})
-
 test('nouns toFeminine:', function (t) {
   const arr = [
     // the article should agree

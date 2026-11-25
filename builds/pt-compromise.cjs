@@ -12167,7 +12167,7 @@ designate
         return this
       }
       isPlural(n) {
-        return getNth$2(this, n).if('#PluralNoun')
+        return getNth$2(this, n).if('#Plural')
       }
       toPlural(n) {
         const methods = this.methods.two.transform.noun;

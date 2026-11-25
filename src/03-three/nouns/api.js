@@ -45,7 +45,7 @@ const api = function (View) {
       return this
     }
     isPlural(n) {
-      return getNth(this, n).if('#PluralNoun')
+      return getNth(this, n).if('#Plural')
     }
     toPlural(n) {
       const methods = this.methods.two.transform.noun
