@@ -72,7 +72,9 @@ for (let i = 0; i < data.length; i++) {
     // if (lex[list[o]]) {
     //   console.log(list[o] + '  ' + lex[list[o]] + ' ' + data[i][1])
     // }
-    lex[list[o]] = data[i][1]
+    // an adjective that is also a noun keeps both - 'interior', 'estrangeiro'
+    const isBoth = lex[list[o]] === 'Adjective' && data[i][1] === 'Noun'
+    lex[list[o]] = isBoth ? ['Adjective', 'Noun'] : data[i][1]
   }
 }
 // console.log(lex['ho chi minh'])

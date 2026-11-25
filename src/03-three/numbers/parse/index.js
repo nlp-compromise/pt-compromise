@@ -1,6 +1,4 @@
-import fromText from './fromText.js'
-
-const isNumeric = term => /[0-9]/.test(term.text)
+import scan from './fromText.js'
 
 // read digits with the shared european-numbers plugin - '1.234,56', '-5', '3,5%'
 const fromNumber = function (terms, m) {
@@ -17,22 +15,15 @@ const fromNumber = function (terms, m) {
 
 const parseNumber = function (m) {
   const terms = m.docs[0]
-  const isText = m.has('#TextValue')
+  const found = scan(terms)[0] || { num: null }
+  let res = { num: found.num, prefix: '', suffix: '', hasComma: false }
   // any digits come first - '2,5 milhões'
-  const split = terms.findIndex(t => !isNumeric(t))
-  const digits = split === -1 ? terms : terms.slice(0, split)
-  const words = split === -1 ? [] : terms.slice(split)
-  let res = { num: null, prefix: '', suffix: '', hasComma: false }
-  if (digits.length > 0) {
-    res = fromNumber(digits, m)
-  }
-  if (isText) {
-    const num = fromText(words)
-    // '2,5 milhões' is 2.5 * 1,000,000
-    if (res.num !== null && num) {
-      res.num = Number((res.num * num).toPrecision(15))
-    } else {
-      res.num = num
+  if (found.digits) {
+    res = fromNumber(terms.slice(found.digits[0], found.digits[1]), m)
+    if (res.num !== null) {
+      // '2,5 milhões' is 2.5 * 1,000,000 - without the noise of a float
+      const num = res.num * found.mult
+      res.num = (Number.isInteger(num) ? num : Number(num.toPrecision(15))) * (found.neg ? -1 : 1)
     }
   }
   return {
@@ -43,7 +34,9 @@ const parseNumber = function (m) {
     // how the digits were written
     decimal: res.decimal,
     group: res.group,
-    isText,
+    // '.º', 'ª' or 'o'
+    ordinal: res.ordinal || null,
+    isText: m.has('#TextValue'),
     isOrdinal: m.has('#Ordinal'),
     isFraction: m.has('#Fraction'),
     isMoney: m.has('#Money'),

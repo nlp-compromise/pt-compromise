@@ -169,11 +169,11 @@ Elas são escritas para cada língua, por isso as que estão disponíveis aqui n
 ### `.nouns()`
 
 - **`.nouns()`** — devolve os substantivos do documento
-- **`.nouns().conjugate()`** — dá o singular, o plural e o feminino de cada substantivo
+- **`.nouns().conjugate()`** — dá o singular e o plural de cada substantivo, e o feminino dos que têm um ('professor' → 'professora', mas não 'livro')
 - **`.nouns().isPlural()`** — devolve só os substantivos no plural
-- **`.nouns().toPlural()`** — põe os substantivos no plural
-- **`.nouns().toSingular()`** — põe os substantivos no singular
-- **`.nouns().toFeminine()`** — põe os substantivos no feminino
+- **`.nouns().toPlural()`** — põe os substantivos no plural, com o artigo ou a contração que os acompanha ('do menino' → 'dos meninos')
+- **`.nouns().toSingular()`** — põe os substantivos no singular, com o artigo ('nas casas' → 'na casa')
+- **`.nouns().toFeminine()`** — põe as pessoas e os animais no feminino, com o artigo ('o senhor' → 'a senhora', 'o estudante' → 'a estudante')
 
 ### `.verbs()`
 
@@ -194,23 +194,25 @@ Elas são escritas para cada língua, por isso as que estão disponíveis aqui n
 
 ### `.numbers()`
 
-- **`.numbers()`** — devolve os números, escritos em algarismos ou por extenso
+- **`.numbers()`** — devolve os números, escritos em algarismos ou por extenso — 'dois mil e três' é um só número, e 'dois, três' são dois. 'um' e 'uma' são artigos, e só contam como número dentro de um ('um milhão', 'trinta e uma'), antes de uma unidade ('um euro', 'um km') ou quando a frase não lhes dá nenhuma palavra a seguir ('só tenho um.')
 - **`.values()`** — alias de .numbers()
 - **`.numbers().get()`** — devolve o valor numérico de cada número
-- **`.numbers().units()`** — devolve a unidade que vem depois de cada número
-- **`.numbers().toNumber()`** — escreve os números em algarismos (`40`)
-- **`.numbers().toText()`** — escreve os números por extenso (`quarenta`)
+- **`.numbers().parse()`** — devolve a interpretação de cada número
+- **`.numbers().json(n?)`** — devolve o json de cada número, ou só o do número n, com os seus dados numéricos
+- **`.numbers().units()`** — devolve a unidade que vem depois de cada número (`km`, `por cento`)
+- **`.numbers().toNumber()`** — escreve os números em algarismos (`40`, `1ª`, `50 %`)
+- **`.numbers().toText()`** — escreve os números por extenso (`quarenta`, `cinco euros`, `cinquenta por cento`), na grafia do Brasil (`dezesseis`, `um bilhão` = 10⁹). Um decimal (`3,5`) fica em algarismos
 - **`.numbers().toCardinal()`** — transforma em número cardinal (`quarenta`)
-- **`.numbers().toOrdinal()`** — transforma em número ordinal (`quadragésimo`)
+- **`.numbers().toOrdinal()`** — transforma em número ordinal (`quadragésimo`, `40º`), com o gênero do número (`primeira`, `1ª`). Por extenso, até 1999
 - **`.numbers().isCardinal()`** — devolve só os números cardinais
 - **`.numbers().isOrdinal()`** — devolve só os números ordinais
 - **`.numbers().isEqual(n)`** — devolve só os números iguais a n
 - **`.numbers().greaterThan(n)`** — devolve só os números maiores que n
 - **`.numbers().lessThan(n)`** — devolve só os números menores que n
 - **`.numbers().between(min, max)`** — devolve só os números entre min e max
-- **`.numbers().set(n)`** — substitui cada número por n
-- **`.numbers().add(n)`** — soma n a cada número
-- **`.numbers().subtract(n)`** — subtrai n de cada número
+- **`.numbers().set(n)`** — substitui cada número por n, dado como número ou como texto (`12`, `'doze'`)
+- **`.numbers().add(n)`** — soma n a cada número (número ou texto), e mantém a forma como estava escrito (`1,5` → `2,5`, `5€` → `6€`)
+- **`.numbers().subtract(n)`** — subtrai n de cada número (número ou texto)
 - **`.numbers().increment()`** — soma 1 a cada número
 - **`.numbers().decrement()`** — subtrai 1 de cada número
 

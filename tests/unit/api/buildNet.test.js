@@ -99,3 +99,12 @@ test('parseMatch:', function (t) {
   t.equal(nlp('vejo o gato').match(nlp.parseMatch('o gato')).text(), 'o gato', here + 'use parsed match')
   t.end()
 })
+
+// a root-word in a match finds its plural, too
+test('buildNet noun plurals:', function (t) {
+  const net = nlp.buildNet([{ match: '{areia/Noun}' }])
+  t.ok(net.hooks.areia, here + 'areia')
+  t.ok(net.hooks.areias, here + 'areias')
+  t.equal(nlp('as areias brancas').sweep(net).view.text(), 'areias', here + 'sweep areias')
+  t.end()
+})

@@ -32,7 +32,8 @@ export interface VerbConjugation {
 export interface NounConjugation {
   singular: string
   plural: string
-  feminine: string
+  /** only people and animals have one - 'professora', but not for 'livro' */
+  feminine?: string
 }
 
 export interface AdjectiveConjugation {
@@ -70,7 +71,7 @@ export interface Nouns extends View {
   toPlural(n?: number): Nouns
   /** re-write these nouns as singular */
   toSingular(n?: number): Nouns
-  /** re-write these nouns in their feminine form - 'professora' */
+  /** re-write people and animals in their feminine form, with their article - 'a professora' */
   toFeminine(n?: number): Nouns
 }
 
@@ -79,37 +80,67 @@ export interface Adjectives extends View {
   conjugate(n?: number): AdjectiveConjugation[]
 }
 
+/** the interpretation of one number */
+export interface ParsedNumber {
+  hasComma: boolean
+  prefix: string
+  num: number | null
+  suffix: string
+  /** the decimal mark that was written - ',' in '3,5' */
+  decimal?: string | null
+  /** the mark between thousands - '.' in '1.000' */
+  group?: string | null
+  /** the ending of a numeric ordinal - 'º', '.ª', 'o' */
+  ordinal: string | null
+  isText: boolean
+  isOrdinal: boolean
+  isFraction: boolean
+  isMoney: boolean
+}
+
 export interface Numbers extends View {
-  /** parsed number data for each match */
-  json(options?: number | string | object): any
-  /** return only unit-terms - 'dólares' */
+  /** get the interpretation of each number */
+  parse(n?: number): ParsedNumber[]
+  /** get the numeric value of each number - 'vinte e cinco' → 25 */
+  get(n?: number): (number | null)[]
+  /** json output, with parsed number data for each match - a number returns only the nth match */
+  json(n?: number | string | object): any
+  /** return the unit following each number - 'km', 'por cento' */
   units(): View
   /** return only ordinal numbers - 'quinto' */
   isOrdinal(): Numbers
   /** return only cardinal numbers - 'cinco' */
   isCardinal(): Numbers
-  /** re-write these numbers as digits - '5' */
+  /** re-write these numbers as digits - 'quarenta' → '40', 'primeira' → '1ª', 'cinco por cento' → '5 %' */
   toNumber(): Numbers
-  /** re-write these numbers as words - 'cinco' */
+  /** re-write these numbers as words - '40' → 'quarenta', '5€' → 'cinco euros' - a decimal is left alone */
   toText(): Numbers
-  /** re-write these numbers as cardinal - 'cinco' */
+  /** re-write these numbers as cardinal - 'quadragésimo' → 'quarenta' */
   toCardinal(): Numbers
-  /** re-write these numbers as ordinal - 'quinto' */
+  /** re-write these numbers as ordinal - 'quarenta' → 'quadragésimo', '40' → '40º' - in words up to 1999 */
   toOrdinal(): Numbers
-  /** return numbers with this value */
+  /** return only numbers with this value */
   isEqual(n: number): Numbers
-  /** return numbers larger than n */
+  /** alias of .isEqual() */
+  equals(n: number): Numbers
+  /** return only numbers larger than n */
   greaterThan(n: number): Numbers
-  /** return numbers smaller than n */
+  /** return only numbers smaller than n */
   lessThan(n: number): Numbers
-  /** return numbers between min and max */
+  /** return only numbers between min and max */
   between(min: number, max: number): Numbers
-  /** set these numbers to n */
-  set(n: number): Numbers
-  /** add n to these numbers */
-  add(n: number): Numbers
+  /** alias of .between() */
+  isBetween(min: number, max: number): Numbers
+  /** set these numbers to n, given as a number or as text ('doze', '12') - 'quarenta' → 'doze' */
+  set(n: number | string): Numbers
+  /** add n to these numbers - 'quarenta' → 'quarenta e dois' */
+  add(n: number | string): Numbers
+  /** alias of .add() */
+  plus(n: number | string): Numbers
   /** subtract n from these numbers */
-  subtract(n: number): Numbers
+  subtract(n: number | string): Numbers
+  /** alias of .subtract() */
+  minus(n: number | string): Numbers
   /** add 1 to these numbers */
   increment(): Numbers
   /** subtract 1 from these numbers */
@@ -145,12 +176,62 @@ export interface PtView extends View {
   adjectives(n?: number): Adjectives
   /** return any numbers, with parsing and math methods */
   numbers(n?: number): Numbers
+  /** return any names of people - with .parse() and .json() */
+  people(n?: number): View
+  /** return any names of places */
+  places(n?: number): View
+  /** return any names of organizations */
+  organizations(n?: number): View
+  /** return people, places, and organizations together */
+  topics(n?: number): View
+  /** split-up sentences into their clauses */
+  clauses(n?: number): View
+  /** black-out names, places, emails and other identifying text */
+  redact(opts?: object, blockStr?: string, keep?: boolean): View
+  /** return text wrapped in (parentheses) */
+  parentheses(n?: number): View
+  /** return text wrapped in quotation-marks */
+  quotations(n?: number): View
+  /** return any acronyms - 'F.B.I.' */
+  acronyms(n?: number): View
+  /** return any words tagged as #Possessive */
+  possessives(n?: number): View
+  /** return any words tagged as #Honorific */
+  honorifics(n?: number): View
+  /** return any words tagged as #Abbreviation */
+  abbreviations(n?: number): View
+  /** return any words tagged as #Conjunction */
+  conjunctions(n?: number): View
+  /** return any words tagged as #Preposition */
+  prepositions(n?: number): View
+  /** return any words joined by a hyphen */
+  hyphenated(n?: number): View
+  /** return any terms split by a slash */
+  slashes(n?: number): View
+  /** return any #HashTag terms */
+  hashTags(n?: number): View
+  /** return any #Email terms */
+  emails(n?: number): View
+  /** return any #Url terms */
+  urls(n?: number): View
+  /** return any #AtMention terms */
+  atMentions(n?: number): View
+  /** return any #Emoji terms */
+  emoji(n?: number): View
+  /** return any #Emoticon terms */
+  emoticons(n?: number): View
+  /** return any #PhoneNumber terms */
+  phoneNumbers(n?: number): View
+  /** return any #Address terms */
+  addresses(n?: number): View
 }
 
 /** parse the given portuguese text */
 declare function nlp(text?: string, lexicon?: Lexicon): PtView
 
 declare namespace nlp {
+  /** tag only the sentences that may hold this match, and return the matches */
+  export function lazy(text: string, match: string | Net): PtView
   /** interpret text without tagging */
   export function tokenize(text: string, lexicon?: Lexicon): PtView
   /** mix in a compromise-plugin */

@@ -16,10 +16,9 @@ import {
   all as allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromFemalePlural,
 } from './adjectives/index.js'
 
-import {
-  all as allNoun, toPlural as toPluralNoun, toSingular as toSingularNoun,
-  toFeminine, fromFeminine,
-} from './nouns.js'
+import { all as allNoun, toPlural as toPluralNoun, fromPlural as fromPluralNoun } from './nouns/index.js'
+import { toFeminine, fromFeminine, isCommon } from './nouns/feminine.js'
+import { isSingular } from './nouns/rules.js'
 
 
 export default {
@@ -34,10 +33,10 @@ export default {
     fromSubjPresent, fromSubjImperfect, fromSubjFuture,
   },
   noun: {
-    all: allNoun, toPlural: toPluralNoun, toSingular: toSingularNoun,
-    toFeminine, fromFeminine,
+    all: allNoun, toPlural: toPluralNoun, fromPlural: fromPluralNoun, toSingular: fromPluralNoun,
+    toFeminine, fromFeminine, isCommon, isSingular,
   },
   adjective: {
-    all: allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromFemalePlural,
+    all: allAdj, toFemale, toPlural, toFemalePlural, fromFemale, toSingular, fromPlural: toSingular, fromFemalePlural,
   },
 }

@@ -1,13 +1,5 @@
 // generated in ./lib/models
 export default {
-  "nouns": {
-    "plurals": "4os:nalha,vente|7s:ocicleta|2daços:peça|2ças:nca|0s:i,o{ã{rm,f,ót,ist,rg,d,gr},ma}|0es:r,n|5es:uíche|0:s|2eses:és|2ízes:aiz|5tivos:ctivo|10ções:cionamento|3s:agem{st,c}|1is:l~0s:a,e,o,men,ã,u,é,í,ê,á,t,ll|4cusas:fugo|1as:ílo|4ícias:eleite|0rias:sca|6ústrias:ustria|2as:artão|0duras:eima|0as:rtador|1s:il|3nerais:eral|7is:calização|1is:ool,vel,iel|2éis:el|2óis:ol|2eis:til,sil|5uniores:únior|5eniores:ênior|4ateres:áter|0hares:mil|0es:ís,gas,eus,z,sul|2eses:ês|2ízes:uiz|1es:o{ã{p,it,at,em},a},eptil,ossil|2ões:ão|11clamações:ivindicação|6posições:xibição|2nhões:mião|8ntes:tatividade|0ues:ues|2oes:icao|3mentos:dicação|2mentos:tida|1imentos:renda|1ados:rego|3dos:zagem|3tados:jeição|3enhos:ign|5ômenos:omeno|4tários:tilidade|5urbios:úrbio|9ípios:ipalidade|1ns:m|4omens:ômen|6centagens: cento|1ós:ô|5nks:igação|0:x,e{nav,ricidad,sed,sort,rn,el},a{çad,ld,mid,linh,i{bíl,stór,re,at},ratur,sic,huv,uis,uranç,rat,gu},aril,ão{ucaç,liç,ess{c,r}}, mar,lguém|2i:pus~0:s{tla,pi,ire,cle,cínio,bu,ru,nu}|3ca:danças|1gem:ncas|2l:ais,uis|1:s{i{pa,o,e,x,b},vore,ware,itante,ntimento,ncípio}|2:es{or,er,ar,fen}|4és:veses|4cionamento:elações|2uíche:ndes|5ctivo:etivos|2ente:servos|1cicleta:motos|2alha:fornos|2m:homens~0s:mão|1es:cão|0:cais,dados,paz|3s:listagem"
-  },
-  "adjectives": {
-    "f": "1:s|0:a|1a:m~1a:o|0a:ol|2éia:eu|2esa:ês|0:e,l,aso,z,ó,em|2á:au|1:ão~0:nja|1m:oa|0s:o~",
-    "mp": "0:a~0s:o,e,u|0es:z|2eses:ês|1es:ão|1is:l|2eis:il|2óis:ol|1ns:m|2a:os|1a:aso|0:ó~2l:veis|0:ja~",
-    "fp": "1as:m|1ias:u~0:s,a,ó|1as:o|0as:ol|2esas:ês|0s:e,aso|0es:z|1is:l|2eis:il|2ás:au|1ns:em|1s:ão~2m:oas|3u:peias|2l:veis~"
-  },
   "conditional": {
     "first": "3ria:zer{a,i}|0ia:r{aze{mpr,j},ntrança,oroça}|3caria:çar{tran,rin,ro}|2oria:ôr~0ia:r|6coitaria:çoitar|3caria:çar{ati,co,emo,bra}~3zer:ria{di{re,on,en,ra,s,l,er},a{f{s,e,tra,esa,er,-},spr}}|2:ria{gredi,a{taref,lef,scoit,ratic}}|5çar:caria{strin,stro}~3ria:zer{fa,afa,tra,di}|2oria:pôr|3caria:çar{cal,for,ro,la}",
     "second": "3rias:zer{a,i}|0ias:r{aze{mpr,j},ntrança,oroça}|3carias:çar{tran,rin,ro}|2orias:ôr~0ias:r|6coitarias:çoitar|3carias:çar{ati,co,emo,bra}~4zer:rias{di{re,on,en,ra,s,l,er},a{f{s,e,tra,esa,er,-},spr}}|3:rias{gredi,a{taref,lef,scoit,ratic}}|6çar:carias{strin,stro}~3rias:zer{fa,afa,tra,di}|2orias:pôr|3carias:çar{cal,for,ro,la}",

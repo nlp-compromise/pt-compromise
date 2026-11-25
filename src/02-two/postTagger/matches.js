@@ -1,15 +1,5 @@
 const postTagger = function (doc) {
-  // oitenta e três
-  doc.match('#Value [e] #Cardinal', 0).tag('Cardinal', 'val-e-val')
-  doc.match('#Value [e] #Value', 0).tag('Value', 'val-e-val')
-
-  doc.match('#Value e #Value e #Value').tag('Value', 'val-e-val')
-  // vinte e uma
-  doc.match('#Value e? (uma|um)').tag('Cardinal', 'val-e-uma')
-  // uma milhão
-  doc.match('(uma|um) #Value').tag('Value', 'uma-milhão')
-  // menos noventa
-  doc.match('menos #Value').tag('Value', 'menos-noventa')
+  // ('oitenta e três', 'um milhão' and 'menos noventa' are done in ./numbers.js)
   // cantar é bom
   doc.match('[#Infinitive] #Copula', 0).tag('Noun', 'gerund-noun')
   // a o => to the
@@ -26,10 +16,7 @@ const postTagger = function (doc) {
   doc.match('(um|uma|uns|umas|este|esta|estes|estas|esse|essa|esses|essas|aquele|aquela|meu|minha|teu|tua|seu|sua|nosso|nossa) #Adjective? [#Verb]', 0)
     .ifNo('(#Copula|#Auxiliary)')
     .tag('Noun', 'det-verb-noun')
-  // 'a verdade era..' - but not 'eu o vi', where o|a is a clitic pronoun
-  doc.match('^(o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'start-det-verb')
-  doc.match('#Preposition (o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'prep-det-verb')
-  doc.match('#Verb (o|a|os|as) #Adjective? [#Verb]', 0).ifNo('(#Copula|#Auxiliary|#Infinitive)').tag('Noun', 'verb-det-verb')
+  // 'a verdade era..', 'eu o vi' are in article-clitic.js
 
   // 'preciso que..', 'eu preciso de ajuda' - verb-use of 'preciso'
   // but not 'o trabalho preciso', where it stays an adjective
@@ -43,12 +30,6 @@ const postTagger = function (doc) {
   // 'se eu fosse' - conditional-if, not the reflexive pronoun
   doc.match('[se] (eu|tu|ele|ela|nós|vós|você|vocês|eles|elas)', 0).tag('Conjunction', 'se-if')
 
-  // 'começou a chover' - 'a' + infinitive is a preposition
-  doc.match('[a] #Infinitive', 0).tag('Preposition', 'a-infinitive')
-
-  // ==clitic pronouns==
-  // 'eu o vi', 'não a conheço' - accusative clitic, not a determiner
-  doc.match('(#Pronoun|#Negative) [(o|a|os|as)] #Verb', 0).tag('Pronoun', 'clitic-acc')
 
   // ==compound tenses==
   // 'tenho falado' - present perfect
@@ -83,10 +64,9 @@ const postTagger = function (doc) {
   doc.match('#Verb [(me|se|te|nos)]', 0).tag('Reflexive', 'verb-se')
   doc.match('[(me|se|te|nos)] #Verb', 0).tag('Reflexive', 'se-verb')
 
-  // ==numbers==
-  doc.match('#Value [(primeiro|primeira|primeiros|primeiras)]', 0).tag('Ordinal', 'val-primeiro')
   // ==misc==
   // four vs room
   doc.match('#Determiner [quarto]', 0).tag('Noun', 'quatro-room')
+  doc.match('#Determiner [quartos]', 0).tag('Plural', 'quatro-room')
 }
 export default postTagger

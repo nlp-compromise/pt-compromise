@@ -50,7 +50,6 @@ export default [
   'oitocentas',//800 
   'novecentas',//900 
   'mil',//1000 
-  'meia',//slang 6
   'cinqüenta',
   'milhão',
   'milhões',

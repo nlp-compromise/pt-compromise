@@ -36,26 +36,7 @@ const steps = [
     path: './src/01-one/lexicon/methods/_data.js',
     compress: function () {
       const packed = {}
-      console.log('plurals')
-      let plurals = learn(models.plurals)
-      plurals = compress(plurals)
-      packed.nouns = {
-        plurals
-      }
-      console.log('adjectives')
-      packed.adjectives = {
-        f: [],
-        mp: [],
-        fp: []
-      }
-      models.adjectives.forEach((a) => {
-        packed.adjectives.f.push([a[0], a[1]])
-        packed.adjectives.mp.push([a[0], a[2]])
-        packed.adjectives.fp.push([a[0], a[3]])
-      })
-      Object.keys(packed.adjectives).forEach((k) => {
-        packed.adjectives[k] = compress(learn(packed.adjectives[k]))
-      })
+      // nouns and adjectives are inflected by rules - see ./src/01-one/lexicon/methods/nouns
       console.log('verbs')
       Object.keys(models.verbs).forEach((k) => {
         packed[k] = {}

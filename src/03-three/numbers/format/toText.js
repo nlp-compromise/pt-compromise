@@ -1,125 +1,107 @@
 import data from '../data.js'
-const ones = data.ones.reverse()
-const tens = data.tens.reverse()
-const hundreds = data.hundreds.reverse()
 
-const multiples = [
-  [1000000000, 'bilhão', 'bilhões'],
-  [1000000, 'milhão', 'milhões'],
-  [1000, 'mil', 'mil'],
-  // [100, 'cento'],
-  [1, 'um', 'um'],
-]
+// words for each part of a number
+const cardinals = {}
+const ordinals = {}
+;[...data.ones, ...data.tens, ...data.hundreds].forEach(a => {
+  cardinals[a[0]] = a[1]
+  ordinals[a[0]] = a[2]
+})
+const bigs = data.multiples.filter(a => a[0] > 1000)
 
-//turn number into an array of magnitudes, like [[5, million], [2, hundred]]
-const getMagnitudes = function (num) {
-  let working = num
-  const have = []
-  multiples.forEach(a => {
-    if (num >= a[0]) {
-      const howmany = Math.floor(working / a[0])
-      working -= howmany * a[0]
-      if (howmany) {
-        let str = a[1]
-        if (howmany > 1) {
-          str = a[2]//use plural version
-        }
-        have.push({
-          unit: str,
-          num: howmany,
-        })
-      }
+// 'uma', 'duas', 'duzentas'
+const toFemale = str => str.replace(/^um$/, 'uma').replace(/^dois$/, 'duas').replace(/entos$/, 'entas')
+
+// 1-999 - 'cento e vinte e um'
+const toGroup = function (num, fem) {
+  if (num === 100) {
+    return ['cem']
+  }
+  const rest = num % 100
+  let parts = [num - rest]
+  if (rest < 20) {
+    parts.push(rest)
+  } else {
+    parts.push(rest - (rest % 10), rest % 10)
+  }
+  parts = parts.filter(n => n).map(n => (fem ? toFemale(cardinals[n]) : cardinals[n]))
+  return parts.join(' e ').split(' ')
+}
+
+// an 'e' goes before the last group, when that is under a hundred, or is whole hundreds
+// - 'mil e cem' and 'dois mil e três', but 'mil cento e vinte'
+const join = function (groups) {
+  let words = []
+  groups.forEach((a, i) => {
+    const [count, arr] = a
+    if (i > 0 && i === groups.length - 1 && (count < 100 || count % 100 === 0)) {
+      words.push('e')
+    }
+    words = words.concat(arr)
+  })
+  return words
+}
+
+// each group of a number, and how many of them there are - [[2, ['dois', 'milhões']], [500, ['quinhentos', 'mil']]]
+const toGroups = function (num, fem) {
+  const out = []
+  let rest = num
+  bigs.forEach(a => {
+    const [size, single, plural] = a
+    const count = Math.floor(rest / size)
+    rest -= count * size
+    // 'um milhão', 'dois milhões' - a million is masculine
+    if (count === 1) {
+      out.push([count, ['um', single]])
+    } else if (count) {
+      out.push([count, join(toGroups(count, false)).concat(plural)])
     }
   })
-  return have
+  const mil = Math.floor(rest / 1000)
+  // 'mil', and not 'um mil'
+  if (mil) {
+    out.push([mil, mil === 1 ? ['mil'] : toGroup(mil, fem).concat('mil')])
+  }
+  if (rest % 1000) {
+    out.push([rest % 1000, toGroup(rest % 1000, fem)])
+  }
+  return out
 }
 
-// when to put 'and' - these seem very complicated
-const andRules = function (words) {
-  // do 'mil e duzentos' but 'mil duzentos e quinze'
-  const index = words.findIndex((w, i) => w === 'mil' && words[i + 1] === 'e')
-  if (index !== -1) {
-    // we have another 'e' after..
-    const hasAfter = words.slice(index + 2).find(w => w === 'e')
-    if (hasAfter) {
-      // remove the 'e'
-      words.splice(index + 1, 1)
-    }
+// write a whole number as words - `opts.isFemale` is 'uma', 'duas' and 'duzentas'
+const toText = function (num, opts = {}) {
+  if (!Number.isSafeInteger(num)) {
+    return null
   }
-  return words
-}
-
-const threeDigit = function (num) {
-  const words = []
-  // 100-900
-  for (let i = 0; i < hundreds.length; i += 1) {
-    if (hundreds[i][0] <= num) {
-      words.push(hundreds[i][1])
-      num -= hundreds[i][0]
-      break
-    }
-  }
-  // 30-90
-  for (let i = 0; i < tens.length; i += 1) {
-    if (tens[i][0] <= num) {
-      // 'e vinte'
-      if (words.length > 0) {
-        words.push('e')
-      }
-      words.push(tens[i][1])
-      num -= tens[i][0]
-      break
-    }
-  }
-  if (num === 0) {
-    return words
-  }
-  // 0-29
-  for (let i = 0; i < ones.length; i += 1) {
-    if (ones[i][0] <= num) {
-      // 'e sete'
-      if (words.length > 0) {
-        words.push('e')
-      }
-      words.push(ones[i][1])
-      num -= ones[i][0]
-      break
-    }
-  }
-  return words
-}
-
-const toText = function (num) {
   if (num === 0) {
     return ['zero']
   }
-  let words = []
-  if (num < 0) {
-    words.push('menos')
-    num = Math.abs(num)
-  }
-  // handle multiples
-  const found = getMagnitudes(num)
-  found.forEach((obj, i) => {
-    const res = threeDigit(obj.num)
-    if (res[0] === 'cem' && res.length > 1) {
-      res[0] = 'cento'
-    }
-    words = words.concat(res)
-    if (obj.unit !== 'um') {
-      words.push(obj.unit)
-      if (found[i + 1]) {
-        // mil e duzentos
-        words.push('e')
-      }
-    }
-  })
-  // 'uno mil' -> 'mil'
-  if (words.length > 1 && words[0] === 'um' && words[1] === 'mil') {
-    words = words.slice(1)
-  }
-  // complex 'mil e ..' rules:
-  words = andRules(words)
-  return words
+  const words = num < 0 ? ['menos'] : []
+  return words.concat(join(toGroups(Math.abs(num), opts.isFemale)))
 }
-export default toText
+
+// 'centésimo vigésimo primeiro' - up to 1999, and 'milionésimo'
+const toTextOrdinal = function (num, opts = {}) {
+  let words = []
+  let rest = num
+  const big = data.multiples.find(a => a[0] === num)
+  if (big) {
+    words.push(big[3])
+  } else if (!Number.isInteger(num) || num < 1 || num >= 2000) {
+    return null
+  } else {
+    if (rest > 1000) {
+      words.push('milésimo')
+      rest -= 1000
+    }
+    const ones = rest % 10
+    const tens = (rest % 100) - ones
+    words = words.concat([rest - tens - ones, tens, ones].filter(n => n).map(n => ordinals[n]))
+  }
+  // every word agrees - 'décima primeira', 'vigésimos primeiros'
+  if (opts.isFemale) {
+    words = words.map(w => w.replace(/o$/, 'a'))
+  }
+  return opts.isPlural ? words.map(w => w + 's') : words
+}
+export { toText, toTextOrdinal }

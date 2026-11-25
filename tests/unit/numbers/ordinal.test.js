@@ -140,10 +140,10 @@ test('toOrdinal:', function (t) {
   })
 
   let doc = nlp('342').numbers().toOrdinal()
-  t.equal(doc.text(), '342°', here + 'num-ord')
+  t.equal(doc.text(), '342º', here + 'num-ord')
 
   doc = nlp('trezentos e setenta').numbers().toNumber().toOrdinal()
-  t.equal(doc.text(), '370°', here + 'num-ord')
+  t.equal(doc.text(), '370º', here + 'num-ord')
   t.end()
 })
 

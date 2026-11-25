@@ -18,17 +18,14 @@ const tagMap = {
   thirdPlural: 'ThirdPersonPlural',
 }
 
-// abstract -or nouns with no feminine form
-const notAgentive = {
-  amor: true, calor: true, valor: true, cor: true, dor: true, flor: true,
-  motor: true, setor: true, fator: true, favor: true, sabor: true, humor: true,
-  tumor: true, terror: true, temor: true, tremor: true, vapor: true, rigor: true,
-  vigor: true, teor: true, licor: true, suor: true, ardor: true, pudor: true,
-  clamor: true, fervor: true, furor: true, horror: true, louvor: true, odor: true,
-  rancor: true, rumor: true, torpor: true, primor: true, esplendor: true,
-  interior: true, exterior: true, superior: true, inferior: true,
-  anterior: true, posterior: true, melhor: true, pior: true, maior: true, menor: true,
-}
+// verb-forms that are also another word - 'conto', 'visita', 'casa'
+const verbForms = {}
+const isVerb = (tags) => /Tense|Imper|Subj|Cond|Plup|Infin|Gerund|Partic|Copula|Person|Verb/.test(tags)
+// forms of an adjective that are also another word - 'cara', 'bonita', 'interior'
+const adjForms = {}
+const adj = methods.adjective
+// 'antiga', 'antigos' are in the list, beside 'antigo'
+const isInflected = (w, words) => [adj.fromFemale(w), adj.toSingular(w), adj.fromFemalePlural(w)].some((s) => s !== w && words.hasOwnProperty(s))
 const addToLex = function (obj, tags, lex) {
   // find forms that repeat across persons, like 'falava' (1st + 3rd)
   const counts = {}
@@ -37,13 +34,12 @@ const addToLex = function (obj, tags, lex) {
   })
   Object.keys(obj).forEach(k => {
     const w = obj[k]
+    // skip the person-tag for ambiguous forms
+    const out = counts[w] > 1 ? tags : tags.concat([tagMap[k]])
     if (!lex[w]) {
-      // skip the person-tag for ambiguous forms
-      if (counts[w] > 1) {
-        lex[w] = tags
-      } else {
-        lex[w] = tags.concat([tagMap[k]])
-      }
+      lex[w] = out
+    } else if (!isVerb(lex[w]) && !verbForms[w]) {
+      verbForms[w] = out
     }
   })
 }
@@ -69,6 +65,15 @@ const conjugations = [
 Object.keys(lexData).forEach(tag => {
   const wordsObj = unpack(lexData[tag])
   Object.keys(wordsObj).forEach(w => {
+    if (tag === 'Adjective' && isInflected(w, wordsObj)) {
+      return
+    }
+    if (lexicon[w] && isVerb(lexicon[w]) && tag !== 'Infinitive') {
+      verbForms[w] = lexicon[w]
+    }
+    if (lexicon[w] && /Adjective/.test(lexicon[w])) {
+      adjForms[w] = lexicon[w]
+    }
     lexicon[w] = tag
 
     // add conjugations for our verbs
@@ -94,20 +99,22 @@ Object.keys(lexData).forEach(tag => {
     }
     if (tag === 'Noun') {
       lexicon[w] = lexicon[w] || ['Noun']
-      const pl = methods.noun.toPlural(w)
-      lexicon[pl] = lexicon[pl] || 'Plural'
-      // professor → professora, but not abstract -or nouns like 'amor'
-      if (/or$/.test(w) && notAgentive[w] !== true) {
-        const fem = methods.noun.toFeminine(w)
-        if (fem !== w) {
-          if (!lexicon[fem] || lexicon[fem] === 'Noun') {
-            lexicon[fem] = ['Noun', 'FemaleNoun', 'Singular']
-          }
-          const femPl = fem + 's'
-          if (!lexicon[femPl] || lexicon[femPl] === 'Plural') {
-            lexicon[femPl] = ['Noun', 'FemaleNoun', 'Plural']
-          }
+      // the noun wins over a form of an adjective - 'estrangeiros', 'trabalhadora'
+      const add = function (str, tags, old) {
+        const isAdj = /Adjective/.test(lexicon[str])
+        if (isAdj) {
+          adjForms[str] = lexicon[str]
         }
+        if (!lexicon[str] || isAdj || lexicon[str] === old) {
+          lexicon[str] = tags
+        }
+      }
+      add(methods.noun.toPlural(w), 'Plural')
+      // professor → professora, menino → menina - but not 'pai' → 'mãe'
+      const fem = methods.noun.toFeminine(w)
+      if (fem !== w && fem.slice(0, 2) === w.slice(0, 2)) {
+        add(fem, ['Noun', 'FemaleNoun', 'Singular'], 'Noun')
+        add(methods.noun.toPlural(fem), ['Noun', 'FemaleNoun', 'Plural'], 'Plural')
       }
     }
     if (tag === 'Cardinal') {
@@ -132,4 +139,5 @@ Object.keys(properNouns).forEach(tag => {
   })
 })
 
+export { verbForms, adjForms }
 export default lexicon

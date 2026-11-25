@@ -27,7 +27,7 @@ verbs.toPastTense(0)
 // nouns
 const nouns: Nouns = doc.nouns()
 const nounConj: NounConjugation[] = nouns.conjugate()
-const feminine: string = nounConj[0].feminine
+const feminine: string | undefined = nounConj[0].feminine
 nouns.toPlural().toSingular().toFeminine()
 nouns.isPlural(0)
 
